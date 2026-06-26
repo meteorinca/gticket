@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wonka Golden Ticket</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <!-- ==================== styles.css ==================== -->
+    <style>
+        :root {
+            --gold-lightest: #FEF8E0;
+            --gold-light: #FBE9A0;
+            --gold-mid: #F0C040;
+            --gold: #DAA520;
+            --gold-deep: #B8860B;
+            --gold-dark: #8B6914;
+            --gold-darkest: #5C3D0E;
+            --chocolate: #3B1F0B;
+            --bg-dark: #1a0a0f;
+            --bg-mid: #2d1220;
+            --surface: #1c0d15;
+            --ticket-width: 340px;
+            --ticket-height: 210px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, #2d1220 0%, #1a0a0f 50%, #0d0408 100%);
+            background-attachment: fixed;
+            font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+            overflow: hidden;
+            cursor: crosshair;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Subtle ambient particles in background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(1px 1px at 15% 25%, rgba(255, 215, 0, 0.6), transparent),
+                radial-gradient(1px 1px at 28% 60%, rgba(255, 215, 0, 0.4), transparent),
+                radial-gradient(1.5px 1.5px at 42% 18%, rgba(255, 215, 0, 0.5), transparent),
+                radial-gradient(1px 1px at 55% 72%, rgba(255, 215, 0, 0.35), transparent),
+                radial-gradient(1.5px 1.5px at 68% 35%, rgba(255, 215, 0, 0.55), transparent),
+                radial-gradient(1px 1px at 78% 55%, rgba(255, 215, 0, 0.4), transparent),
+                radial-gradient(1px 1px at 85% 20%, rgba(255, 215, 0, 0.45), transparent),
+                radial-gradient(1.5px 1.5px at 22% 80%, rgba(255, 215, 0, 0.5), transparent),
+                radial-gradient(1px 1px at 90% 70%, rgba(255, 215, 0, 0.35), transparent),
+                radial-gradient(1px 1px at 10% 45%, rgba(255, 215, 0, 0.4), transparent),
+                radial-gradient(2px 2px at 35% 10%, rgba(255, 255, 220, 0.7), transparent),
+                radial-gradient(2px 2px at 72% 48%, rgba(255, 255, 220, 0.6), transparent),
+                radial-gradient(1.5px 1.5px at 50% 85%, rgba(255, 255, 200, 0.5), transparent);
+            animation: bgSparkle 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgSparkle {
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Main scene with perspective */
+        .scene {
+            position: relative;
+            z-index: 1;
+            perspective: 1200px;
+            perspective-origin: center center;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Rotator - receives 3D transforms */
+        .rotator {
+            position: relative;
+            width: var(--ticket-width);
+            height: var(--ticket-height);
+            transform-style: preserve-3d;
+            transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+            will-change: transform;
+        }
+
+        /* Gentle sway animation when no mouse interaction */
+        .rotator.swaying {
+            animation: gentleSway 7s ease-in-out infinite;
+        }
+
+        @keyframes gentleSway {
+            0%,
+            100% {
+                transform: rotateY(-2.5deg) rotateX(1.5deg);
+            }
+            20% {
+                transform: rotateY(3deg) rotateX(-1deg);
+            }
+            40% {
+                transform: rotateY(1.5deg) rotateX(-2deg);
+            }
+            60% {
+                transform: rotateY(-3deg) rotateX(0.5deg);
+            }
+            80% {
+                transform: rotateY(2deg) rotateX(2deg);
+            }
+        }
+
+        /* ============ THE GOLDEN TICKET ============ */
+        .ticket {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            background:
+                /* Metallic gold base with multiple layered gradients */
+                linear-gradient(165deg,
+                    #FEF8E0 0%,
+                    #FDF0C8 4%,
+                    #FBE9A0 8%,
+                    #F5D060 15%,
+                    #E8B830 22%,
+                    #DAA520 30%,
+                    #F0C848 36%,
+                    #FEF0C8 42%,
+                    #E8B830 48%,
+                    #C8963E 55%,
+                    #DAA520 62%,
+                    #F5D878 70%,
+                    #B8860B 78%,
+                    #DAAA30 85%,
+                    #FDF0C8 92%,
+                    #E8C040 96%,
+                    #C8963E 100%);
+            background-size: 100% 100%;
+            /* Subtle brushed metal texture overlay */
+            box-shadow:
+                /* Deep ambient shadow */
+                0 4px 8px rgba(0, 0, 0, 0.25),
+                0 12px 24px rgba(0, 0, 0, 0.3),
+                0 20px 40px rgba(0, 0, 0, 0.35),
+                0 32px 64px rgba(0, 0, 0, 0.3),
+                0 48px 96px rgba(0, 0, 0, 0.2),
+                /* Warm glow */
+                0 0 30px rgba(218, 165, 32, 0.3),
+                0 0 60px rgba(218, 165, 32, 0.15),
+                0 0 100px rgba(240, 192, 64, 0.1),
+                /* Inner subtle highlight */
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+            border: 3px solid;
+            border-image: linear-gradient(180deg,
+                    #C8963E, #F5D878, #DAA520, #B8860B, #DAAA30, #F0C848, #C8963E) 1;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        /* Perforated edges - left and right */
+        .ticket::before,
+        .ticket::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            bottom: 12px;
+            width: 6px;
+            z-index: 10;
+            pointer-events: none;
+            background: repeating-linear-gradient(to bottom,
+                    transparent 0px,
+                    transparent 4px,
+                    rgba(60, 25, 5, 0.55) 4px,
+                    rgba(60, 25, 5, 0.55) 7px,
+                    transparent 7px,
+                    transparent 12px);
+            border-radius: 3px;
+        }
+        .ticket::before {
+            left: 6px;
+        }
+        .ticket::after {
+            right: 6px;
+        }
+
+        /* Shimmer sweep overlay */
+        .shimmer {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+            background: linear-gradient(115deg,
+                    transparent 0%,
+                    transparent 30%,
+                    rgba(255, 255, 255, 0) 40%,
+                    rgba(255, 255, 255, 0.55) 45%,
+                    rgba(255, 255, 255, 0.7) 48%,
+                    rgba(255, 255, 255, 0.55) 51%,
+                    rgba(255, 255, 255, 0) 55%,
+                    transparent 60%,
+                    transparent 100%);
+            background-size: 250% 100%;
+            animation: shimmerSweep 4.5s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes shimmerSweep {
+            0% {
+                background-position: -250% 0;
+            }
+            40% {
+                background-position: -250% 0;
+            }
+            60% {
+                background-position: 300% 0;
+            }
+            100% {
+                background-position: 300% 0;
+            }
+        }
+
+        /* Secondary subtle shimmer */
+        .shimmer2 {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+            background: linear-gradient(155deg,
+                    transparent 0%,
+                    transparent 50%,
+                    rgba(255, 255, 240, 0) 55%,
+                    rgba(255, 255, 240, 0.3) 58%,
+                    rgba(255, 255, 240, 0.45) 60%,
+                    rgba(255, 255, 240, 0.3) 62%,
+                    rgba(255, 255, 240, 0) 65%,
+                    transparent 70%,
+                    transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmerSweep2 6s ease-in-out infinite;
+            animation-delay: 1.8s;
+        }
+
+        @keyframes shimmerSweep2 {
+            0% {
+                background-position: -200% 0;
+            }
+            35% {
+                background-position: -200% 0;
+            }
+            55% {
+                background-position: 250% 0;
+            }
+            100% {
+                background-position: 250% 0;
+            }
+        }
+
+        /* Sparkle flash spots on ticket */
+        .sparkle-spot {
+            position: absolute;
+            z-index: 6;
+            pointer-events: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: radial-gradient(circle,
+                    rgba(255, 255, 255, 0.95) 0%,
+                    rgba(255, 255, 240, 0.7) 15%,
+                    rgba(255, 255, 200, 0.2) 40%,
+                    transparent 70%);
+            opacity: 0;
+            animation: sparkleFlash 5s ease-in-out infinite;
+        }
+        .sparkle-spot:nth-child(1) {
+            top: 8%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+        .sparkle-spot:nth-child(2) {
+            top: 12%;
+            right: 20%;
+            animation-delay: 1.7s;
+            width: 14px;
+            height: 14px;
+        }
+        .sparkle-spot:nth-child(3) {
+            bottom: 20%;
+            left: 25%;
+            animation-delay: 3.2s;
+            width: 16px;
+            height: 16px;
+        }
+        .sparkle-spot:nth-child(4) {
+            bottom: 15%;
+            right: 18%;
+            animation-delay: 4.1s;
+            width: 12px;
+            height: 12px;
+        }
+        .sparkle-spot:nth-child(5) {
+            top: 40%;
+            left: 8%;
+            animation-delay: 2.5s;
+            width: 10px;
+            height: 10px;
+        }
+
+        @keyframes sparkleFlash {
+            0%,
+            90%,
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            92% {
+                opacity: 1;
+                transform: scale(1.6);
+            }
+            96% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
+            98% {
+                opacity: 0;
+                transform: scale(0.2);
+            }
+        }
+
+        /* ============ TICKET INNER CONTENT ============ */
+        .ticket-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 24px;
+            text-align: center;
+        }
+
+        .ticket-ornament-top,
+        .ticket-ornament-bottom {
+            font-size: 10px;
+            letter-spacing: 6px;
+            color: var(--chocolate);
+            opacity: 0.7;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            text-transform: uppercase;
+        }
+
+        .ticket-ornament-top {
+            margin-bottom: 2px;
+        }
+        .ticket-ornament-bottom {
+            margin-top: 2px;
+        }
+
+        .ticket-wonka {
+            font-family: 'Dancing Script', 'Georgia', cursive;
+            font-size: 20px;
+            color: #4A2008;
+            letter-spacing: 3px;
+            opacity: 0.85;
+            margin-bottom: 0px;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
+
+        .ticket-title {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #3B1F0B;
+            text-transform: uppercase;
+            line-height: 1;
+            margin: 4px 0;
+            text-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.5),
+                0 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(180deg, #3B1F0B 0%, #5C3010 40%, #3B1F0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 1px 1px rgba(255, 255, 200, 0.5));
+        }
+
+        .ticket-divider {
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg,
+                    transparent, rgba(60, 25, 5, 0.4) 20%,
+                    rgba(60, 25, 5, 0.6) 50%,
+                    rgba(60, 25, 5, 0.4) 80%, transparent);
+            margin: 6px 0;
+        }
+
+        .ticket-subtitle {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 13px;
+            letter-spacing: 5px;
+            color: #4A2008;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin: 2px 0;
+        }
+
+        .ticket-number {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #5C3010;
+            opacity: 0.65;
+            margin-top: 4px;
+        }
+
+        /* Decorative star */
+        .star-decor {
+            display: inline-block;
+            font-size: 16px;
+            color: #5C3010;
+            opacity: 0.6;
+            margin: 0 8px;
+            animation: starPulse 3s ease-in-out infinite;
+        }
+        .star-decor:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes starPulse {
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.25);
+            }
+        }
+
+        /* ============ REFLECTION ============ */
+        .reflection {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 0;
+            width: 100%;
+            height: 85%;
+            z-index: 1;
+            pointer-events: none;
+            border-radius: 6px;
+            background:
+                linear-gradient(165deg,
+                    #FEF8E0 0%,
+                    #FDF0C8 4%,
+                    #FBE9A0 8%,
+                    #F5D060 15%,
+                    #E8B830 22%,
+                    #DAA520 30%,
+                    #F0C848 36%,
+                    #FEF0C8 42%,
+                    #E8B830 48%,
+                    #C8963E 55%,
+                    #DAA520 62%,
+                    #F5D878 70%,
+                    #B8860B 78%,
+                    #DAAA30 85%,
+                    #FDF0C8 92%,
+                    #E8C040 96%,
+                    #C8963E 100%);
+            transform-origin: top center;
+            transform: scaleY(-1);
+            opacity: 0.45;
+            /* Fade-out mask */
+            -webkit-mask-image: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(0, 0, 0, 0.55) 15%,
+                    rgba(0, 0, 0, 0.35) 35%,
+                    rgba(0, 0, 0, 0.15) 60%,
+                    rgba(0, 0, 0, 0.03) 85%,
+                    rgba(0, 0, 0, 0) 100%);
+            mask-image: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(0, 0, 0, 0.55) 15%,
+                    rgba(0, 0, 0, 0.35) 35%,
+                    rgba(0, 0, 0, 0.15) 60%,
+                    rgba(0, 0, 0, 0.03) 85%,
+                    rgba(0, 0, 0, 0) 100%);
+            filter: blur(0.5px);
+            border: 3px solid;
+            border-image: linear-gradient(180deg,
+                    rgba(200, 150, 62, 0.5),
+                    rgba(245, 216, 120, 0.5),
+                    rgba(218, 165, 32, 0.5),
+                    rgba(184, 134, 11, 0.4),
+                    rgba(218, 170, 48, 0.5),
+                    rgba(240, 200, 72, 0.5),
+                    rgba(200, 150, 62, 0.5)) 1;
+        }
+
+        /* Subtle blur at the far end of the reflection */
+        .reflection::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 6px;
+            background: linear-gradient(to bottom,
+                    transparent 50%,
+                    rgba(26, 10, 15, 0.3) 80%,
+                    rgba(26, 10, 15, 0.7) 100%);
+            pointer-events: none;
+        }
+
+        /* ============ PARTICLE CONTAINER ============ */
+        .particles-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            border-radius: 50%;
+            animation: particleFloatUp 2.5s ease-out forwards;
+            will-change: transform, opacity;
+        }
+
+        @keyframes particleFloatUp {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.9;
+            }
+            30% {
+                opacity: 0.7;
+                transform: translateY(-40px) translateX(8px) scale(1.3);
+            }
+            60% {
+                opacity: 0.35;
+                transform: translateY(-100px) translateX(-6px) scale(0.7);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-180px) translateX(15px) scale(0.1);
+            }
+        }
+
+        @keyframes particleFloatUpAlt {
+            0% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.85;
+            }
+            25% {
+                opacity: 0.6;
+                transform: translateY(-35px) translateX(-10px) scale(1.4);
+            }
+            55% {
+                opacity: 0.3;
+                transform: translateY(-90px) translateX(5px) scale(0.6);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-170px) translateX(-18px) scale(0.05);
+            }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 600px) {
+            :root {
+                --ticket-width: 280px;
+                --ticket-height: 175px;
+            }
+            .scene {
+                width: 320px;
+                height: 400px;
+            }
+            .ticket-title {
+                font-size: 24px;
+                letter-spacing: 3px;
+            }
+            .ticket-wonka {
+                font-size: 16px;
+                letter-spacing: 2px;
+            }
+            .ticket-subtitle {
+                font-size: 10px;
+                letter-spacing: 3px;
+            }
+            .ticket-ornament-top,
+            .ticket-ornament-bottom {
+                font-size: 8px;
+                letter-spacing: 4px;
+            }
+            .reflection {
+                height: 70%;
+                top: calc(100% + 10px);
+            }
+        }
+
+        @media (max-width: 380px) {
+            :root {
+                --ticket-width: 240px;
+                --ticket-height: 150px;
+            }
+            .scene {
+                width: 260px;
+                height: 340px;
+            }
+            .ticket-title {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+            .ticket-wonka {
+                font-size: 14px;
+            }
+            .ticket-subtitle {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+            .ticket-content {
+                padding: 10px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== index.html ==================== -->
+    <!-- Main Scene -->
+    <div class="scene" id="scene">
+        <!-- Rotator - receives 3D transforms -->
+        <div class="rotator swaying" id="rotator">
+            <!-- The Golden Ticket -->
+            <div class="ticket" id="ticket">
+                <!-- Shimmer overlays -->
+                <div class="shimmer"></div>
+                <div class="shimmer2"></div>
+                <!-- Sparkle spots -->
+                <div class="sparkle-spot"></div>
+                <div class="sparkle-spot"></div>
+                <div class="sparkle-spot"></div>
+                <div class="sparkle-spot"></div>
+                <div class="sparkle-spot"></div>
+                <!-- Ticket Content -->
+                <div class="ticket-content">
+                    <div class="ticket-ornament-top">✧ • ◇ • ✧</div>
+                    <div class="ticket-wonka">Wonka</div>
+                    <h1 class="ticket-title">Golden Ticket</h1>
+                    <div class="ticket-divider"></div>
+                    <p class="ticket-subtitle">
+                        <span class="star-decor">✦</span> Admit One <span class="star-decor">✦</span>
+                    </p>
+                    <p class="ticket-number">No. 001 • CHOCOLATE FACTORY</p>
+                    <div class="ticket-ornament-bottom">✧ • ◇ • ✧</div>
+                </div>
+            </div>
+            <!-- Reflection below the ticket -->
+            <div class="reflection"></div>
+        </div>
+    </div>
+
+    <!-- Particles container -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- ==================== app.js ==================== -->
+    <script>
+        (function() {
+            // ─────────────────────────────────────
+            // DOM ELEMENTS
+            // ─────────────────────────────────────
+            const scene = document.getElementById('scene');
+            const rotator = document.getElementById('rotator');
+            const ticket = document.getElementById('ticket');
+            const particlesContainer = document.getElementById('particlesContainer');
+
+            // ─────────────────────────────────────
+            // 3D ROTATION ON MOUSE MOVE
+            // ─────────────────────────────────────
+            const maxRotationX = 18; // degrees
+            const maxRotationY = 18;
+            let isMouseOverScene = false;
+            let mouseTimeout = null;
+            const MOUSE_IDLE_MS = 4000; // after 4s of no mouse movement, resume sway
+
+            function handleMouseMove(e) {
+                const rect = scene.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+
+                // Normalize offsets to [-1, 1]
+                const nx = Math.max(-1, Math.min(1, (mouseX - centerX) / (rect.width / 2)));
+                const ny = Math.max(-1, Math.min(1, (mouseY - centerY) / (rect.height / 2)));
+
+                const rotateY = nx * maxRotationY;
+                const rotateX = -ny * maxRotationX;
+
+                // Apply rotation
+                rotator.style.transform = `rotateY(${rotateY.toFixed(2)}deg) rotateX(${rotateX.toFixed(2)}deg)`;
+                rotator.classList.remove('swaying');
+                isMouseOverScene = true;
+
+                // Reset idle timer
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(() => {
+                    isMouseOverScene = false;
+                    rotator.style.transform = '';
+                    rotator.classList.add('swaying');
+                }, MOUSE_IDLE_MS);
+            }
+
+            function handleMouseLeave() {
+                isMouseOverScene = false;
+                rotator.style.transform = '';
+                rotator.classList.add('swaying');
+                clearTimeout(mouseTimeout);
+            }
+
+            function handleMouseEnter() {
+                isMouseOverScene = true;
+            }
+
+            // Attach listeners
+            document.addEventListener('mousemove', handleMouseMove, { passive: true });
+            scene.addEventListener('mouseenter', handleMouseEnter);
+            scene.addEventListener('mouseleave', handleMouseLeave);
+
+            // ─────────────────────────────────────
+            // TOUCH / DEVICE ORIENTATION (MOBILE)
+            // ─────────────────────────────────────
+            function handleTouchMove(e) {
+                if (!e.touches || e.touches.length === 0) return;
+                const touch = e.touches[0];
+                // Simulate mouse move with touch
+                const fakeEvent = { clientX: touch.clientX, clientY: touch.clientY };
+                handleMouseMove(fakeEvent);
+                // Keep sway off for touch devices
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(() => {
+                    isMouseOverScene = false;
+                    rotator.style.transform = '';
+                    rotator.classList.add('swaying');
+                }, MOUSE_IDLE_MS);
+            }
+
+            scene.addEventListener('touchmove', handleTouchMove, { passive: true });
+            scene.addEventListener('touchstart', (e) => {
+                isMouseOverScene = true;
+                rotator.classList.remove('swaying');
+                if (e.touches && e.touches.length > 0) {
+                    const fakeEvent = { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
+                    handleMouseMove(fakeEvent);
+                }
+            }, { passive: true });
+            scene.addEventListener('touchend', () => {
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(() => {
+                    isMouseOverScene = false;
+                    rotator.style.transform = '';
+                    rotator.classList.add('swaying');
+                }, 1500);
+            });
+
+            // ─────────────────────────────────────
+            // PARTICLE SYSTEM
+            // ─────────────────────────────────────
+            const particleColors = [
+                '#FFF8DC', '#FFEC8B', '#FFD700', '#FDF5E6',
+                '#FFE4B5', '#FFFACD', '#F0E68C', '#FFC125',
+                '#FFEAA0', '#FFF3C4', '#FEF0C8', '#FFDB58'
+            ];
+
+            function createParticle(x, y) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 5 + 2; // 2-7px
+                const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+                const useAltAnimation = Math.random() > 0.5;
+                const duration = Math.random() * 2 + 1.8; // 1.8-3.8s
+                const driftX = (Math.random() - 0.5) * 40;
+
+                particle.style.cssText = `
+                    left: ${x}px;
+                    top: ${y}px;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: radial-gradient(circle at 40% 40%, ${color}, rgba(218,165,32,0.4));
+                    box-shadow: 0 0 ${size * 3}px ${size}px rgba(255,215,0,0.5),
+                                0 0 ${size * 1.5}px rgba(255,255,200,0.7);
+                    animation-name: ${useAltAnimation ? 'particleFloatUpAlt' : 'particleFloatUp'};
+                    animation-duration: ${duration}s;
+                    --drift-x: ${driftX}px;
+                `;
+
+                particlesContainer.appendChild(particle);
+
+                // Remove after animation completes
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                    }
+                }, duration * 1000 + 100);
+            }
+
+            function getTicketWorldPosition() {
+                const ticketRect = ticket.getBoundingClientRect();
+                return {
+                    left: ticketRect.left,
+                    top: ticketRect.top,
+                    width: ticketRect.width,
+                    height: ticketRect.height,
+                    centerX: ticketRect.left + ticketRect.width / 2,
+                    centerY: ticketRect.top + ticketRect.height / 2,
+                };
+            }
+
+            function emitParticles(count) {
+                const pos = getTicketWorldPosition();
+                for (let i = 0; i < count; i++) {
+                    // Random position along the ticket surface and edges
+                    const edgeBias = Math.random();
+                    let px, py;
+                    if (edgeBias < 0.5) {
+                        // From the top edge area
+                        px = pos.left + Math.random() * pos.width;
+                        py = pos.top + Math.random() * 15;
+                    } else if (edgeBias < 0.8) {
+                        // From the main surface
+                        px = pos.left + Math.random() * pos.width;
+                        py = pos.top + Math.random() * pos.height * 0.6;
+                    } else {
+                        // From the bottom edge
+                        px = pos.left + Math.random() * pos.width;
+                        py = pos.top + pos.height - Math.random() * 15;
+                    }
+                    createParticle(px, py);
+                }
+            }
+
+            // Emit particles periodically
+            function particleLoop() {
+                const count = Math.floor(Math.random() * 4) + 1; // 1-4 particles per burst
+                emitParticles(count);
+                const nextDelay = Math.random() * 600 + 300; // 300-900ms between bursts
+                setTimeout(particleLoop, nextDelay);
+            }
+
+            // Start particle loop
+            setTimeout(particleLoop, 500);
+
+            // Occasional bigger burst
+            function bigBurst() {
+                emitParticles(8 + Math.floor(Math.random() * 10));
+                setTimeout(bigBurst, Math.random() * 5000 + 4000); // Every 4-9 seconds
+            }
+            setTimeout(bigBurst, 2000);
+
+            // ─────────────────────────────────────
+            // CLICK/TAP SPARKLE BURST
+            // ─────────────────────────────────────
+            function handleClick(e) {
+                const pos = getTicketWorldPosition();
+                const clickX = e.clientX;
+                const clickY = e.clientY;
+                // Check if click is near the ticket
+                const nearTicket =
+                    clickX >= pos.left - 40 &&
+                    clickX <= pos.left + pos.width + 40 &&
+                    clickY >= pos.top - 40 &&
+                    clickY <= pos.top + pos.height + 40;
+                if (nearTicket) {
+                    // Burst of particles at click position
+                    for (let i = 0; i < 20; i++) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const dist = Math.random() * 60;
+                        const px = clickX + Math.cos(angle) * dist;
+                        const py = clickY + Math.sin(angle) * dist;
+                        createParticle(px, py);
+                    }
+                    // Brief intensify shimmer
+                    const shimmerEl = ticket.querySelector('.shimmer');
+                    if (shimmerEl) {
+                        shimmerEl.style.opacity = '1';
+                        shimmerEl.style.transition = 'opacity 0.1s';
+                        setTimeout(() => {
+                            shimmerEl.style.opacity = '0.8';
+                            shimmerEl.style.transition = 'opacity 0.6s';
+                        }, 150);
+                    }
+                }
+            }
+
+            document.addEventListener('click', handleClick);
+            document.addEventListener('touchstart', (e) => {
+                if (e.touches && e.touches.length === 1) {
+                    // Small delay to not interfere with rotation touch handling
+                    setTimeout(() => {
+                        if (isMouseOverScene) {
+                            handleClick({ clientX: e.touches[0].clientX, clientY: e.touches[0]
+                                    .clientY });
+                        }
+                    }, 100);
+                }
+            }, { passive: true });
+
+            // ─────────────────────────────────────
+            // INITIALIZATION LOG
+            // ─────────────────────────────────────
+            console.log('%c✨ %cWonka Golden Ticket %cReady %c✨',
+                'font-size:18px;', 'font-size:16px;color:#FFD700;font-weight:bold;',
+                'font-size:14px;color:#DAA520;', 'font-size:18px;');
+            console.log('%c🎫 Hover over the ticket for 3D magic!',
+                'color:#F0C040;font-style:italic;');
+            console.log('%c💫 Click near the ticket for sparkles!',
+                'color:#FFEC8B;font-style:italic;');
+
+            // ─────────────────────────────────────
+            // HANDLE WINDOW RESIZE
+            // ─────────────────────────────────────
+            window.addEventListener('resize', () => {
+                // Reset rotation on resize to avoid weird states
+                if (!isMouseOverScene) {
+                    rotator.style.transform = '';
+                    rotator.classList.add('swaying');
+                }
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
