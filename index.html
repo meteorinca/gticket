@@ -642,6 +642,307 @@
                 padding: 10px 14px;
             }
         }
+
+        /* ============ ANIMATED COINS ============ */
+        .coin {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 8;
+            will-change: transform;
+            pointer-events: auto;
+            background:
+                radial-gradient(circle at 35% 35%,
+                    rgba(255,255,240,0.95) 0%,
+                    #FFF8DC 15%,
+                    #FBE9A0 35%,
+                    #DAA520 55%,
+                    #B8860B 75%,
+                    #8B6914 100%);
+            box-shadow:
+                0 0 20px rgba(218,165,32,0.4),
+                0 0 40px rgba(218,165,32,0.2),
+                inset 0 -3px 6px rgba(0,0,0,0.2),
+                inset 0 3px 6px rgba(255,255,200,0.4),
+                0 4px 8px rgba(0,0,0,0.3);
+            border: 2px solid rgba(218,165,32,0.6);
+            font-family: 'Playfair Display', Georgia, serif;
+            text-align: center;
+            transition: filter 0.3s, box-shadow 0.3s;
+        }
+
+        .coin:hover {
+            filter: brightness(1.25);
+            box-shadow:
+                0 0 30px rgba(218,165,32,0.6),
+                0 0 60px rgba(218,165,32,0.3),
+                inset 0 -3px 6px rgba(0,0,0,0.2),
+                inset 0 3px 6px rgba(255,255,200,0.4),
+                0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .coin::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                transparent,
+                rgba(218,165,32,0.3),
+                rgba(255,215,0,0.5),
+                rgba(218,165,32,0.3),
+                transparent
+            );
+            -webkit-mask: radial-gradient(circle, transparent 60%, black 61%, black 100%);
+            mask: radial-gradient(circle, transparent 60%, black 61%, black 100%);
+            pointer-events: none;
+            animation: conicGlow 4s linear infinite;
+        }
+
+        @keyframes conicGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .coin-edge {
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            border: 2px solid rgba(218,165,32,0.3);
+            pointer-events: none;
+        }
+
+        .coin-edge-inner {
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,200,0.4);
+            pointer-events: none;
+        }
+
+        .coin-label {
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #3B1F0B;
+            text-shadow: 0 1px 0 rgba(255,255,200,0.5);
+            line-height: 1.1;
+            margin-top: 1px;
+            pointer-events: none;
+        }
+
+        .coin-name-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 8px;
+            color: #5C3010;
+            margin-top: 1px;
+            opacity: 0.95;
+            text-shadow: 0 1px 0 rgba(255,255,200,0.3);
+            line-height: 1;
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 70px;
+        }
+
+        .coin-curiosity {
+            top: 50px;
+            left: calc(50% - 45px);
+            width: 90px;
+            height: 90px;
+        }
+
+        .coin-curiosity .coin-label {
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        .coin-curiosity .coin-name-text {
+            font-size: 9px;
+            max-width: 78px;
+        }
+
+        .coin-ingenuity {
+            top: calc(50% + 5px);
+            left: 5px;
+        }
+
+        .coin-perseverence {
+            top: calc(50% + 5px);
+            right: 5px;
+        }
+
+        /* ============ NAME PROMPT MODAL ============ */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-card {
+            background: linear-gradient(165deg, #3B1F0B 0%, #2d1220 40%, #3B1F0B 100%);
+            border: 2px solid rgba(218,165,32,0.5);
+            border-radius: 16px;
+            padding: 32px 36px 28px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            box-shadow:
+                0 0 40px rgba(218,165,32,0.3),
+                0 20px 60px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,200,0.1);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: rgba(218,165,32,0.6);
+            font-size: 22px;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            transition: color 0.2s;
+            line-height: 1;
+            padding: 4px;
+        }
+
+        .modal-close:hover {
+            color: rgba(218,165,32,1);
+        }
+
+        .modal-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #F0C848;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .modal-subtitle {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 15px;
+            color: rgba(218,165,32,0.7);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .modal-input-wrapper {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(218,165,32,0.3);
+            border-radius: 8px;
+            color: #FFF8DC;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .modal-input:focus {
+            border-color: rgba(218,165,32,0.7);
+            box-shadow: 0 0 12px rgba(218,165,32,0.2);
+        }
+
+        .modal-input::placeholder {
+            color: rgba(218,165,32,0.35);
+            font-style: italic;
+        }
+
+        .modal-submit {
+            background: linear-gradient(135deg, #DAA520, #F0C848, #DAA520);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 28px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #3B1F0B;
+            cursor: pointer;
+            transition: filter 0.3s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(218,165,32,0.3);
+        }
+
+        .modal-submit:hover {
+            filter: brightness(1.15);
+            transform: scale(1.02);
+        }
+
+        .modal-dismiss-hint {
+            font-size: 11px;
+            color: rgba(218,165,32,0.3);
+            margin-top: 12px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .coin-curiosity { top: 35px; width: 72px; height: 72px; left: calc(50% - 36px); }
+            .coin-ingenuity { width: 64px; height: 64px; left: 0px; top: calc(50% + 2px); }
+            .coin-perseverence { width: 64px; height: 64px; right: 0px; top: calc(50% + 2px); }
+            .coin-curiosity .coin-label { font-size: 8px; }
+            .coin-label { font-size: 7px; letter-spacing: 1px; }
+            .coin-name-text { font-size: 7px; max-width: 56px; }
+            .coin-curiosity .coin-name-text { font-size: 8px; max-width: 62px; }
+            .modal-card { padding: 24px 20px 20px; }
+            .modal-title { font-size: 18px; }
+        }
+
+        @media (max-width: 380px) {
+            .coin-curiosity { top: 20px; width: 60px; height: 60px; left: calc(50% - 30px); }
+            .coin-ingenuity, .coin-perseverence { width: 54px; height: 54px; }
+            .coin-ingenuity { left: -4px; top: calc(50% + 0px); }
+            .coin-perseverence { right: -4px; top: calc(50% + 0px); }
+            .coin-curiosity .coin-label { font-size: 7px; }
+            .coin-label { font-size: 6px; letter-spacing: 0.8px; }
+            .coin-name-text { font-size: 6px; max-width: 46px; }
+            .coin-curiosity .coin-name-text { font-size: 7px; max-width: 52px; }
+        }
     </style>
 </head>
 <body>
@@ -678,6 +979,25 @@
             <!-- Reflection below the ticket -->
             <div class="reflection"></div>
         </div>
+            <!-- Animated Coins -->
+            <div class="coin coin-curiosity" data-coin="curiosity">
+                <div class="coin-edge"></div>
+                <div class="coin-edge-inner"></div>
+                <span class="coin-label">Curiosity</span>
+                <span class="coin-name-text" id="nameCuriosity">✦</span>
+            </div>
+            <div class="coin coin-ingenuity" data-coin="ingenuity">
+                <div class="coin-edge"></div>
+                <div class="coin-edge-inner"></div>
+                <span class="coin-label">Ingenuity</span>
+                <span class="coin-name-text" id="nameIngenuity">✦</span>
+            </div>
+            <div class="coin coin-perseverence" data-coin="perseverence">
+                <div class="coin-edge"></div>
+                <div class="coin-edge-inner"></div>
+                <span class="coin-label">Perseverence</span>
+                <span class="coin-name-text" id="namePerseverence">✦</span>
+            </div>
     </div>
 
     <!-- Particles container -->
@@ -935,7 +1255,7 @@
                 'font-size:14px;color:#DAA520;', 'font-size:18px;');
             console.log('%c🎫 Hover over the ticket for 3D magic!',
                 'color:#F0C040;font-style:italic;');
-            console.log('%c💫 Click near the ticket for sparkles!',
+            console.log('%c🪙 Click a coin or the ticket to inscribe your name!',
                 'color:#FFEC8B;font-style:italic;');
 
             // ─────────────────────────────────────
@@ -949,8 +1269,141 @@
                 }
             });
 
+
+            // ─────────────────────────────────────
+            // COIN MATH ANIMATIONS
+            // ─────────────────────────────────────
+            const coin1 = document.querySelector('.coin-curiosity');
+            const coin2 = document.querySelector('.coin-ingenuity');
+            const coin3 = document.querySelector('.coin-perseverence');
+            let animTime = 0;
+
+            function animateCoins(timestamp) {
+                animTime = timestamp / 1000;
+
+                // Curiosity (top) — Precessing 3D wobble + gentle float
+                // Two incommensurate frequencies create a beautiful precession
+                const rotY1 = Math.sin(animTime * 0.5) * 25;
+                const rotX1 = Math.cos(animTime * 0.37) * 15;
+                const float1 = Math.sin(animTime * 0.7) * 4;
+                const breathe1 = 1 + Math.sin(animTime * 0.15) * 0.02;
+                coin1.style.transform = `translateY(${float1.toFixed(1)}px) rotateY(${rotY1.toFixed(1)}deg) rotateX(${rotX1.toFixed(1)}deg) scale(${breathe1.toFixed(3)})`;
+
+                // Ingenuity (left) — Lissajous orbital path (2:3 frequency ratio)
+                // Parametric: x = A*cos(a*t), y = B*sin(b*t) creates a closed figure-8
+                const lissX = Math.cos(animTime * 0.4) * 10;
+                const lissY = Math.sin(animTime * 0.6) * 7;
+                const selfRot2 = animTime * 0.7 * 57.3;
+                coin2.style.transform = `translate(${lissX.toFixed(1)}px, ${lissY.toFixed(1)}px) rotateY(${selfRot2.toFixed(1)}deg)`;
+
+                // Perseverence (right) — Compound harmonic breathing + wobble
+                // Sum-of-sines at different frequencies = complex organic motion
+                const pulse3 = 1 + Math.sin(animTime * 0.7) * 0.04 + Math.sin(animTime * 2.3) * 0.02;
+                const bob3 = Math.sin(animTime * 1.1) * 3 + Math.sin(animTime * 3.7) * 1.5;
+                const tilt3 = Math.sin(animTime * 0.5) * 5 + Math.sin(animTime * 1.7) * 2;
+                coin3.style.transform = `translateY(${bob3.toFixed(1)}px) rotateX(${tilt3.toFixed(1)}deg) scale(${pulse3.toFixed(3)})`;
+
+                requestAnimationFrame(animateCoins);
+            }
+
+            requestAnimationFrame(animateCoins);
+
+            // ─────────────────────────────────────
+            // NAME PROMPT MODAL
+            // ─────────────────────────────────────
+            const modalOverlay = document.getElementById('nameModal');
+            const nameInput = document.getElementById('nameInput');
+            const modalSubmit = document.getElementById('modalSubmit');
+            const modalClose = document.getElementById('modalClose');
+            const nameCuriosity = document.getElementById('nameCuriosity');
+            const nameIngenuity = document.getElementById('nameIngenuity');
+            const namePerseverence = document.getElementById('namePerseverence');
+            const ticketTitle = document.querySelector('.ticket-title');
+            let userName = '';
+
+            function openModal() {
+                nameInput.value = userName || '';
+                modalOverlay.classList.add('active');
+                setTimeout(() => nameInput.focus(), 400);
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+            }
+
+            function applyName(name) {
+                const displayName = name.trim() || '\u2726';
+                userName = name.trim();
+                nameCuriosity.textContent = displayName;
+                nameIngenuity.textContent = displayName;
+                namePerseverence.textContent = displayName;
+                if (userName) {
+                    ticketTitle.innerHTML = `Golden Ticket<br><span style="font-size:18px;font-weight:400;letter-spacing:2px;color:#5C3010;display:block;margin-top:2px;">for ${userName}</span>`;
+                } else {
+                    ticketTitle.textContent = 'Golden Ticket';
+                }
+            }
+
+            function handleNameSubmit() {
+                const name = nameInput.value.trim();
+                applyName(name);
+                closeModal();
+                // Celebrate with particles
+                const pos = getTicketWorldPosition();
+                const cx = pos.centerX;
+                const cy = pos.centerY;
+                for (let i = 0; i < 30; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = Math.random() * 80;
+                    createParticle(cx + Math.cos(angle) * dist, cy + Math.sin(angle) * dist);
+                }
+            }
+
+            // Click coins to open modal
+            document.querySelectorAll('.coin').forEach(coin => {
+                coin.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openModal();
+                });
+            });
+
+            // Click ticket to also open modal
+            ticket.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal();
+            });
+
+            modalSubmit.addEventListener('click', handleNameSubmit);
+            nameInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') handleNameSubmit();
+            });
+            modalClose.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
         })();
     </script>
+
+    <!-- Name Prompt Modal -->
+    <div class="modal-overlay" id="nameModal">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div class="modal-icon">✨</div>
+            <div class="modal-title">What's Your Name?</div>
+            <div class="modal-subtitle">So we may inscribe it on your golden treasures</div>
+            <div class="modal-input-wrapper">
+                <input type="text" class="modal-input" id="nameInput" placeholder="Enter your name..." maxlength="20" autocomplete="off">
+            </div>
+            <button class="modal-submit" id="modalSubmit">Inscribe My Name ✦</button>
+            <div class="modal-dismiss-hint">press Esc or click outside to dismiss</div>
+        </div>
+    </div>
 
 </body>
 </html>
