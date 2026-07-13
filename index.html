@@ -1003,7 +1003,24 @@
     <!-- Particles container -->
     <div class="particles-container" id="particlesContainer"></div>
 
-    <!-- ==================== app.js ==================== -->
+    <!-- Name Prompt Modal -->
+    <div class="modal-overlay" id="nameModal">
+        <div class="modal-card">
+            <button class="modal-close" id="modalClose">✕</button>
+            <div class="modal-icon">✨</div>
+            <div class="modal-title">What's Your Name?</div>
+            <div class="modal-subtitle">So we may inscribe it on your golden treasures</div>
+            <div class="modal-input-wrapper">
+                <input type="text" class="modal-input" id="nameInput" placeholder="Enter your name..." maxlength="20" autocomplete="off">
+            </div>
+            <button class="modal-submit" id="modalSubmit">Inscribe My Name ✦</button>
+            <div class="modal-dismiss-hint">press Esc or click outside to dismiss</div>
+        </div>
+    </div>
+
+
+
+<!-- ==================== app.js ==================== -->
     <script>
         (function() {
             // ─────────────────────────────────────
@@ -1361,15 +1378,13 @@
 
             // Click coins to open modal
             document.querySelectorAll('.coin').forEach(coin => {
-                coin.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                coin.addEventListener('click', function(e) {
                     openModal();
                 });
             });
 
-            // Click ticket to also open modal
-            ticket.addEventListener('click', (e) => {
-                e.stopPropagation();
+            // Click ticket — open modal (old sparkle also fires via document listener)
+            ticket.addEventListener('click', function(e) {
                 openModal();
             });
 
@@ -1390,20 +1405,5 @@
         })();
     </script>
 
-    <!-- Name Prompt Modal -->
-    <div class="modal-overlay" id="nameModal">
-        <div class="modal-card">
-            <button class="modal-close" id="modalClose">✕</button>
-            <div class="modal-icon">✨</div>
-            <div class="modal-title">What's Your Name?</div>
-            <div class="modal-subtitle">So we may inscribe it on your golden treasures</div>
-            <div class="modal-input-wrapper">
-                <input type="text" class="modal-input" id="nameInput" placeholder="Enter your name..." maxlength="20" autocomplete="off">
-            </div>
-            <button class="modal-submit" id="modalSubmit">Inscribe My Name ✦</button>
-            <div class="modal-dismiss-hint">press Esc or click outside to dismiss</div>
-        </div>
-    </div>
-
-</body>
+    </body>
 </html>
