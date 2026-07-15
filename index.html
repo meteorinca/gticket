@@ -745,19 +745,6 @@
             letter-spacing: 1px;
         }
 
-        .coin-robot {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 60%;
-            object-fit: contain;
-            z-index: 2;
-            pointer-events: none;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
-        }
-
         .coin-name-text {
             position: absolute;
             top: 22%;
@@ -807,6 +794,78 @@
             top: 430px;
             right: calc(50% - 210px);
             z-index: 9;
+        }
+
+        /* ============ ROBOT IMAGE OVERLAY ============ */
+        .robot-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+
+        .robot-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .robot-image {
+            max-width: 90%;
+            max-height: 75vh;
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.6));
+        }
+
+        .robot-overlay.active .robot-image {
+            transform: scale(1);
+        }
+
+        .robot-title {
+            margin-top: 30px;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #F0C848;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+        }
+
+        .robot-overlay.active .robot-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .robot-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            background: none;
+            border: none;
+            color: rgba(218, 165, 32, 0.6);
+            font-size: 36px;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            transition: color 0.3s;
+            z-index: 2010;
+        }
+
+        .robot-close:hover {
+            color: rgba(218, 165, 32, 1);
         }
 
         /* ============ NAME PROMPT MODAL ============ */
@@ -1069,7 +1128,6 @@
         <!-- Animated Coins -->
         <div class="coin coin-curiosity" data-coin="curiosity">
             <div class="coin-bg"></div>
-            <img class="coin-robot" src="public/assets/CuriosityRoverLanding.png" alt="Curiosity Robot">
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-curiosity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
@@ -1081,7 +1139,6 @@
         </div>
         <div class="coin coin-ingenuity" data-coin="ingenuity">
             <div class="coin-bg"></div>
-            <img class="coin-robot" src="public/assets/IgenuityDrone.png" alt="Ingenuity Robot">
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-ingenuity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
@@ -1093,7 +1150,6 @@
         </div>
         <div class="coin coin-perseverence" data-coin="perseverence">
             <div class="coin-bg"></div>
-            <img class="coin-robot" src="public/assets/PerseverenceRover.png" alt="Perseverence Robot">
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-perseverence" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
@@ -1123,6 +1179,14 @@
         </div>
     </div>
 
+
+
+    <!-- Robot Image Overlay -->
+    <div class="robot-overlay" id="robotOverlay">
+        <button class="robot-close" id="robotClose">✕</button>
+        <img class="robot-image" id="robotImage" src="" alt="Martian Robot">
+        <div class="robot-title" id="robotTitle">CURIOSITY</div>
+    </div>
 
 
     <!-- ==================== app.js ==================== -->
@@ -1379,7 +1443,7 @@
                 'font-size:14px;color:#DAA520;', 'font-size:18px;');
             console.log('%c🎫 Hover over the ticket for 3D magic!',
                 'color:#F0C040;font-style:italic;');
-            console.log('%c🪙 Click a coin or the ticket to inscribe your name!',
+            console.log('%c🪙 Click the ticket to inscribe your name! Click a coin to view its robot.',
                 'color:#FFEC8B;font-style:italic;');
 
             // ─────────────────────────────────────
@@ -1471,16 +1535,42 @@
                 }
             }
 
-            // Click coins to open modal
-            document.querySelectorAll('.coin').forEach(coin => {
-                coin.addEventListener('click', function (e) {
-                    openModal();
-                });
-            });
-
             // Click ticket — open modal (old sparkle also fires via document listener)
             ticket.addEventListener('click', function (e) {
                 openModal();
+            });
+
+            // Robot Overlay Logic
+            const robotOverlay = document.getElementById('robotOverlay');
+            const robotImage = document.getElementById('robotImage');
+            const robotTitle = document.getElementById('robotTitle');
+            const robotClose = document.getElementById('robotClose');
+
+            const robotData = {
+                curiosity: { src: 'public/assets/CuriosityRoverLanding.png', title: 'CURIOSITY ROVER' },
+                ingenuity: { src: 'public/assets/IgenuityDrone.png', title: 'INGENUITY DRONE' },
+                perseverence: { src: 'public/assets/PerseverenceRover.png', title: 'PERSEVERENCE ROVER' }
+            };
+
+            // Click coins to open robot image
+            document.querySelectorAll('.coin').forEach(coin => {
+                coin.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const coinId = this.getAttribute('data-coin');
+                    if (robotData[coinId]) {
+                        robotImage.src = robotData[coinId].src;
+                        robotTitle.textContent = robotData[coinId].title;
+                        robotOverlay.classList.add('active');
+                    }
+                });
+            });
+
+            robotClose.addEventListener('click', () => {
+                robotOverlay.classList.remove('active');
+            });
+
+            robotOverlay.addEventListener('click', (e) => {
+                if (e.target === robotOverlay) robotOverlay.classList.remove('active');
             });
 
             modalSubmit.addEventListener('click', handleNameSubmit);
