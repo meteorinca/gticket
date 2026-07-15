@@ -47,6 +47,7 @@
             -webkit-tap-highlight-color: transparent;
             user-select: none;
             -webkit-user-select: none;
+            zoom: 1.15;
         }
 
         /* Subtle ambient particles in background */
@@ -92,7 +93,7 @@
             perspective: 1200px;
             perspective-origin: center center;
             width: 500px;
-            height: 500px;
+            height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -631,7 +632,7 @@
 
             .scene {
                 width: 320px;
-                height: 400px;
+                height: 480px;
             }
 
             .ticket-title {
@@ -669,7 +670,7 @@
 
             .scene {
                 width: 260px;
-                height: 340px;
+                height: 420px;
             }
 
             .ticket-title {
@@ -710,39 +711,13 @@
                 radial-gradient(circle at 35% 35%,
                     rgba(255, 255, 240, 0.6) 0%,
                     rgba(0, 0, 0, 0.2) 100%);
-            box-shadow:
-                inset 0 -3px 6px rgba(0, 0, 0, 0.2),
-                inset 0 3px 6px rgba(255, 255, 200, 0.4),
-                0 4px 8px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(218, 165, 32, 0.6);
             font-family: 'Playfair Display', Georgia, serif;
             text-align: center;
-            transition: filter 0.3s, box-shadow 0.3s;
+            transition: filter 0.3s;
         }
 
         .coin:hover {
             filter: brightness(1.25);
-            box-shadow:
-                inset 0 -3px 6px rgba(0, 0, 0, 0.2),
-                inset 0 3px 6px rgba(255, 255, 200, 0.4),
-                0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-
-        .coin-edge {
-            position: absolute;
-            inset: -3px;
-            border-radius: 50%;
-            border: 2px solid rgba(218, 165, 32, 0.3);
-            pointer-events: none;
-        }
-
-        .coin-edge-inner {
-            position: absolute;
-            inset: 3px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 200, 0.4);
-            pointer-events: none;
         }
 
         .coin-svg-text {
@@ -798,7 +773,7 @@
         }
 
         .coin-curiosity {
-            top: 15px;
+            top: 420px;
             left: calc(50% - 67px);
             width: 134px;
             height: 134px;
@@ -810,14 +785,14 @@
         }
 
         .coin-ingenuity {
-            top: 65px;
-            left: calc(50% - 155px);
+            top: 430px;
+            left: calc(50% - 210px);
             z-index: 9;
         }
 
         .coin-perseverence {
-            top: 65px;
-            right: calc(50% - 155px);
+            top: 430px;
+            right: calc(50% - 210px);
             z-index: 9;
         }
 
@@ -963,7 +938,7 @@
 
         @media (max-width: 600px) {
             .coin-curiosity {
-                top: 15px;
+                top: 340px;
                 width: 105px;
                 height: 105px;
                 left: calc(50% - 52px);
@@ -973,16 +948,16 @@
             .coin-ingenuity {
                 width: 95px;
                 height: 95px;
-                left: calc(50% - 125px);
-                top: 55px;
+                left: calc(50% - 145px);
+                top: 350px;
                 z-index: 9;
             }
 
             .coin-perseverence {
                 width: 95px;
                 height: 95px;
-                right: calc(50% - 125px);
-                top: 55px;
+                right: calc(50% - 145px);
+                top: 350px;
                 z-index: 9;
             }
 
@@ -1007,7 +982,7 @@
 
         @media (max-width: 380px) {
             .coin-curiosity {
-                top: 10px;
+                top: 310px;
                 width: 88px;
                 height: 88px;
                 left: calc(50% - 44px);
@@ -1022,13 +997,13 @@
             }
 
             .coin-ingenuity {
-                left: calc(50% - 100px);
-                top: 45px;
+                left: calc(50% - 120px);
+                top: 315px;
             }
 
             .coin-perseverence {
-                right: calc(50% - 100px);
-                top: 45px;
+                right: calc(50% - 120px);
+                top: 315px;
             }
 
             .coin-name-text {
@@ -1080,8 +1055,6 @@
         </div>
         <!-- Animated Coins -->
         <div class="coin coin-curiosity" data-coin="curiosity">
-            <div class="coin-edge"></div>
-            <div class="coin-edge-inner"></div>
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-curiosity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
@@ -1092,8 +1065,6 @@
             <span class="coin-name-text" id="nameCuriosity">✦</span>
         </div>
         <div class="coin coin-ingenuity" data-coin="ingenuity">
-            <div class="coin-edge"></div>
-            <div class="coin-edge-inner"></div>
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-ingenuity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
@@ -1104,8 +1075,6 @@
             <span class="coin-name-text" id="nameIngenuity">✦</span>
         </div>
         <div class="coin coin-perseverence" data-coin="perseverence">
-            <div class="coin-edge"></div>
-            <div class="coin-edge-inner"></div>
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-perseverence" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
