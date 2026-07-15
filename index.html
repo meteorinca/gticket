@@ -800,72 +800,52 @@
         .robot-overlay {
             position: fixed;
             inset: 0;
-            z-index: 2000;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            z-index: 0;
+            background: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 1s ease;
+            transition: opacity 2s ease;
         }
 
         .robot-overlay.active {
-            opacity: 1;
-            pointer-events: all;
+            opacity: 0.4;
         }
 
         .robot-image {
-            max-width: 90%;
-            max-height: 75vh;
+            max-width: 100vw;
+            max-height: 100vh;
             object-fit: contain;
-            transform: scale(0.9);
-            transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.6));
+            transform: scale(0.85);
+            transition: transform 7s ease-out;
+            filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.4));
         }
 
         .robot-overlay.active .robot-image {
-            transform: scale(1);
+            transform: scale(1.05);
         }
 
         .robot-title {
-            margin-top: 30px;
+            position: absolute;
+            bottom: 5%;
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 32px;
-            font-weight: 700;
+            font-size: 52px;
+            font-weight: 900;
             color: #F0C848;
-            letter-spacing: 8px;
+            letter-spacing: 16px;
             text-transform: uppercase;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            text-shadow: 0 0 30px rgba(218,165,32,0.6);
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+            transition: opacity 1.5s ease 0.5s, transform 7s ease-out;
         }
 
         .robot-overlay.active .robot-title {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .robot-close {
-            position: absolute;
-            top: 24px;
-            right: 32px;
-            background: none;
-            border: none;
-            color: rgba(218, 165, 32, 0.6);
-            font-size: 36px;
-            cursor: pointer;
-            font-family: Georgia, serif;
-            transition: color 0.3s;
-            z-index: 2010;
-        }
-
-        .robot-close:hover {
-            color: rgba(218, 165, 32, 1);
+            opacity: 0.6;
+            transform: translateY(-20px);
         }
 
         /* ============ NAME PROMPT MODAL ============ */
@@ -1183,7 +1163,6 @@
 
     <!-- Robot Image Overlay -->
     <div class="robot-overlay" id="robotOverlay">
-        <button class="robot-close" id="robotClose">✕</button>
         <img class="robot-image" id="robotImage" src="" alt="Martian Robot">
         <div class="robot-title" id="robotTitle">CURIOSITY</div>
     </div>
@@ -1544,7 +1523,7 @@
             const robotOverlay = document.getElementById('robotOverlay');
             const robotImage = document.getElementById('robotImage');
             const robotTitle = document.getElementById('robotTitle');
-            const robotClose = document.getElementById('robotClose');
+            let robotTimeout;
 
             const robotData = {
                 curiosity: { src: 'public/assets/CuriosityRoverLanding.png', title: 'CURIOSITY ROVER' },
@@ -1552,25 +1531,29 @@
                 perseverence: { src: 'public/assets/PerseverenceRover.png', title: 'PERSEVERENCE ROVER' }
             };
 
-            // Click coins to open robot image
+            // Click coins to open ephemeral robot image
             document.querySelectorAll('.coin').forEach(coin => {
                 coin.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const coinId = this.getAttribute('data-coin');
                     if (robotData[coinId]) {
+                        // Reset animations
+                        robotOverlay.classList.remove('active');
+                        clearTimeout(robotTimeout);
+                        
+                        // Force reflow
+                        void robotOverlay.offsetWidth;
+
                         robotImage.src = robotData[coinId].src;
                         robotTitle.textContent = robotData[coinId].title;
                         robotOverlay.classList.add('active');
+
+                        // Automatically remove after 7 seconds
+                        robotTimeout = setTimeout(() => {
+                            robotOverlay.classList.remove('active');
+                        }, 7000);
                     }
                 });
-            });
-
-            robotClose.addEventListener('click', () => {
-                robotOverlay.classList.remove('active');
-            });
-
-            robotOverlay.addEventListener('click', (e) => {
-                if (e.target === robotOverlay) robotOverlay.classList.remove('active');
             });
 
             modalSubmit.addEventListener('click', handleNameSubmit);
