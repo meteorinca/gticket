@@ -704,19 +704,25 @@
             justify-content: center;
             cursor: pointer;
             z-index: 8;
-            will-change: transform;
             pointer-events: auto;
+            text-align: center;
+        }
+
+        .coin-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
             background:
                 url('coin.png') center/cover no-repeat,
                 radial-gradient(circle at 35% 35%,
                     rgba(255, 255, 240, 0.6) 0%,
                     rgba(0, 0, 0, 0.2) 100%);
-            font-family: 'Playfair Display', Georgia, serif;
-            text-align: center;
+            z-index: 1;
             transition: filter 0.3s;
+            will-change: transform;
         }
 
-        .coin:hover {
+        .coin:hover .coin-bg {
             filter: brightness(1.25);
         }
 
@@ -735,14 +741,21 @@
             font-size: 11px;
             font-weight: 900;
             text-transform: uppercase;
-            fill: #E8B830;
-            stroke: #8B6508;
-            stroke-width: 0.5px;
-            text-shadow:
-                0px 1px 0px #B8860B,
-                0px 2px 0px #8B6508,
-                0px 3px 0px #5C4303;
+            fill: #3B1F0B;
             letter-spacing: 1px;
+        }
+
+        .coin-robot {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
         }
 
         .coin-name-text {
@@ -767,9 +780,9 @@
             position: absolute;
             inset: 15%;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.25) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
         }
 
         .coin-curiosity {
@@ -1055,6 +1068,8 @@
         </div>
         <!-- Animated Coins -->
         <div class="coin coin-curiosity" data-coin="curiosity">
+            <div class="coin-bg"></div>
+            <img class="coin-robot" src="public/assets/CuriosityRoverLanding.png" alt="Curiosity Robot">
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-curiosity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
@@ -1065,6 +1080,8 @@
             <span class="coin-name-text" id="nameCuriosity">✦</span>
         </div>
         <div class="coin coin-ingenuity" data-coin="ingenuity">
+            <div class="coin-bg"></div>
+            <img class="coin-robot" src="public/assets/IgenuityDrone.png" alt="Ingenuity Robot">
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-ingenuity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
@@ -1075,6 +1092,8 @@
             <span class="coin-name-text" id="nameIngenuity">✦</span>
         </div>
         <div class="coin coin-perseverence" data-coin="perseverence">
+            <div class="coin-bg"></div>
+            <img class="coin-robot" src="public/assets/PerseverenceRover.png" alt="Perseverence Robot">
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-perseverence" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
@@ -1378,23 +1397,23 @@
             // ─────────────────────────────────────
             // COIN MATH ANIMATIONS
             // ─────────────────────────────────────
-            const coin1 = document.querySelector('.coin-curiosity');
-            const coin2 = document.querySelector('.coin-ingenuity');
-            const coin3 = document.querySelector('.coin-perseverence');
+            const coin1Bg = document.querySelector('.coin-curiosity .coin-bg');
+            const coin2Bg = document.querySelector('.coin-ingenuity .coin-bg');
+            const coin3Bg = document.querySelector('.coin-perseverence .coin-bg');
             let animTime = 0;
 
             function animateCoins(timestamp) {
                 animTime = timestamp / 1000;
 
-                // Continuous spin around Z-axis
+                // Continuous spin around Z-axis for background only
                 const speed = 0.3; // rotations per second multiplier roughly
                 const rot1 = animTime * speed * 45;
                 const rot2 = animTime * speed * -55;
                 const rot3 = animTime * speed * 60;
 
-                coin1.style.transform = `rotateZ(${rot1.toFixed(1)}deg)`;
-                coin2.style.transform = `rotateZ(${rot2.toFixed(1)}deg)`;
-                coin3.style.transform = `rotateZ(${rot3.toFixed(1)}deg)`;
+                if (coin1Bg) coin1Bg.style.transform = `rotateZ(${rot1.toFixed(1)}deg)`;
+                if (coin2Bg) coin2Bg.style.transform = `rotateZ(${rot2.toFixed(1)}deg)`;
+                if (coin3Bg) coin3Bg.style.transform = `rotateZ(${rot3.toFixed(1)}deg)`;
 
                 requestAnimationFrame(animateCoins);
             }
