@@ -663,8 +663,6 @@
                     rgba(255,255,240,0.6) 0%,
                     rgba(0,0,0,0.2) 100%);
             box-shadow:
-                0 0 20px rgba(218,165,32,0.4),
-                0 0 40px rgba(218,165,32,0.2),
                 inset 0 -3px 6px rgba(0,0,0,0.2),
                 inset 0 3px 6px rgba(255,255,200,0.4),
                 0 4px 8px rgba(0,0,0,0.3);
@@ -677,36 +675,11 @@
         .coin:hover {
             filter: brightness(1.25);
             box-shadow:
-                0 0 30px rgba(218,165,32,0.6),
-                0 0 60px rgba(218,165,32,0.3),
                 inset 0 -3px 6px rgba(0,0,0,0.2),
                 inset 0 3px 6px rgba(255,255,200,0.4),
                 0 4px 8px rgba(0,0,0,0.3);
         }
 
-        .coin::before {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border-radius: 50%;
-            background: conic-gradient(
-                from 0deg,
-                transparent,
-                rgba(218,165,32,0.3),
-                rgba(255,215,0,0.5),
-                rgba(218,165,32,0.3),
-                transparent
-            );
-            -webkit-mask: radial-gradient(circle, transparent 60%, black 61%, black 100%);
-            mask: radial-gradient(circle, transparent 60%, black 61%, black 100%);
-            pointer-events: none;
-            animation: conicGlow 4s linear infinite;
-        }
-
-        @keyframes conicGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
 
         .coin-edge {
             position: absolute;
@@ -767,10 +740,11 @@
         }
 
         .coin-curiosity {
-            top: 50px;
+            top: 20px;
             left: calc(50% - 45px);
             width: 90px;
             height: 90px;
+            z-index: 10;
         }
 
         .coin-curiosity .coin-label {
@@ -786,13 +760,15 @@
         }
 
         .coin-ingenuity {
-            top: calc(50% + 5px);
-            left: 5px;
+            top: 60px;
+            left: calc(50% - 105px);
+            z-index: 9;
         }
 
         .coin-perseverence {
-            top: calc(50% + 5px);
-            right: 5px;
+            top: 60px;
+            right: calc(50% - 105px);
+            z-index: 9;
         }
 
         /* ============ NAME PROMPT MODAL ============ */
@@ -936,9 +912,9 @@
         }
 
         @media (max-width: 600px) {
-            .coin-curiosity { top: 35px; width: 72px; height: 72px; left: calc(50% - 36px); }
-            .coin-ingenuity { width: 64px; height: 64px; left: 0px; top: calc(50% + 2px); }
-            .coin-perseverence { width: 64px; height: 64px; right: 0px; top: calc(50% + 2px); }
+            .coin-curiosity { top: 20px; width: 72px; height: 72px; left: calc(50% - 36px); z-index: 10; }
+            .coin-ingenuity { width: 64px; height: 64px; left: calc(50% - 84px); top: 50px; z-index: 9; }
+            .coin-perseverence { width: 64px; height: 64px; right: calc(50% - 84px); top: 50px; z-index: 9; }
             .coin-curiosity .coin-label { font-size: 8px; }
             .coin-label { font-size: 7px; letter-spacing: 1px; }
             .coin-name-text { font-size: 7px; max-width: 56px; }
@@ -948,10 +924,10 @@
         }
 
         @media (max-width: 380px) {
-            .coin-curiosity { top: 20px; width: 60px; height: 60px; left: calc(50% - 30px); }
-            .coin-ingenuity, .coin-perseverence { width: 54px; height: 54px; }
-            .coin-ingenuity { left: -4px; top: calc(50% + 0px); }
-            .coin-perseverence { right: -4px; top: calc(50% + 0px); }
+            .coin-curiosity { top: 15px; width: 60px; height: 60px; left: calc(50% - 30px); z-index: 10; }
+            .coin-ingenuity, .coin-perseverence { width: 54px; height: 54px; z-index: 9; }
+            .coin-ingenuity { left: calc(50% - 72px); top: 40px; }
+            .coin-perseverence { right: calc(50% - 72px); top: 40px; }
             .coin-curiosity .coin-label { font-size: 7px; }
             .coin-label { font-size: 6px; letter-spacing: 0.8px; }
             .coin-name-text { font-size: 6px; max-width: 46px; }
@@ -1312,27 +1288,15 @@
             function animateCoins(timestamp) {
                 animTime = timestamp / 1000;
 
-                // Curiosity (top) — Precessing 3D wobble + gentle float
-                // Two incommensurate frequencies create a beautiful precession
-                const rotY1 = Math.sin(animTime * 0.5) * 25;
-                const rotX1 = Math.cos(animTime * 0.37) * 15;
-                const float1 = Math.sin(animTime * 0.7) * 4;
-                const breathe1 = 1 + Math.sin(animTime * 0.15) * 0.02;
-                coin1.style.transform = `translateY(${float1.toFixed(1)}px) rotateY(${rotY1.toFixed(1)}deg) rotateX(${rotX1.toFixed(1)}deg) scale(${breathe1.toFixed(3)})`;
+                // Continuous spin around Z-axis
+                const speed = 0.3; // rotations per second multiplier roughly
+                const rot1 = animTime * speed * 45;
+                const rot2 = animTime * speed * -55;
+                const rot3 = animTime * speed * 60;
 
-                // Ingenuity (left) — Lissajous orbital path (2:3 frequency ratio)
-                // Parametric: x = A*cos(a*t), y = B*sin(b*t) creates a closed figure-8
-                const lissX = Math.cos(animTime * 0.4) * 10;
-                const lissY = Math.sin(animTime * 0.6) * 7;
-                const selfRot2 = animTime * 0.7 * 57.3;
-                coin2.style.transform = `translate(${lissX.toFixed(1)}px, ${lissY.toFixed(1)}px) rotateY(${selfRot2.toFixed(1)}deg)`;
-
-                // Perseverence (right) — Compound harmonic breathing + wobble
-                // Sum-of-sines at different frequencies = complex organic motion
-                const pulse3 = 1 + Math.sin(animTime * 0.7) * 0.04 + Math.sin(animTime * 2.3) * 0.02;
-                const bob3 = Math.sin(animTime * 1.1) * 3 + Math.sin(animTime * 3.7) * 1.5;
-                const tilt3 = Math.sin(animTime * 0.5) * 5 + Math.sin(animTime * 1.7) * 2;
-                coin3.style.transform = `translateY(${bob3.toFixed(1)}px) rotateX(${tilt3.toFixed(1)}deg) scale(${pulse3.toFixed(3)})`;
+                coin1.style.transform = `rotateZ(${rot1.toFixed(1)}deg)`;
+                coin2.style.transform = `rotateZ(${rot2.toFixed(1)}deg)`;
+                coin3.style.transform = `rotateZ(${rot3.toFixed(1)}deg)`;
 
                 requestAnimationFrame(animateCoins);
             }
