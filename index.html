@@ -694,8 +694,8 @@
         /* ============ ANIMATED COINS ============ */
         .coin {
             position: absolute;
-            width: 96px;
-            height: 96px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -757,7 +757,7 @@
 
         .coin-svg-text text {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 14px;
+            font-size: 11px;
             font-weight: 900;
             text-transform: uppercase;
             fill: #E8B830;
@@ -772,12 +772,13 @@
 
         .coin-name-text {
             position: absolute;
-            bottom: 18%;
+            top: 22%;
             font-family: 'Dancing Script', cursive;
-            font-size: 10px;
-            color: #FFEAA0;
+            font-size: 14px;
+            color: #3B1F0B;
             opacity: 1;
-            text-shadow: 0 0 4px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+            font-weight: 700;
             pointer-events: none;
             white-space: nowrap;
             overflow: hidden;
@@ -798,25 +799,25 @@
 
         .coin-curiosity {
             top: 15px;
-            left: calc(50% - 54px);
-            width: 108px;
-            height: 108px;
+            left: calc(50% - 67px);
+            width: 134px;
+            height: 134px;
             z-index: 10;
         }
 
         .coin-curiosity .coin-name-text {
-            font-size: 11px;
+            font-size: 16px;
         }
 
         .coin-ingenuity {
             top: 65px;
-            left: calc(50% - 135px);
+            left: calc(50% - 155px);
             z-index: 9;
         }
 
         .coin-perseverence {
             top: 65px;
-            right: calc(50% - 135px);
+            right: calc(50% - 155px);
             z-index: 9;
         }
 
@@ -963,36 +964,36 @@
         @media (max-width: 600px) {
             .coin-curiosity {
                 top: 15px;
-                width: 86px;
-                height: 86px;
-                left: calc(50% - 43px);
+                width: 105px;
+                height: 105px;
+                left: calc(50% - 52px);
                 z-index: 10;
             }
 
             .coin-ingenuity {
-                width: 77px;
-                height: 77px;
-                left: calc(50% - 105px);
+                width: 95px;
+                height: 95px;
+                left: calc(50% - 125px);
                 top: 55px;
                 z-index: 9;
             }
 
             .coin-perseverence {
-                width: 77px;
-                height: 77px;
-                right: calc(50% - 105px);
+                width: 95px;
+                height: 95px;
+                right: calc(50% - 125px);
                 top: 55px;
                 z-index: 9;
             }
 
             .coin-name-text {
-                font-size: 8px;
-                max-width: 56px;
+                font-size: 11px;
+                max-width: 70px;
             }
 
             .coin-curiosity .coin-name-text {
-                font-size: 9px;
-                max-width: 62px;
+                font-size: 13px;
+                max-width: 75px;
             }
 
             .modal-card {
@@ -1007,37 +1008,37 @@
         @media (max-width: 380px) {
             .coin-curiosity {
                 top: 10px;
-                width: 72px;
-                height: 72px;
-                left: calc(50% - 36px);
+                width: 88px;
+                height: 88px;
+                left: calc(50% - 44px);
                 z-index: 10;
             }
 
             .coin-ingenuity,
             .coin-perseverence {
-                width: 65px;
-                height: 65px;
+                width: 80px;
+                height: 80px;
                 z-index: 9;
             }
 
             .coin-ingenuity {
-                left: calc(50% - 90px);
+                left: calc(50% - 100px);
                 top: 45px;
             }
 
             .coin-perseverence {
-                right: calc(50% - 90px);
+                right: calc(50% - 100px);
                 top: 45px;
             }
 
             .coin-name-text {
-                font-size: 7px;
-                max-width: 46px;
+                font-size: 10px;
+                max-width: 56px;
             }
 
             .coin-curiosity .coin-name-text {
-                font-size: 8px;
-                max-width: 52px;
+                font-size: 11px;
+                max-width: 64px;
             }
         }
     </style>
@@ -1130,8 +1131,7 @@
                 <input type="text" class="modal-input" id="nameInput" placeholder="Enter your name..." maxlength="20"
                     autocomplete="off">
             </div>
-            <button class="modal-submit" id="modalSubmit">Inscribe My Name ✦</button>
-            <div class="modal-dismiss-hint">press Esc or click outside to dismiss</div>
+            <button class="modal-submit" id="modalSubmit">✦ SUBMIT ✦</button>
         </div>
     </div>
 
