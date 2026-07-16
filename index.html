@@ -185,6 +185,18 @@
                     #C8963E, #F5D878, #DAA520, #B8860B, #DAAA30, #F0C848, #C8963E) 1;
             overflow: hidden;
             z-index: 2;
+            -webkit-mask-image: 
+                radial-gradient(circle at 0 50%, transparent 16px, black 17px),
+                radial-gradient(circle at 100% 50%, transparent 16px, black 17px);
+            -webkit-mask-size: 51% 100%;
+            -webkit-mask-position: 0 0, 100% 0;
+            -webkit-mask-repeat: no-repeat;
+            mask-image: 
+                radial-gradient(circle at 0 50%, transparent 16px, black 17px),
+                radial-gradient(circle at 100% 50%, transparent 16px, black 17px);
+            mask-size: 51% 100%;
+            mask-position: 0 0, 100% 0;
+            mask-repeat: no-repeat;
         }
 
         /* Perforated edges - left and right */
@@ -1163,7 +1175,7 @@
             </svg>
             <span class="coin-name-text" id="nameIngenuity">✦</span>
         </div>
-        <div class="coin coin-perseverence" data-coin="perseverance">
+        <div class="coin coin-perseverance" data-coin="perseverance">
             <div class="coin-bg"></div>
             <svg class="coin-svg-text" viewBox="0 0 100 100">
                 <path id="curve-perseverance" d="M 12 45 Q 50 85 88 45" fill="transparent" />
@@ -1535,7 +1547,7 @@
             const modalClose = document.getElementById('modalClose');
             const nameCuriosity = document.getElementById('nameCuriosity');
             const nameIngenuity = document.getElementById('nameIngenuity');
-            const namePerseverance = document.getElementById('namePerseverence');
+            const namePerseverance = document.getElementById('namePerseverance');
             const ticketTitle = document.querySelector('.ticket-title');
             let userName = '';
 
