@@ -425,8 +425,10 @@
             line-height: 1;
             margin: 4px 0;
             text-shadow:
-                0 1px 0 rgba(255, 255, 255, 0.5),
-                0 2px 4px rgba(0, 0, 0, 0.1);
+                0 -1px 1px rgba(0, 0, 0, 0.5),
+                0 1px 1px rgba(255, 255, 255, 0.8),
+                0 2px 4px rgba(0, 0, 0, 0.2),
+                0 4px 8px rgba(0, 0, 0, 0.1);
             background: linear-gradient(180deg, #3B1F0B 0%, #5C3010 40%, #3B1F0B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -726,6 +728,11 @@
             filter: brightness(1.25);
         }
 
+        .coin:hover {
+            transform: scale(1.1);
+            z-index: 20;
+        }
+
         .coin-svg-text {
             position: absolute;
             inset: 0;
@@ -790,7 +797,7 @@
             z-index: 9;
         }
 
-        .coin-perseverence {
+        .coin-perseverance {
             top: 430px;
             right: calc(50% - 210px);
             z-index: 9;
@@ -800,7 +807,7 @@
         .robot-overlay {
             position: fixed;
             inset: 0;
-            z-index: 0;
+            z-index: 50; /* Bring above coins to allow clicking */
             background: transparent;
             display: flex;
             flex-direction: column;
@@ -808,11 +815,14 @@
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 2s ease;
+            transition: opacity 1.5s ease;
+            cursor: pointer;
         }
 
         .robot-overlay.active {
-            opacity: 0.4;
+            opacity: 0.85; /* Make it more visible since ticket hides */
+            pointer-events: auto; /* Allow clicking to dismiss */
+            background: radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.95) 100%);
         }
 
         .robot-image {
@@ -820,12 +830,37 @@
             max-height: 100vh;
             object-fit: contain;
             transform: scale(0.85);
-            transition: transform 7s ease-out;
-            filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.4));
+            transition: transform 7s ease-out, filter 2s ease;
+            filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.4)) contrast(1.5) brightness(1.5) sepia(1) hue-rotate(180deg) blur(10px);
+            opacity: 0;
         }
 
         .robot-overlay.active .robot-image {
             transform: scale(1.05);
+            filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.4)) contrast(1) brightness(1) sepia(0) hue-rotate(0deg) blur(0px);
+            opacity: 1;
+            transition: transform 7s ease-out, filter 1.5s ease-out, opacity 1s ease-in;
+        }
+        
+        .robot-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.1),
+                rgba(0, 0, 0, 0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+        
+        .robot-overlay.active::before {
+            opacity: 0.3;
         }
 
         .robot-title {
@@ -1005,7 +1040,7 @@
                 z-index: 9;
             }
 
-            .coin-perseverence {
+            .coin-perseverance {
                 width: 95px;
                 height: 95px;
                 right: calc(50% - 145px);
@@ -1042,7 +1077,7 @@
             }
 
             .coin-ingenuity,
-            .coin-perseverence {
+            .coin-perseverance {
                 width: 80px;
                 height: 80px;
                 z-index: 9;
@@ -1053,7 +1088,7 @@
                 top: 315px;
             }
 
-            .coin-perseverence {
+            .coin-perseverance {
                 right: calc(50% - 120px);
                 top: 315px;
             }
@@ -1128,16 +1163,16 @@
             </svg>
             <span class="coin-name-text" id="nameIngenuity">✦</span>
         </div>
-        <div class="coin coin-perseverence" data-coin="perseverence">
+        <div class="coin coin-perseverence" data-coin="perseverance">
             <div class="coin-bg"></div>
             <svg class="coin-svg-text" viewBox="0 0 100 100">
-                <path id="curve-perseverence" d="M 12 45 Q 50 85 88 45" fill="transparent" />
+                <path id="curve-perseverance" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                 <text>
-                    <textPath href="#curve-perseverence" startOffset="50%" text-anchor="middle" textLength="76"
-                        lengthAdjust="spacingAndGlyphs">PERSEVERENCE</textPath>
+                    <textPath href="#curve-perseverance" startOffset="50%" text-anchor="middle" textLength="76"
+                        lengthAdjust="spacingAndGlyphs">PERSEVERANCE</textPath>
                 </text>
             </svg>
-            <span class="coin-name-text" id="namePerseverence">✦</span>
+            <span class="coin-name-text" id="namePerseverance">✦</span>
         </div>
     </div>
 
@@ -1205,6 +1240,24 @@
 
                 // Apply rotation
                 rotator.style.transform = `rotateY(${rotateY.toFixed(2)}deg) rotateX(${rotateX.toFixed(2)}deg)`;
+                
+                // Dynamic shimmer position
+                const shimmerEl = ticket.querySelector('.shimmer');
+                if (shimmerEl) {
+                    const shimmerX = (nx + 1) * 50; // 0 to 100
+                    const shimmerY = (ny + 1) * 50;
+                    shimmerEl.style.background = `linear-gradient(115deg, 
+                        transparent 0%, 
+                        transparent calc(${shimmerX}% - 15%), 
+                        rgba(255, 255, 255, 0) calc(${shimmerX}% - 5%), 
+                        rgba(255, 255, 255, 0.55) ${shimmerX}%, 
+                        rgba(255, 255, 255, 0.7) calc(${shimmerX}% + 3%), 
+                        rgba(255, 255, 255, 0.55) calc(${shimmerX}% + 6%), 
+                        rgba(255, 255, 255, 0) calc(${shimmerX}% + 10%), 
+                        transparent calc(${shimmerX}% + 15%), 
+                        transparent 100%)`;
+                    shimmerEl.style.animation = 'none'; // Disable auto-sweep while hovering
+                }
                 rotator.classList.remove('swaying');
                 isMouseOverScene = true;
 
@@ -1214,6 +1267,7 @@
                     isMouseOverScene = false;
                     rotator.style.transform = '';
                     rotator.classList.add('swaying');
+                    const sEl = ticket.querySelector('.shimmer'); if (sEl) { sEl.style.background=''; sEl.style.animation='shimmerSweep 4.5s ease-in-out infinite'; }
                 }, MOUSE_IDLE_MS);
             }
 
@@ -1221,6 +1275,11 @@
                 isMouseOverScene = false;
                 rotator.style.transform = '';
                 rotator.classList.add('swaying');
+                const shimmerEl = ticket.querySelector('.shimmer');
+                if (shimmerEl) {
+                    shimmerEl.style.background = ''; // reset to CSS defined
+                    shimmerEl.style.animation = 'shimmerSweep 4.5s ease-in-out infinite';
+                }
                 clearTimeout(mouseTimeout);
             }
 
@@ -1248,6 +1307,7 @@
                     isMouseOverScene = false;
                     rotator.style.transform = '';
                     rotator.classList.add('swaying');
+                    const sEl = ticket.querySelector('.shimmer'); if (sEl) { sEl.style.background=''; sEl.style.animation='shimmerSweep 4.5s ease-in-out infinite'; }
                 }, MOUSE_IDLE_MS);
             }
 
@@ -1266,6 +1326,7 @@
                     isMouseOverScene = false;
                     rotator.style.transform = '';
                     rotator.classList.add('swaying');
+                    const sEl = ticket.querySelector('.shimmer'); if (sEl) { sEl.style.background=''; sEl.style.animation='shimmerSweep 4.5s ease-in-out infinite'; }
                 }, 1500);
             });
 
@@ -1414,6 +1475,74 @@
                 }
             }, { passive: true });
 
+            
+            // ─────────────────────────────────────
+            // AUDIO DESIGN (Web Audio API)
+            // ─────────────────────────────────────
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            let audioCtx = null;
+            let humOsc = null;
+            let humGain = null;
+
+            function initAudio() {
+                if (!audioCtx) {
+                    audioCtx = new AudioContext();
+                    
+                    // Ambient hum
+                    humOsc = audioCtx.createOscillator();
+                    humOsc.type = 'sine';
+                    humOsc.frequency.value = 55; // Deep hum
+                    
+                    humGain = audioCtx.createGain();
+                    humGain.gain.value = 0.05; // Very subtle
+                    
+                    humOsc.connect(humGain);
+                    humGain.connect(audioCtx.destination);
+                    humOsc.start();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+            }
+
+            function playChime() {
+                if (!audioCtx) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // A5
+                osc.frequency.exponentialRampToValueAtTime(1760, audioCtx.currentTime + 0.1); // Slide up
+                
+                gain.gain.setValueAtTime(0, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.5);
+            }
+
+            function playClink() {
+                if (!audioCtx) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
+                
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            }
+
+            // Initialize audio on first user interaction
+            document.body.addEventListener('click', initAudio, { once: true });
+
             // ─────────────────────────────────────
             // INITIALIZATION LOG
             // ─────────────────────────────────────
@@ -1442,7 +1571,7 @@
             // ─────────────────────────────────────
             const coin1Bg = document.querySelector('.coin-curiosity .coin-bg');
             const coin2Bg = document.querySelector('.coin-ingenuity .coin-bg');
-            const coin3Bg = document.querySelector('.coin-perseverence .coin-bg');
+            const coin3Bg = document.querySelector('.coin-perseverance .coin-bg');
             let animTime = 0;
 
             function animateCoins(timestamp) {
@@ -1472,7 +1601,7 @@
             const modalClose = document.getElementById('modalClose');
             const nameCuriosity = document.getElementById('nameCuriosity');
             const nameIngenuity = document.getElementById('nameIngenuity');
-            const namePerseverence = document.getElementById('namePerseverence');
+            const namePerseverance = document.getElementById('namePerseverence');
             const ticketTitle = document.querySelector('.ticket-title');
             let userName = '';
 
@@ -1487,12 +1616,18 @@
             }
 
             function applyName(name) {
-                const displayName = name.trim() || '\u2726';
-                userName = name.trim();
+                const placeholders = ["Space Traveler", "Explorer", "Willy Wonka", "Star Gazer", "Astronaut"];
+                let finalName = name.trim();
+                if (!finalName) {
+                    finalName = placeholders[Math.floor(Math.random() * placeholders.length)];
+                }
+                const displayName = finalName;
+                userName = finalName;
                 nameCuriosity.textContent = displayName;
                 nameIngenuity.textContent = displayName;
-                namePerseverence.textContent = displayName;
+                namePerseverance.textContent = displayName;
                 if (userName) {
+                    playChime();
                     ticketTitle.innerHTML = `Golden Ticket<br><span style="font-size:18px;font-weight:400;letter-spacing:2px;color:#5C3010;display:block;margin-top:2px;">for ${userName}</span>`;
                 } else {
                     ticketTitle.textContent = 'Golden Ticket';
@@ -1516,19 +1651,27 @@
 
             // Click ticket — open modal (old sparkle also fires via document listener)
             ticket.addEventListener('click', function (e) {
+                playChime();
                 openModal();
             });
 
             // Robot Overlay Logic
             const robotOverlay = document.getElementById('robotOverlay');
             const robotImage = document.getElementById('robotImage');
+
+            robotOverlay.addEventListener('click', function() {
+                robotOverlay.classList.remove('active');
+                ticket.style.opacity = '1';
+                clearTimeout(robotTimeout);
+            });
+
             const robotTitle = document.getElementById('robotTitle');
             let robotTimeout;
 
             const robotData = {
                 curiosity: { src: 'public/assets/CuriosityRoverLanding.png', title: 'CURIOSITY ROVER' },
                 ingenuity: { src: 'public/assets/IgenuityDrone.png', title: 'INGENUITY DRONE' },
-                perseverence: { src: 'public/assets/PerseverenceRover.png', title: 'PERSEVERENCE ROVER' }
+                perseverance: { src: 'public/assets/PerseverenceRover.png', title: 'PERSEVERENCE ROVER' }
             };
 
             // Click coins to open ephemeral robot image
@@ -1537,6 +1680,12 @@
                     e.stopPropagation();
                     const coinId = this.getAttribute('data-coin');
                     if (robotData[coinId]) {
+                        playClink();
+                        
+                        // Hide golden ticket to see full image
+                        ticket.style.opacity = '0';
+                        ticket.style.transition = 'opacity 0.3s ease';
+
                         // Reset animations
                         robotOverlay.classList.remove('active');
                         clearTimeout(robotTimeout);
@@ -1551,6 +1700,7 @@
                         // Automatically remove after 7 seconds
                         robotTimeout = setTimeout(() => {
                             robotOverlay.classList.remove('active');
+                            ticket.style.opacity = '1';
                         }, 7000);
                     }
                 });
