@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monka Golden Ticket</title>
+    <title>Monka Golden Ticket | MyPaulBot & Moementum Robotics</title>
+    <meta name="description" content="Personalize your Monka Golden Ticket, explore space robotics technology, and activate your pass to MyPaulBot.com and Moementum STEM Academy.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@400;700&display=swap"
-        rel="stylesheet">
-    <!-- ==================== styles.css ==================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --gold-lightest: #FEF8E0;
@@ -21,11 +22,13 @@
             --gold-dark: #8B6914;
             --gold-darkest: #5C3D0E;
             --chocolate: #3B1F0B;
-            --bg-dark: #1a0a0f;
-            --bg-mid: #2d1220;
-            --surface: #1c0d15;
-            --ticket-width: 340px;
-            --ticket-height: 210px;
+            --bg-dark: #0a0408;
+            --bg-purple: #180914;
+            --surface-glass: rgba(28, 12, 22, 0.75);
+            --surface-border: rgba(218, 165, 32, 0.3);
+            --accent-cyan: #38bdf8;
+            --ticket-width: 360px;
+            --ticket-height: 220px;
         }
 
         * {
@@ -34,29 +37,28 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #0d0408;
+            background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(ellipse at center, rgba(45, 18, 32, 0.75) 0%, rgba(26, 10, 15, 0.88) 50%, rgba(13, 4, 8, 0.95) 100%),
+                radial-gradient(ellipse at top center, rgba(60, 20, 45, 0.8) 0%, rgba(24, 9, 20, 0.92) 50%, rgba(10, 4, 8, 0.98) 100%),
                 url('public/assets/bg.png');
             background-size: 100% 100%, cover;
             background-position: center, center;
             background-attachment: fixed, fixed;
             background-repeat: no-repeat, no-repeat;
-            font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-            overflow: hidden;
-            cursor: crosshair;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-            zoom: 1.15;
+            font-family: 'Outfit', sans-serif;
+            color: #FEF8E0;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Subtle ambient particles in background */
+        /* Ambient glowing stars */
         body::before {
             content: '';
             position: fixed;
@@ -64,48 +66,250 @@
             pointer-events: none;
             z-index: 0;
             background:
-                radial-gradient(1px 1px at 15% 25%, rgba(255, 215, 0, 0.6), transparent),
-                radial-gradient(1px 1px at 28% 60%, rgba(255, 215, 0, 0.4), transparent),
-                radial-gradient(1.5px 1.5px at 42% 18%, rgba(255, 215, 0, 0.5), transparent),
-                radial-gradient(1px 1px at 55% 72%, rgba(255, 215, 0, 0.35), transparent),
-                radial-gradient(1.5px 1.5px at 68% 35%, rgba(255, 215, 0, 0.55), transparent),
-                radial-gradient(1px 1px at 78% 55%, rgba(255, 215, 0, 0.4), transparent),
-                radial-gradient(1px 1px at 85% 20%, rgba(255, 215, 0, 0.45), transparent),
-                radial-gradient(1.5px 1.5px at 22% 80%, rgba(255, 215, 0, 0.5), transparent),
-                radial-gradient(1px 1px at 90% 70%, rgba(255, 215, 0, 0.35), transparent),
-                radial-gradient(1px 1px at 10% 45%, rgba(255, 215, 0, 0.4), transparent),
-                radial-gradient(2px 2px at 35% 10%, rgba(255, 255, 220, 0.7), transparent),
-                radial-gradient(2px 2px at 72% 48%, rgba(255, 255, 220, 0.6), transparent),
-                radial-gradient(1.5px 1.5px at 50% 85%, rgba(255, 255, 200, 0.5), transparent);
+                radial-gradient(1.5px 1.5px at 15% 25%, rgba(255, 215, 0, 0.7), transparent),
+                radial-gradient(1px 1px at 28% 60%, rgba(255, 215, 0, 0.5), transparent),
+                radial-gradient(2px 2px at 42% 18%, rgba(255, 255, 220, 0.8), transparent),
+                radial-gradient(1px 1px at 55% 72%, rgba(255, 215, 0, 0.4), transparent),
+                radial-gradient(1.5px 1.5px at 68% 35%, rgba(255, 215, 0, 0.6), transparent),
+                radial-gradient(1px 1px at 78% 55%, rgba(255, 215, 0, 0.5), transparent),
+                radial-gradient(2px 2px at 88% 20%, rgba(255, 255, 240, 0.7), transparent),
+                radial-gradient(1.5px 1.5px at 22% 80%, rgba(255, 215, 0, 0.6), transparent);
             animation: bgSparkle 8s ease-in-out infinite alternate;
         }
 
         @keyframes bgSparkle {
-
-            0%,
-            100% {
-                opacity: 0.6;
-            }
-
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.95; }
         }
 
-        /* Main scene with perspective */
+        /* ==================== HEADER & NAV ==================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(15, 5, 12, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(218, 165, 32, 0.25);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            height: 38px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.5));
+            transition: transform 0.3s;
+        }
+
+        .nav-brand:hover .nav-logo {
+            transform: scale(1.05);
+        }
+
+        .nav-brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #FEF8E0, #F0C040, #DAA520);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: rgba(254, 248, 224, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--gold-mid);
+            text-shadow: 0 0 10px rgba(240, 192, 64, 0.5);
+        }
+
+        .btn-nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(240, 192, 64, 0.3));
+            border: 1px solid rgba(240, 192, 64, 0.6);
+            border-radius: 50px;
+            color: #FFF8DC;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.2);
+        }
+
+        .btn-nav-cta:hover {
+            background: linear-gradient(135deg, #DAA520, #F0C848);
+            color: var(--chocolate);
+            box-shadow: 0 0 25px rgba(240, 192, 64, 0.6);
+            transform: translateY(-1px);
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold-mid);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 48px 24px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: rgba(218, 165, 32, 0.12);
+            border: 1px solid rgba(218, 165, 32, 0.4);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #FBE9A0;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            box-shadow: inset 0 0 12px rgba(218, 165, 32, 0.15);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FEF8E0 30%, #F0C040 70%, #DAA520 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2vw, 19px);
+            color: rgba(254, 248, 224, 0.85);
+            max-width: 720px;
+            margin: 0 auto 28px;
+            font-weight: 300;
+        }
+
+        /* Steps bar */
+        .hero-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            max-width: 850px;
+            margin: 0 auto 10px;
+        }
+
+        .step-card {
+            background: rgba(28, 12, 22, 0.6);
+            border: 1px solid rgba(218, 165, 32, 0.2);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+            backdrop-filter: blur(8px);
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .step-card:hover {
+            border-color: rgba(240, 192, 64, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #DAA520, #F0C848);
+            color: #3B1F0B;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-text h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #FEF8E0;
+            margin-bottom: 2px;
+        }
+
+        .step-text p {
+            font-size: 12px;
+            color: rgba(254, 248, 224, 0.65);
+            line-height: 1.3;
+        }
+
+        /* ==================== TICKET STAGE & INTERACTION ==================== */
+        .ticket-section {
+            position: relative;
+            z-index: 1;
+            padding: 20px 16px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .scene {
             position: relative;
             z-index: 1;
             perspective: 1200px;
             perspective-origin: center center;
-            width: 500px;
-            height: 600px;
+            width: 100%;
+            max-width: 480px;
+            height: 320px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 10px;
         }
 
-        /* Rotator - receives 3D transforms */
         .rotator {
             position: relative;
             width: var(--ticket-width);
@@ -113,101 +317,49 @@
             transform-style: preserve-3d;
             transition: transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
             will-change: transform;
+            cursor: pointer;
         }
 
-        /* Gentle sway animation when no mouse interaction */
         .rotator.swaying {
             animation: gentleSway 7s ease-in-out infinite;
         }
 
         @keyframes gentleSway {
-
-            0%,
-            100% {
-                transform: rotateY(-2.5deg) rotateX(1.5deg);
-            }
-
-            20% {
-                transform: rotateY(3deg) rotateX(-1deg);
-            }
-
-            40% {
-                transform: rotateY(1.5deg) rotateX(-2deg);
-            }
-
-            60% {
-                transform: rotateY(-3deg) rotateX(0.5deg);
-            }
-
-            80% {
-                transform: rotateY(2deg) rotateX(2deg);
-            }
+            0%, 100% { transform: rotateY(-3deg) rotateX(2deg); }
+            25% { transform: rotateY(3deg) rotateX(-1.5deg); }
+            50% { transform: rotateY(1.5deg) rotateX(-2deg); }
+            75% { transform: rotateY(-2.5deg) rotateX(1deg); }
         }
 
-        /* ============ THE GOLDEN TICKET ============ */
         .ticket {
             position: relative;
             width: 100%;
             height: 100%;
-            border-radius: 6px;
-            background:
-                /* Metallic gold base with multiple layered gradients */
-                linear-gradient(165deg,
-                    #FEF8E0 0%,
-                    #FDF0C8 4%,
-                    #FBE9A0 8%,
-                    #F5D060 15%,
-                    #E8B830 22%,
-                    #DAA520 30%,
-                    #F0C848 36%,
-                    #FEF0C8 42%,
-                    #E8B830 48%,
-                    #C8963E 55%,
-                    #DAA520 62%,
-                    #F5D878 70%,
-                    #B8860B 78%,
-                    #DAAA30 85%,
-                    #FDF0C8 92%,
-                    #E8C040 96%,
-                    #C8963E 100%);
-            background-size: 100% 100%;
-            /* Subtle brushed metal texture overlay */
+            border-radius: 8px;
+            background: linear-gradient(165deg,
+                #FEF8E0 0%, #FDF0C8 4%, #FBE9A0 8%, #F5D060 15%,
+                #E8B830 22%, #DAA520 30%, #F0C848 36%, #FEF0C8 42%,
+                #E8B830 48%, #C8963E 55%, #DAA520 62%, #F5D878 70%,
+                #B8860B 78%, #DAAA30 85%, #FDF0C8 92%, #E8C040 96%, #C8963E 100%);
             box-shadow:
-                /* Deep ambient shadow */
-                0 4px 8px rgba(0, 0, 0, 0.25),
-                0 12px 24px rgba(0, 0, 0, 0.3),
-                0 20px 40px rgba(0, 0, 0, 0.35),
-                0 32px 64px rgba(0, 0, 0, 0.3),
-                0 48px 96px rgba(0, 0, 0, 0.2),
-                /* Warm glow */
-                0 0 30px rgba(218, 165, 32, 0.3),
-                0 0 60px rgba(218, 165, 32, 0.15),
-                0 0 100px rgba(240, 192, 64, 0.1),
-                /* Inner subtle highlight */
-                inset 0 1px 0 rgba(255, 255, 255, 0.4),
-                inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                0 12px 24px rgba(0, 0, 0, 0.4),
+                0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 35px rgba(218, 165, 32, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
             border: 3px solid;
-            border-image: linear-gradient(180deg,
-                    #C8963E, #F5D878, #DAA520, #B8860B, #DAAA30, #F0C848, #C8963E) 1;
+            border-image: linear-gradient(180deg, #C8963E, #F5D878, #DAA520, #B8860B, #DAAA30, #F0C848, #C8963E) 1;
             overflow: hidden;
             z-index: 2;
             -webkit-mask-image: 
                 radial-gradient(circle at 0 50%, transparent 16px, black 17px),
                 radial-gradient(circle at 100% 50%, transparent 16px, black 17px);
-            -webkit-mask-size: 100% 100%;
-            -webkit-mask-position: 0 0, 0 0;
-            -webkit-mask-repeat: no-repeat;
-            -webkit-mask-composite: source-in;
             mask-image: 
                 radial-gradient(circle at 0 50%, transparent 16px, black 17px),
                 radial-gradient(circle at 100% 50%, transparent 16px, black 17px);
-            mask-size: 100% 100%;
-            mask-position: 0 0, 0 0;
-            mask-repeat: no-repeat;
             mask-composite: intersect;
         }
 
-        /* Perforated edges - left and right */
         .ticket::before,
         .ticket::after {
             content: '';
@@ -218,182 +370,58 @@
             z-index: 10;
             pointer-events: none;
             background: repeating-linear-gradient(to bottom,
-                    transparent 0px,
-                    transparent 4px,
-                    rgba(60, 25, 5, 0.55) 4px,
-                    rgba(60, 25, 5, 0.55) 7px,
-                    transparent 7px,
-                    transparent 12px);
+                transparent 0px, transparent 4px,
+                rgba(60, 25, 5, 0.55) 4px, rgba(60, 25, 5, 0.55) 7px,
+                transparent 7px, transparent 12px);
             border-radius: 3px;
         }
 
-        .ticket::before {
-            left: 6px;
-        }
+        .ticket::before { left: 6px; }
+        .ticket::after { right: 6px; }
 
-        .ticket::after {
-            right: 6px;
-        }
-
-        /* Shimmer sweep overlay */
         .shimmer {
             position: absolute;
             inset: 0;
             z-index: 5;
             pointer-events: none;
             background: linear-gradient(115deg,
-                    transparent 0%,
-                    transparent 30%,
-                    rgba(255, 255, 255, 0) 40%,
-                    rgba(255, 255, 255, 0.55) 45%,
-                    rgba(255, 255, 255, 0.7) 48%,
-                    rgba(255, 255, 255, 0.55) 51%,
-                    rgba(255, 255, 255, 0) 55%,
-                    transparent 60%,
-                    transparent 100%);
+                transparent 0%, transparent 30%,
+                rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.65) 48%,
+                rgba(255, 255, 255, 0) 55%, transparent 100%);
             background-size: 250% 100%;
             animation: shimmerSweep 4.5s ease-in-out infinite;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
         @keyframes shimmerSweep {
-            0% {
-                background-position: -250% 0;
-            }
-
-            40% {
-                background-position: -250% 0;
-            }
-
-            60% {
-                background-position: 300% 0;
-            }
-
-            100% {
-                background-position: 300% 0;
-            }
+            0% { background-position: -250% 0; }
+            40% { background-position: -250% 0; }
+            60% { background-position: 300% 0; }
+            100% { background-position: 300% 0; }
         }
 
-        /* Secondary subtle shimmer */
-        .shimmer2 {
-            position: absolute;
-            inset: 0;
-            z-index: 4;
-            pointer-events: none;
-            background: linear-gradient(155deg,
-                    transparent 0%,
-                    transparent 50%,
-                    rgba(255, 255, 240, 0) 55%,
-                    rgba(255, 255, 240, 0.3) 58%,
-                    rgba(255, 255, 240, 0.45) 60%,
-                    rgba(255, 255, 240, 0.3) 62%,
-                    rgba(255, 255, 240, 0) 65%,
-                    transparent 70%,
-                    transparent 100%);
-            background-size: 200% 100%;
-            animation: shimmerSweep2 6s ease-in-out infinite;
-            animation-delay: 1.8s;
-        }
-
-        @keyframes shimmerSweep2 {
-            0% {
-                background-position: -200% 0;
-            }
-
-            35% {
-                background-position: -200% 0;
-            }
-
-            55% {
-                background-position: 250% 0;
-            }
-
-            100% {
-                background-position: 250% 0;
-            }
-        }
-
-        /* Sparkle flash spots on ticket */
         .sparkle-spot {
             position: absolute;
             z-index: 6;
             pointer-events: none;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            background: radial-gradient(circle,
-                    rgba(255, 255, 255, 0.95) 0%,
-                    rgba(255, 255, 240, 0.7) 15%,
-                    rgba(255, 255, 200, 0.2) 40%,
-                    transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 200, 0.3) 40%, transparent 70%);
             opacity: 0;
             animation: sparkleFlash 5s ease-in-out infinite;
         }
-
-        .sparkle-spot:nth-child(1) {
-            top: 8%;
-            left: 15%;
-            animation-delay: 0s;
-        }
-
-        .sparkle-spot:nth-child(2) {
-            top: 12%;
-            right: 20%;
-            animation-delay: 1.7s;
-            width: 14px;
-            height: 14px;
-        }
-
-        .sparkle-spot:nth-child(3) {
-            bottom: 20%;
-            left: 25%;
-            animation-delay: 3.2s;
-            width: 16px;
-            height: 16px;
-        }
-
-        .sparkle-spot:nth-child(4) {
-            bottom: 15%;
-            right: 18%;
-            animation-delay: 4.1s;
-            width: 12px;
-            height: 12px;
-        }
-
-        .sparkle-spot:nth-child(5) {
-            top: 40%;
-            left: 8%;
-            animation-delay: 2.5s;
-            width: 10px;
-            height: 10px;
-        }
+        .sparkle-spot:nth-child(1) { top: 8%; left: 15%; animation-delay: 0s; }
+        .sparkle-spot:nth-child(2) { top: 12%; right: 20%; animation-delay: 1.7s; }
+        .sparkle-spot:nth-child(3) { bottom: 20%; left: 25%; animation-delay: 3.2s; }
 
         @keyframes sparkleFlash {
-
-            0%,
-            90%,
-            100% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-
-            92% {
-                opacity: 1;
-                transform: scale(1.6);
-            }
-
-            96% {
-                opacity: 0.4;
-                transform: scale(0.7);
-            }
-
-            98% {
-                opacity: 0;
-                transform: scale(0.2);
-            }
+            0%, 90%, 100% { opacity: 0; transform: scale(0.3); }
+            92% { opacity: 1; transform: scale(1.5); }
+            96% { opacity: 0.4; transform: scale(0.7); }
         }
 
-        /* ============ TICKET INNER CONTENT ============ */
+        /* Ticket Content */
         .ticket-content {
             position: relative;
             z-index: 3;
@@ -403,189 +431,526 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 16px 24px;
+            padding: 14px 22px;
             text-align: center;
         }
 
-        .ticket-ornament-top,
-        .ticket-ornament-bottom {
+        .ticket-ornament {
             font-size: 10px;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             color: var(--chocolate);
-            opacity: 0.7;
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            opacity: 0.75;
+            font-family: 'Cormorant Garamond', serif;
             text-transform: uppercase;
         }
 
-        .ticket-ornament-top {
-            margin-bottom: 2px;
-        }
-
-        .ticket-ornament-bottom {
-            margin-top: 2px;
-        }
-
         .ticket-monka {
-            font-family: 'Dancing Script', 'Georgia', cursive;
-            font-size: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 22px;
             color: #4A2008;
-            letter-spacing: 3px;
-            opacity: 0.85;
-            margin-bottom: 0px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: -2px;
             text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
         }
 
         .ticket-title {
-            font-family: 'Playfair Display', 'Georgia', serif;
-            font-size: 32px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
             font-weight: 900;
-            letter-spacing: 4px;
-            color: #3B1F0B;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            line-height: 1;
-            margin: 4px 0;
-            text-shadow:
-                0 -1px 1px rgba(0, 0, 0, 0.5),
-                0 1px 1px rgba(255, 255, 255, 0.8),
-                0 2px 4px rgba(0, 0, 0, 0.2),
-                0 4px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.05;
+            margin: 2px 0;
             background: linear-gradient(180deg, #3B1F0B 0%, #5C3010 40%, #3B1F0B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             filter: drop-shadow(0 1px 1px rgba(255, 255, 200, 0.5));
         }
 
+        .ticket-student-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #5C3010;
+            letter-spacing: 1px;
+            margin-top: 2px;
+            min-height: 22px;
+        }
+
         .ticket-divider {
-            width: 60%;
+            width: 65%;
             height: 1px;
-            background: linear-gradient(90deg,
-                    transparent, rgba(60, 25, 5, 0.4) 20%,
-                    rgba(60, 25, 5, 0.6) 50%,
-                    rgba(60, 25, 5, 0.4) 80%, transparent);
-            margin: 6px 0;
+            background: linear-gradient(90deg, transparent, rgba(60, 25, 5, 0.5) 30%, rgba(60, 25, 5, 0.5) 70%, transparent);
+            margin: 4px 0;
         }
 
         .ticket-subtitle {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 13px;
-            letter-spacing: 5px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            letter-spacing: 4px;
             color: #4A2008;
             text-transform: uppercase;
-            opacity: 0.8;
-            margin: 2px 0;
+            font-weight: 600;
         }
 
         .ticket-number {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 11px;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             color: #5C3010;
-            opacity: 0.65;
-            margin-top: 4px;
+            opacity: 0.8;
+            margin-top: 3px;
+            font-weight: 700;
         }
 
-        /* Decorative star */
-        .star-decor {
-            display: inline-block;
-            font-size: 16px;
-            color: #5C3010;
-            opacity: 0.6;
-            margin: 0 8px;
-            animation: starPulse 3s ease-in-out infinite;
-        }
-
-        .star-decor:nth-child(2) {
-            animation-delay: 1.5s;
-        }
-
-        @keyframes starPulse {
-
-            0%,
-            100% {
-                opacity: 0.4;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: scale(1.25);
-            }
-        }
-
-        /* ============ REFLECTION ============ */
         .reflection {
             position: absolute;
-            top: calc(100% + 14px);
+            top: calc(100% + 10px);
             left: 0;
             width: 100%;
-            height: 85%;
+            height: 80%;
             z-index: 1;
             pointer-events: none;
             border-radius: 6px;
-            background:
-                linear-gradient(165deg,
-                    #FEF8E0 0%,
-                    #FDF0C8 4%,
-                    #FBE9A0 8%,
-                    #F5D060 15%,
-                    #E8B830 22%,
-                    #DAA520 30%,
-                    #F0C848 36%,
-                    #FEF0C8 42%,
-                    #E8B830 48%,
-                    #C8963E 55%,
-                    #DAA520 62%,
-                    #F5D878 70%,
-                    #B8860B 78%,
-                    #DAAA30 85%,
-                    #FDF0C8 92%,
-                    #E8C040 96%,
-                    #C8963E 100%);
+            background: linear-gradient(165deg, #FEF8E0 0%, #F5D060 20%, #DAA520 50%, #B8860B 80%);
             transform-origin: top center;
             transform: scaleY(-1);
-            opacity: 0.45;
-            /* Fade-out mask */
-            -webkit-mask-image: linear-gradient(to bottom,
-                    rgba(0, 0, 0, 0.7) 0%,
-                    rgba(0, 0, 0, 0.55) 15%,
-                    rgba(0, 0, 0, 0.35) 35%,
-                    rgba(0, 0, 0, 0.15) 60%,
-                    rgba(0, 0, 0, 0.03) 85%,
-                    rgba(0, 0, 0, 0) 100%);
-            mask-image: linear-gradient(to bottom,
-                    rgba(0, 0, 0, 0.7) 0%,
-                    rgba(0, 0, 0, 0.55) 15%,
-                    rgba(0, 0, 0, 0.35) 35%,
-                    rgba(0, 0, 0, 0.15) 60%,
-                    rgba(0, 0, 0, 0.03) 85%,
-                    rgba(0, 0, 0, 0) 100%);
-            filter: blur(0.5px);
-            border: 3px solid;
-            border-image: linear-gradient(180deg,
-                    rgba(200, 150, 62, 0.5),
-                    rgba(245, 216, 120, 0.5),
-                    rgba(218, 165, 32, 0.5),
-                    rgba(184, 134, 11, 0.4),
-                    rgba(218, 170, 48, 0.5),
-                    rgba(240, 200, 72, 0.5),
-                    rgba(200, 150, 62, 0.5)) 1;
+            opacity: 0.35;
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+            filter: blur(1px);
         }
 
-        /* Subtle blur at the far end of the reflection */
-        .reflection::after {
-            content: '';
+        /* Action Buttons Below Ticket */
+        .ticket-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+            z-index: 10;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-personalize {
+            background: rgba(28, 12, 22, 0.8);
+            border: 1.5px solid rgba(240, 192, 64, 0.6);
+            color: #FBE9A0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-personalize:hover {
+            background: rgba(218, 165, 32, 0.25);
+            border-color: #F0C848;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(240, 192, 64, 0.3);
+        }
+
+        .btn-activate {
+            background: linear-gradient(135deg, #DAA520, #F0C848, #DAA520);
+            background-size: 200% 100%;
+            border: none;
+            color: #3B1F0B;
+            box-shadow: 0 4px 20px rgba(240, 192, 64, 0.4);
+            animation: pulseGlow 3s infinite;
+        }
+
+        .btn-activate:hover {
+            background-position: 100% 0;
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 8px 30px rgba(240, 192, 64, 0.7);
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(240, 192, 64, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(240, 192, 64, 0.75); }
+        }
+
+        /* ==================== MARS ROVERS COINS SECTION ==================== */
+        .coins-section {
+            max-width: 1000px;
+            margin: 40px auto 20px;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #FEF8E0;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            font-size: 15px;
+            color: rgba(254, 248, 224, 0.7);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .coins-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+
+        .coin-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .coin-wrapper:hover {
+            transform: translateY(-6px);
+        }
+
+        .coin {
+            position: relative;
+            width: 124px;
+            height: 124px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(218, 165, 32, 0.3);
+        }
+
+        .coin-bg {
             position: absolute;
             inset: 0;
-            border-radius: 6px;
-            background: linear-gradient(to bottom,
-                    transparent 50%,
-                    rgba(26, 10, 15, 0.3) 80%,
-                    rgba(26, 10, 15, 0.7) 100%);
-            pointer-events: none;
+            border-radius: 50%;
+            background:
+                url('coin.png') center/cover no-repeat,
+                radial-gradient(circle at 35% 35%, rgba(255, 255, 240, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
+            transition: filter 0.3s;
+            will-change: transform;
         }
 
-        /* ============ PARTICLE CONTAINER ============ */
+        .coin-wrapper:hover .coin-bg {
+            filter: brightness(1.25);
+        }
+
+        .coin-svg-text {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.6));
+        }
+
+        .coin-svg-text text {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            fill: #3B1F0B;
+            letter-spacing: 1px;
+        }
+
+        .coin-name-text {
+            position: absolute;
+            top: 22%;
+            font-family: 'Dancing Script', cursive;
+            font-size: 14px;
+            color: #3B1F0B;
+            font-weight: 700;
+            pointer-events: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 80%;
+            z-index: 2;
+        }
+
+        .coin-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #FBE9A0;
+            text-transform: uppercase;
+        }
+
+        /* ==================== PARENTS & EDUCATORS SECTION ==================== */
+        .parents-section {
+            max-width: 1000px;
+            margin: 60px auto 40px;
+            padding: 0 24px;
+        }
+
+        .parents-card {
+            background: linear-gradient(135deg, rgba(28, 12, 22, 0.85) 0%, rgba(18, 7, 15, 0.9) 100%);
+            border: 1px solid rgba(218, 165, 32, 0.35);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 240, 0.1);
+            backdrop-filter: blur(12px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .parents-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .parents-content p {
+            font-size: 15px;
+            color: rgba(254, 248, 224, 0.8);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #FEF8E0;
+        }
+
+        .feature-icon {
+            color: var(--gold-mid);
+            font-size: 16px;
+        }
+
+        .parents-media {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .kit-preview-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6)) drop-shadow(0 0 15px rgba(218,165,32,0.3));
+            transition: transform 0.4s;
+        }
+
+        .kit-preview-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ==================== LIGHTBOX & MODALS ==================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-card {
+            background: linear-gradient(165deg, #3B1F0B 0%, #2d1220 40%, #1c0915 100%);
+            border: 2px solid rgba(218, 165, 32, 0.5);
+            border-radius: 18px;
+            padding: 32px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(218, 165, 32, 0.35), 0 25px 70px rgba(0, 0, 0, 0.6);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(218,165,32,0.3);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            color: rgba(218, 165, 32, 0.8);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #FFFFFF;
+            background: rgba(218,165,32,0.4);
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #F0C848;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-size: 14px;
+            color: rgba(218, 165, 32, 0.85);
+            margin-bottom: 20px;
+        }
+
+        .modal-input {
+            width: 100%;
+            padding: 12px 18px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(218, 165, 32, 0.4);
+            border-radius: 10px;
+            color: #FFF8DC;
+            font-family: 'Playfair Display', serif;
+            font-size: 17px;
+            text-align: center;
+            outline: none;
+            margin-bottom: 20px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .modal-input:focus {
+            border-color: #F0C848;
+            box-shadow: 0 0 15px rgba(240, 192, 64, 0.3);
+        }
+
+        /* Robot Overlay Lightbox */
+        .robot-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(5, 2, 5, 0.92);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            padding: 24px;
+        }
+
+        .robot-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .robot-close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: rgba(218, 165, 32, 0.2);
+            border: 1px solid rgba(218, 165, 32, 0.5);
+            color: #FEF8E0;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+
+        .robot-close-btn:hover {
+            background: rgba(218, 165, 32, 0.5);
+        }
+
+        .robot-image-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .robot-image {
+            max-width: 100%;
+            max-height: 65vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 0 50px rgba(218, 165, 32, 0.3);
+        }
+
+        .robot-info-card {
+            margin-top: 20px;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .robot-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #F0C848;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .robot-desc {
+            font-size: 15px;
+            color: rgba(254, 248, 224, 0.8);
+            line-height: 1.5;
+        }
+
+        /* Particle Canvas/Container */
         .particles-container {
             position: fixed;
             inset: 0;
@@ -602,525 +967,87 @@
         }
 
         @keyframes particleFloatUp {
-            0% {
-                transform: translateY(0) translateX(0) scale(1);
-                opacity: 0.9;
-            }
-
-            30% {
-                opacity: 0.7;
-                transform: translateY(-40px) translateX(8px) scale(1.3);
-            }
-
-            60% {
-                opacity: 0.35;
-                transform: translateY(-100px) translateX(-6px) scale(0.7);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-180px) translateX(15px) scale(0.1);
-            }
+            0% { transform: translateY(0) scale(1); opacity: 0.9; }
+            50% { opacity: 0.6; transform: translateY(-70px) scale(1.3); }
+            100% { opacity: 0; transform: translateY(-160px) scale(0.1); }
         }
 
-        @keyframes particleFloatUpAlt {
-            0% {
-                transform: translateY(0) translateX(0) scale(1);
-                opacity: 0.85;
-            }
-
-            25% {
-                opacity: 0.6;
-                transform: translateY(-35px) translateX(-10px) scale(1.4);
-            }
-
-            55% {
-                opacity: 0.3;
-                transform: translateY(-90px) translateX(5px) scale(0.6);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-170px) translateX(-18px) scale(0.05);
-            }
-        }
-
-        /* ============ RESPONSIVE ============ */
-        @media (max-width: 600px) {
-            :root {
-                --ticket-width: 280px;
-                --ticket-height: 175px;
-            }
-
-            .scene {
-                width: 320px;
-                height: 480px;
-            }
-
-            .ticket-title {
-                font-size: 24px;
-                letter-spacing: 3px;
-            }
-
-            .ticket-monka {
-                font-size: 16px;
-                letter-spacing: 2px;
-            }
-
-            .ticket-subtitle {
-                font-size: 10px;
-                letter-spacing: 3px;
-            }
-
-            .ticket-ornament-top,
-            .ticket-ornament-bottom {
-                font-size: 8px;
-                letter-spacing: 4px;
-            }
-
-            .reflection {
-                height: 70%;
-                top: calc(100% + 10px);
-            }
-        }
-
-        @media (max-width: 380px) {
-            :root {
-                --ticket-width: 240px;
-                --ticket-height: 150px;
-            }
-
-            .scene {
-                width: 260px;
-                height: 420px;
-            }
-
-            .ticket-title {
-                font-size: 20px;
-                letter-spacing: 2px;
-            }
-
-            .ticket-monka {
-                font-size: 14px;
-            }
-
-            .ticket-subtitle {
-                font-size: 9px;
-                letter-spacing: 2px;
-            }
-
-            .ticket-content {
-                padding: 10px 14px;
-            }
-        }
-
-        /* ============ ANIMATED COINS ============ */
-        .coin {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 8;
-            pointer-events: auto;
+        /* ==================== FOOTER ==================== */
+        .footer {
+            border-top: 1px solid rgba(218, 165, 32, 0.25);
+            background: rgba(10, 4, 8, 0.95);
+            padding: 40px 24px 30px;
+            margin-top: 60px;
             text-align: center;
-        }
-
-        .coin-bg {
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background:
-                url('coin.png') center/cover no-repeat,
-                radial-gradient(circle at 35% 35%,
-                    rgba(255, 255, 240, 0.6) 0%,
-                    rgba(0, 0, 0, 0.2) 100%);
-            z-index: 1;
-            transition: filter 0.3s;
-            will-change: transform;
-        }
-
-        .coin:hover .coin-bg {
-            filter: brightness(1.25);
-        }
-
-        .coin:hover {
-            transform: scale(1.1);
-            z-index: 20;
-        }
-
-        .coin-svg-text {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 3;
-            pointer-events: none;
-            filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.6));
-        }
-
-        .coin-svg-text text {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 11px;
-            font-weight: 900;
-            text-transform: uppercase;
-            fill: #3B1F0B;
-            letter-spacing: 1px;
-        }
-
-        .coin-name-text {
-            position: absolute;
-            top: 22%;
-            font-family: 'Dancing Script', cursive;
-            font-size: 14px;
-            color: #3B1F0B;
-            opacity: 1;
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
-            font-weight: 700;
-            pointer-events: none;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 80%;
-            z-index: 2;
-        }
-
-        .coin::after {
-            content: '';
-            position: absolute;
-            inset: 15%;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .coin-curiosity {
-            top: 420px;
-            left: calc(50% - 67px);
-            width: 134px;
-            height: 134px;
-            z-index: 10;
-        }
-
-        .coin-curiosity .coin-name-text {
-            font-size: 16px;
-        }
-
-        .coin-ingenuity {
-            top: 430px;
-            left: calc(50% - 210px);
-            z-index: 9;
-        }
-
-        .coin-perseverance {
-            top: 430px;
-            right: calc(50% - 210px);
-            z-index: 9;
-        }
-
-        /* ============ ROBOT IMAGE OVERLAY ============ */
-        .robot-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 50; /* Bring above coins to allow clicking */
-            background: transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 1.5s ease;
-            cursor: pointer;
-        }
-
-        .robot-overlay.active {
-            opacity: 0.85; /* Make it more visible since ticket hides */
-            pointer-events: auto; /* Allow clicking to dismiss */
-            background: radial-gradient(circle at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.95) 100%);
-        }
-
-        .robot-image {
-            max-width: 100vw;
-            max-height: 100vh;
-            object-fit: contain;
-            transform: scale(0.85);
-            transition: transform 7s ease-out, filter 2s ease;
-            filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.4)) contrast(1.5) brightness(1.5) sepia(1) hue-rotate(180deg) blur(10px);
-            opacity: 0;
-        }
-
-        .robot-overlay.active .robot-image {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 40px rgba(218, 165, 32, 0.4)) contrast(1) brightness(1) sepia(0) hue-rotate(0deg) blur(0px);
-            opacity: 1;
-            transition: transform 7s ease-out, filter 1.5s ease-out, opacity 1s ease-in;
-        }
-        
-        .robot-overlay::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 1.5s ease;
-        }
-        
-        .robot-overlay.active::before {
-            opacity: 0.3;
-        }
-
-        .robot-title {
-            position: absolute;
-            bottom: 5%;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 52px;
-            font-weight: 900;
-            color: #F0C848;
-            letter-spacing: 16px;
-            text-transform: uppercase;
-            text-shadow: 0 0 30px rgba(218,165,32,0.6);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.5s ease 0.5s, transform 7s ease-out;
-        }
-
-        .robot-overlay.active .robot-title {
-            opacity: 0.6;
-            transform: translateY(-20px);
-        }
-
-        /* ============ NAME PROMPT MODAL ============ */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .modal-card {
-            background: linear-gradient(165deg, #3B1F0B 0%, #2d1220 40%, #3B1F0B 100%);
-            border: 2px solid rgba(218, 165, 32, 0.5);
-            border-radius: 16px;
-            padding: 32px 36px 28px;
-            max-width: 380px;
-            width: 90%;
-            text-align: center;
-            box-shadow:
-                0 0 40px rgba(218, 165, 32, 0.3),
-                0 20px 60px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 200, 0.1);
-            transform: scale(0.9) translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
+            z-index: 10;
         }
 
-        .modal-overlay.active .modal-card {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            background: none;
-            border: none;
-            color: rgba(218, 165, 32, 0.6);
-            font-size: 22px;
-            cursor: pointer;
-            font-family: Georgia, serif;
-            transition: color 0.2s;
-            line-height: 1;
-            padding: 4px;
-        }
-
-        .modal-close:hover {
-            color: rgba(218, 165, 32, 1);
-        }
-
-        .modal-icon {
-            font-size: 40px;
-            margin-bottom: 8px;
-            line-height: 1;
-        }
-
-        .modal-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 22px;
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
             font-weight: 700;
-            color: #F0C848;
-            margin-bottom: 6px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            color: var(--gold-mid);
+            margin-bottom: 12px;
+            letter-spacing: 2px;
         }
 
-        .modal-subtitle {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 15px;
-            color: rgba(218, 165, 32, 0.7);
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            list-style: none;
             margin-bottom: 20px;
-            font-style: italic;
+            flex-wrap: wrap;
         }
 
-        .modal-input-wrapper {
-            position: relative;
-            margin-bottom: 16px;
+        .footer-links a {
+            color: rgba(254, 248, 224, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
         }
 
-        .modal-input {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            border-radius: 8px;
-            color: #FFF8DC;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 16px;
-            text-align: center;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
+        .footer-links a:hover {
+            color: var(--gold-mid);
         }
 
-        .modal-input:focus {
-            border-color: rgba(218, 165, 32, 0.7);
-            box-shadow: 0 0 12px rgba(218, 165, 32, 0.2);
+        .footer-copyright {
+            font-size: 13px;
+            color: rgba(254, 248, 224, 0.45);
         }
 
-        .modal-input::placeholder {
-            color: rgba(218, 165, 32, 0.35);
-            font-style: italic;
-        }
-
-        .modal-submit {
-            background: linear-gradient(135deg, #DAA520, #F0C848, #DAA520);
-            border: none;
-            border-radius: 8px;
-            padding: 10px 28px;
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 16px;
-            font-weight: 700;
-            color: #3B1F0B;
-            cursor: pointer;
-            transition: filter 0.3s, transform 0.2s;
-            box-shadow: 0 2px 8px rgba(218, 165, 32, 0.3);
-        }
-
-        .modal-submit:hover {
-            filter: brightness(1.15);
-            transform: scale(1.02);
-        }
-
-        .modal-dismiss-hint {
-            font-size: 11px;
-            color: rgba(218, 165, 32, 0.3);
-            margin-top: 12px;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-style: italic;
-        }
-
-        @media (max-width: 600px) {
-            .coin-curiosity {
-                top: 340px;
-                width: 105px;
-                height: 105px;
-                left: calc(50% - 52px);
-                z-index: 10;
+        /* Responsive Breakpoints */
+        @media (max-width: 850px) {
+            .parents-card {
+                grid-template-columns: 1fr;
+                padding: 28px;
             }
-
-            .coin-ingenuity {
-                width: 95px;
-                height: 95px;
-                left: calc(50% - 145px);
-                top: 350px;
-                z-index: 9;
+            .nav-links {
+                display: none;
             }
-
-            .coin-perseverance {
-                width: 95px;
-                height: 95px;
-                right: calc(50% - 145px);
-                top: 350px;
-                z-index: 9;
+            .nav-mobile-toggle {
+                display: block;
             }
+        }
 
-            .coin-name-text {
-                font-size: 11px;
-                max-width: 70px;
+        @media (max-width: 480px) {
+            :root {
+                --ticket-width: 300px;
+                --ticket-height: 185px;
             }
-
-            .coin-curiosity .coin-name-text {
-                font-size: 13px;
-                max-width: 75px;
+            .ticket-title {
+                font-size: 22px;
             }
-
-            .modal-card {
-                padding: 24px 20px 20px;
-            }
-
-            .modal-title {
+            .ticket-monka {
                 font-size: 18px;
             }
-        }
-
-        @media (max-width: 380px) {
-            .coin-curiosity {
-                top: 310px;
-                width: 88px;
-                height: 88px;
-                left: calc(50% - 44px);
-                z-index: 10;
+            .coins-grid {
+                gap: 20px;
             }
-
-            .coin-ingenuity,
-            .coin-perseverance {
-                width: 80px;
-                height: 80px;
-                z-index: 9;
-            }
-
-            .coin-ingenuity {
-                left: calc(50% - 120px);
-                top: 315px;
-            }
-
-            .coin-perseverance {
-                right: calc(50% - 120px);
-                top: 315px;
-            }
-
-            .coin-name-text {
-                font-size: 10px;
-                max-width: 56px;
-            }
-
-            .coin-curiosity .coin-name-text {
-                font-size: 11px;
-                max-width: 64px;
+            .coin {
+                width: 100px;
+                height: 100px;
             }
         }
     </style>
@@ -1128,552 +1055,422 @@
 
 <body>
 
-    <!-- ==================== index.html ==================== -->
-    <!-- Main Scene -->
-    <div class="scene" id="scene">
-        <!-- Rotator - receives 3D transforms -->
-        <div class="rotator swaying" id="rotator">
-            <!-- The Golden Ticket -->
-            <div class="ticket" id="ticket">
-                <!-- Shimmer overlays -->
-                <div class="shimmer"></div>
-                <div class="shimmer2"></div>
-                <!-- Sparkle spots -->
-                <div class="sparkle-spot"></div>
-                <div class="sparkle-spot"></div>
-                <div class="sparkle-spot"></div>
-                <div class="sparkle-spot"></div>
-                <div class="sparkle-spot"></div>
-                <!-- Ticket Content -->
-                <div class="ticket-content">
-                    <div class="ticket-ornament-top">✧ • ◇ • ✧</div>
-                    <div class="ticket-monka">Monka</div>
-                    <h1 class="ticket-title">Golden Ticket</h1>
-                    <div class="ticket-divider"></div>
-                    <p class="ticket-subtitle">
-                        <span class="star-decor">✦</span> Admit One <span class="star-decor">✦</span>
-                    </p>
-                    <p class="ticket-number">• EVERLASTING GOBSTOPPER FACTORY •</p>
-                    <div class="ticket-ornament-bottom">✧ • ◇ • ✧</div>
+    <!-- ==================== HEADER / NAVIGATION ==================== -->
+    <header class="navbar">
+        <a href="#" class="nav-brand">
+            <img src="public/assets/moementum-logo.png" alt="Monka & Moementum Logo" class="nav-logo">
+            <span class="nav-brand-title">Monka Golden Ticket</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link">Home</a></li>
+            <li><a href="#ticket-stage" class="nav-link">Golden Ticket</a></li>
+            <li><a href="#rovers" class="nav-link">Mars Tech</a></li>
+            <li><a href="#parents" class="nav-link">Parents & Educators</a></li>
+            <li><a href="https://mypaulbot.com" target="_blank" class="nav-link">MyPaulBot.com ↗</a></li>
+        </ul>
+
+        <a href="https://moementum.org/kits/mypaulbot" target="_blank" class="btn-nav-cta">
+            <span>Get MyPaulBot Kit</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="hero">
+        <div class="badge-pill">
+            <span>✨ Official Monka STEM Pass ✨</span>
+        </div>
+        <h1 class="hero-title">Your Golden Ticket to Hands-On Robotics</h1>
+        <p class="hero-subtitle">
+            Welcome, young engineer! Personalize your official Monka Golden Ticket, explore Mars exploration rovers, and activate your VIP pass into <strong>MyPaulBot.com</strong>.
+        </p>
+
+        <div class="hero-steps">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <div class="step-text">
+                    <h4>Personalize Pass</h4>
+                    <p>Enter your student name to stamp your Golden Ticket.</p>
                 </div>
             </div>
-            <!-- Reflection below the ticket -->
-            <div class="reflection"></div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <div class="step-text">
+                    <h4>Explore Space Tech</h4>
+                    <p>Click rover coins to inspect Curiosity, Ingenuity & Perseverance.</p>
+                </div>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <div class="step-text">
+                    <h4>Activate Portal</h4>
+                    <p>Launch directly to MyPaulBot.com and start breadboarding!</p>
+                </div>
+            </div>
         </div>
-        <!-- Animated Coins -->
-        <div class="coin coin-curiosity" data-coin="curiosity">
-            <div class="coin-bg"></div>
-            <svg class="coin-svg-text" viewBox="0 0 100 100">
-                <path id="curve-curiosity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
-                <text>
-                    <textPath href="#curve-curiosity" startOffset="50%" text-anchor="middle" textLength="76"
-                        lengthAdjust="spacingAndGlyphs">CURIOSITY</textPath>
-                </text>
-            </svg>
-            <span class="coin-name-text" id="nameCuriosity">✦</span>
-        </div>
-        <div class="coin coin-ingenuity" data-coin="ingenuity">
-            <div class="coin-bg"></div>
-            <svg class="coin-svg-text" viewBox="0 0 100 100">
-                <path id="curve-ingenuity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
-                <text>
-                    <textPath href="#curve-ingenuity" startOffset="50%" text-anchor="middle" textLength="76"
-                        lengthAdjust="spacingAndGlyphs">INGENUITY</textPath>
-                </text>
-            </svg>
-            <span class="coin-name-text" id="nameIngenuity">✦</span>
-        </div>
-        <div class="coin coin-perseverance" data-coin="perseverance">
-            <div class="coin-bg"></div>
-            <svg class="coin-svg-text" viewBox="0 0 100 100">
-                <path id="curve-perseverance" d="M 12 45 Q 50 85 88 45" fill="transparent" />
-                <text>
-                    <textPath href="#curve-perseverance" startOffset="50%" text-anchor="middle" textLength="76"
-                        lengthAdjust="spacingAndGlyphs">PERSEVERANCE</textPath>
-                </text>
-            </svg>
-            <span class="coin-name-text" id="namePerseverance">✦</span>
-        </div>
-    </div>
+    </section>
 
-    <!-- Particles container -->
+    <!-- ==================== GOLDEN TICKET STAGE ==================== -->
+    <section class="ticket-section" id="ticket-stage">
+        <div class="scene" id="scene">
+            <div class="rotator swaying" id="rotator">
+                <div class="ticket" id="ticket">
+                    <div class="shimmer"></div>
+                    <div class="sparkle-spot"></div>
+                    <div class="sparkle-spot"></div>
+                    <div class="sparkle-spot"></div>
+
+                    <div class="ticket-content">
+                        <div class="ticket-ornament">✧ • ◇ • ✧</div>
+                        <div class="ticket-monka">Monka & Moementum</div>
+                        <h2 class="ticket-title">Golden Ticket</h2>
+                        <div class="ticket-student-name" id="ticketStudentName">✦ Student Pass ✦</div>
+                        <div class="ticket-divider"></div>
+                        <p class="ticket-subtitle">Admit One • VIP Access</p>
+                        <p class="ticket-number">• MYPAULBOT ROBOTICS & ELECTRONICS LAB •</p>
+                        <div class="ticket-ornament">✧ • ◇ • ✧</div>
+                    </div>
+                </div>
+                <div class="reflection"></div>
+            </div>
+        </div>
+
+        <div class="ticket-actions">
+            <button class="btn-action btn-personalize" id="openNameModalBtn">
+                <span>✨ Personalize Ticket</span>
+            </button>
+            <a href="https://mypaulbot.com" target="_blank" class="btn-action btn-activate" id="activateBtn">
+                <span>🚀 ACTIVATE GOLDEN TICKET</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== MARS ROVERS COIN GALLERY ==================== -->
+    <section class="coins-section" id="rovers">
+        <h2 class="section-title">Interplanetary Engineering Inspiration</h2>
+        <p class="section-desc">Click on any space exploration medallion to view mission details and real robotics technology.</p>
+
+        <div class="coins-grid">
+            <div class="coin-wrapper" data-coin="curiosity">
+                <div class="coin">
+                    <div class="coin-bg"></div>
+                    <svg class="coin-svg-text" viewBox="0 0 100 100">
+                        <path id="curve-curiosity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
+                        <text><textPath href="#curve-curiosity" startOffset="50%" text-anchor="middle">CURIOSITY</textPath></text>
+                    </svg>
+                    <span class="coin-name-text coin-name-display">Explorer</span>
+                </div>
+                <span class="coin-label">Curiosity Rover</span>
+            </div>
+
+            <div class="coin-wrapper" data-coin="ingenuity">
+                <div class="coin">
+                    <div class="coin-bg"></div>
+                    <svg class="coin-svg-text" viewBox="0 0 100 100">
+                        <path id="curve-ingenuity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
+                        <text><textPath href="#curve-ingenuity" startOffset="50%" text-anchor="middle">INGENUITY</textPath></text>
+                    </svg>
+                    <span class="coin-name-text coin-name-display">Explorer</span>
+                </div>
+                <span class="coin-label">Ingenuity Drone</span>
+            </div>
+
+            <div class="coin-wrapper" data-coin="perseverance">
+                <div class="coin">
+                    <div class="coin-bg"></div>
+                    <svg class="coin-svg-text" viewBox="0 0 100 100">
+                        <path id="curve-perseverance" d="M 12 45 Q 50 85 88 45" fill="transparent" />
+                        <text><textPath href="#curve-perseverance" startOffset="50%" text-anchor="middle">PERSEVERANCE</textPath></text>
+                    </svg>
+                    <span class="coin-name-text coin-name-display">Explorer</span>
+                </div>
+                <span class="coin-label">Perseverance Rover</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PARENTS & EDUCATORS SECTION ==================== -->
+    <section class="parents-section" id="parents">
+        <div class="parents-card">
+            <div class="parents-content">
+                <h3>For Parents & Educators</h3>
+                <p>
+                    MyPaulBot is a comprehensive hands-on robotics and breadboard kit designed by Moementum STEM Academy. It transitions students from beginner concepts to real-world circuit wiring, sensor programming, and embedded Python coding.
+                </p>
+                <ul class="feature-list">
+                    <li class="feature-item"><span class="feature-icon">✦</span> Real Breadboard Circuitry & Component Wiring</li>
+                    <li class="feature-item"><span class="feature-icon">✦</span> Microcontroller & Sensor Integration</li>
+                    <li class="feature-item"><span class="feature-icon">✦</span> Hands-On Python Programming Exercises</li>
+                    <li class="feature-item"><span class="feature-icon">✦</span> Designed for Home Explorers & Classroom STEM Labs</li>
+                </ul>
+
+                <a href="https://moementum.org/kits/mypaulbot" target="_blank" class="btn-action btn-activate">
+                    <span>Order MyPaulBot Kit on Moementum.org ➔</span>
+                </a>
+            </div>
+
+            <div class="parents-media">
+                <img src="public/assets/paulbot.png" alt="MyPaulBot Kit" class="kit-preview-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PARTICLES CONTAINER ==================== -->
     <div class="particles-container" id="particlesContainer"></div>
 
-    <!-- Name Prompt Modal -->
+    <!-- ==================== NAME INPUT MODAL ==================== -->
     <div class="modal-overlay" id="nameModal">
         <div class="modal-card">
             <button class="modal-close" id="modalClose">✕</button>
-            <div class="modal-icon">✨</div>
-            <div class="modal-title">CONGRATULATIONS!</div>
-            <div class="modal-subtitle">You have been selected to receive a Golden Ticket! Please enter your name.</div>
-            <div class="modal-input-wrapper">
-                <input type="text" class="modal-input" id="nameInput" placeholder="Enter your name..." maxlength="20"
-                    autocomplete="off">
-            </div>
-            <button class="modal-submit" id="modalSubmit">✦ SUBMIT ✦</button>
+            <div style="font-size:36px;margin-bottom:8px;">✨</div>
+            <h3 class="modal-title">Personalize Your Pass</h3>
+            <p class="modal-subtitle">Enter your name to stamp your official Monka Golden Ticket!</p>
+            
+            <input type="text" class="modal-input" id="nameInput" placeholder="Enter student name..." maxlength="22" autocomplete="off">
+            
+            <button class="btn-action btn-activate" id="modalSubmit" style="width:100%;justify-content:center;">
+                <span>✦ STAMP MY GOLDEN TICKET ✦</span>
+            </button>
         </div>
     </div>
 
-
-
-    <!-- Robot Image Overlay -->
+    <!-- ==================== ROBOT / TECH LIGHTBOX OVERLAY ==================== -->
     <div class="robot-overlay" id="robotOverlay">
-        <img class="robot-image" id="robotImage" src="" alt="Martian Robot">
-        <div class="robot-title" id="robotTitle">CURIOSITY</div>
+        <button class="robot-close-btn" id="robotCloseBtn">✕ Close View</button>
+        
+        <div class="robot-image-container">
+            <img class="robot-image" id="robotImage" src="" alt="Mars Robot">
+        </div>
+
+        <div class="robot-info-card">
+            <h3 class="robot-title" id="robotTitle">CURIOSITY ROVER</h3>
+            <p class="robot-desc" id="robotDesc">Inspecting planetary science, autonomous navigation, and electronic systems on the surface of Mars.</p>
+        </div>
     </div>
 
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-brand">MONKA & MOEMENTUM STEM ACADEMY</div>
+        <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#ticket-stage">Golden Ticket</a></li>
+            <li><a href="https://mypaulbot.com" target="_blank">MyPaulBot.com</a></li>
+            <li><a href="https://moementum.org/kits/mypaulbot" target="_blank">Buy Kit (Moementum)</a></li>
+        </ul>
+        <p class="footer-copyright">© 2026 Monka & Moementum STEM Academy. All Rights Reserved.</p>
+    </footer>
 
-    <!-- ==================== app.js ==================== -->
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
     <script>
         (function () {
-            // ─────────────────────────────────────
-            // DOM ELEMENTS
-            // ─────────────────────────────────────
+            // DOM Elements
             const scene = document.getElementById('scene');
             const rotator = document.getElementById('rotator');
             const ticket = document.getElementById('ticket');
             const particlesContainer = document.getElementById('particlesContainer');
 
-            // ─────────────────────────────────────
-            // 3D ROTATION ON MOUSE MOVE
-            // ─────────────────────────────────────
-            const maxRotationX = 18; // degrees
+            // 3D Tilt Interaction
+            const maxRotationX = 18;
             const maxRotationY = 18;
-            let isMouseOverScene = false;
             let mouseTimeout = null;
-            const MOUSE_IDLE_MS = 4000; // after 4s of no mouse movement, resume sway
 
             function handleMouseMove(e) {
                 const rect = scene.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
 
-                const mouseX = e.clientX;
-                const mouseY = e.clientY;
-
-                // Normalize offsets to [-1, 1]
-                const nx = Math.max(-1, Math.min(1, (mouseX - centerX) / (rect.width / 2)));
-                const ny = Math.max(-1, Math.min(1, (mouseY - centerY) / (rect.height / 2)));
+                const nx = Math.max(-1, Math.min(1, (e.clientX - centerX) / (rect.width / 2)));
+                const ny = Math.max(-1, Math.min(1, (e.clientY - centerY) / (rect.height / 2)));
 
                 const rotateY = nx * maxRotationY;
                 const rotateX = -ny * maxRotationX;
 
-                // Apply rotation
                 rotator.style.transform = `rotateY(${rotateY.toFixed(2)}deg) rotateX(${rotateX.toFixed(2)}deg)`;
-                
-                // Dynamic shimmer position
-                const shimmerEl = ticket.querySelector('.shimmer');
-                if (shimmerEl) {
-                    const shimmerX = (nx + 1) * 50; // 0 to 100
-                    const shimmerY = (ny + 1) * 50;
-                    shimmerEl.style.background = `linear-gradient(115deg, 
-                        transparent 0%, 
-                        transparent calc(${shimmerX}% - 15%), 
-                        rgba(255, 255, 255, 0) calc(${shimmerX}% - 5%), 
-                        rgba(255, 255, 255, 0.55) ${shimmerX}%, 
-                        rgba(255, 255, 255, 0.7) calc(${shimmerX}% + 3%), 
-                        rgba(255, 255, 255, 0.55) calc(${shimmerX}% + 6%), 
-                        rgba(255, 255, 255, 0) calc(${shimmerX}% + 10%), 
-                        transparent calc(${shimmerX}% + 15%), 
-                        transparent 100%)`;
-                    shimmerEl.style.animation = 'none'; // Disable auto-sweep while hovering
-                }
                 rotator.classList.remove('swaying');
-                isMouseOverScene = true;
 
-                // Reset idle timer
                 clearTimeout(mouseTimeout);
                 mouseTimeout = setTimeout(() => {
-                    isMouseOverScene = false;
                     rotator.style.transform = '';
                     rotator.classList.add('swaying');
-                    const sEl = ticket.querySelector('.shimmer'); if (sEl) { sEl.style.background=''; sEl.style.animation='shimmerSweep 4.5s ease-in-out infinite'; }
-                }, MOUSE_IDLE_MS);
+                }, 3500);
             }
 
-            function handleMouseLeave() {
-                isMouseOverScene = false;
+            scene.addEventListener('mousemove', handleMouseMove);
+            scene.addEventListener('mouseleave', () => {
                 rotator.style.transform = '';
                 rotator.classList.add('swaying');
-                const shimmerEl = ticket.querySelector('.shimmer');
-                if (shimmerEl) {
-                    shimmerEl.style.background = ''; // reset to CSS defined
-                    shimmerEl.style.animation = 'shimmerSweep 4.5s ease-in-out infinite';
-                }
-                clearTimeout(mouseTimeout);
-            }
-
-            function handleMouseEnter() {
-                isMouseOverScene = true;
-            }
-
-            // Attach listeners
-            document.addEventListener('mousemove', handleMouseMove, { passive: true });
-            scene.addEventListener('mouseenter', handleMouseEnter);
-            scene.addEventListener('mouseleave', handleMouseLeave);
-
-            // ─────────────────────────────────────
-            // TOUCH / DEVICE ORIENTATION (MOBILE)
-            // ─────────────────────────────────────
-            function handleTouchMove(e) {
-                if (!e.touches || e.touches.length === 0) return;
-                const touch = e.touches[0];
-                // Simulate mouse move with touch
-                const fakeEvent = { clientX: touch.clientX, clientY: touch.clientY };
-                handleMouseMove(fakeEvent);
-                // Keep sway off for touch devices
-                clearTimeout(mouseTimeout);
-                mouseTimeout = setTimeout(() => {
-                    isMouseOverScene = false;
-                    rotator.style.transform = '';
-                    rotator.classList.add('swaying');
-                    const sEl = ticket.querySelector('.shimmer'); if (sEl) { sEl.style.background=''; sEl.style.animation='shimmerSweep 4.5s ease-in-out infinite'; }
-                }, MOUSE_IDLE_MS);
-            }
-
-            scene.addEventListener('touchmove', handleTouchMove, { passive: true });
-            scene.addEventListener('touchstart', (e) => {
-                isMouseOverScene = true;
-                rotator.classList.remove('swaying');
-                if (e.touches && e.touches.length > 0) {
-                    const fakeEvent = { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
-                    handleMouseMove(fakeEvent);
-                }
-            }, { passive: true });
-            scene.addEventListener('touchend', () => {
-                clearTimeout(mouseTimeout);
-                mouseTimeout = setTimeout(() => {
-                    isMouseOverScene = false;
-                    rotator.style.transform = '';
-                    rotator.classList.add('swaying');
-                    const sEl = ticket.querySelector('.shimmer'); if (sEl) { sEl.style.background=''; sEl.style.animation='shimmerSweep 4.5s ease-in-out infinite'; }
-                }, 1500);
             });
 
-            // ─────────────────────────────────────
-            // PARTICLE SYSTEM
-            // ─────────────────────────────────────
-            const particleColors = [
-                '#FFF8DC', '#FFEC8B', '#FFD700', '#FDF5E6',
-                '#FFE4B5', '#FFFACD', '#F0E68C', '#FFC125',
-                '#FFEAA0', '#FFF3C4', '#FEF0C8', '#FFDB58'
-            ];
+            // Particles Generator
+            const particleColors = ['#FFF8DC', '#FFEC8B', '#FFD700', '#FDF5E6', '#F0C040', '#FEF8E0'];
 
             function createParticle(x, y) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-
-                const size = Math.random() * 5 + 2; // 2-7px
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                const size = Math.random() * 5 + 3;
                 const color = particleColors[Math.floor(Math.random() * particleColors.length)];
-                const useAltAnimation = Math.random() > 0.5;
-                const duration = Math.random() * 2 + 1.8; // 1.8-3.8s
-                const driftX = (Math.random() - 0.5) * 40;
+                const duration = Math.random() * 2 + 1.5;
 
-                particle.style.cssText = `
+                p.style.cssText = `
                     left: ${x}px;
                     top: ${y}px;
                     width: ${size}px;
                     height: ${size}px;
-                    background: radial-gradient(circle at 40% 40%, ${color}, rgba(218,165,32,0.4));
-                    box-shadow: 0 0 ${size * 3}px ${size}px rgba(255,215,0,0.5),
-                                0 0 ${size * 1.5}px rgba(255,255,200,0.7);
-                    animation-name: ${useAltAnimation ? 'particleFloatUpAlt' : 'particleFloatUp'};
+                    background: radial-gradient(circle, ${color}, rgba(218,165,32,0.3));
+                    box-shadow: 0 0 ${size * 2}px ${color};
                     animation-duration: ${duration}s;
-                    --drift-x: ${driftX}px;
                 `;
-
-                particlesContainer.appendChild(particle);
-
-                // Remove after animation completes
-                setTimeout(() => {
-                    if (particle.parentNode) {
-                        particle.remove();
-                    }
-                }, duration * 1000 + 100);
+                particlesContainer.appendChild(p);
+                setTimeout(() => p.remove(), duration * 1000);
             }
 
-            function getTicketWorldPosition() {
-                const ticketRect = ticket.getBoundingClientRect();
-                return {
-                    left: ticketRect.left,
-                    top: ticketRect.top,
-                    width: ticketRect.width,
-                    height: ticketRect.height,
-                    centerX: ticketRect.left + ticketRect.width / 2,
-                    centerY: ticketRect.top + ticketRect.height / 2,
-                };
-            }
-
-            function emitParticles(count) {
-                const pos = getTicketWorldPosition();
+            function triggerBurst(count, x, y) {
                 for (let i = 0; i < count; i++) {
-                    // Random position along the ticket surface and edges
-                    const edgeBias = Math.random();
-                    let px, py;
-                    if (edgeBias < 0.5) {
-                        // From the top edge area
-                        px = pos.left + Math.random() * pos.width;
-                        py = pos.top + Math.random() * 15;
-                    } else if (edgeBias < 0.8) {
-                        // From the main surface
-                        px = pos.left + Math.random() * pos.width;
-                        py = pos.top + Math.random() * pos.height * 0.6;
-                    } else {
-                        // From the bottom edge
-                        px = pos.left + Math.random() * pos.width;
-                        py = pos.top + pos.height - Math.random() * 15;
-                    }
-                    createParticle(px, py);
+                    const angle = Math.random() * Math.PI * 2;
+                    const dist = Math.random() * 80;
+                    createParticle(x + Math.cos(angle) * dist, y + Math.sin(angle) * dist);
                 }
             }
 
-            // Emit particles periodically
-            function particleLoop() {
-                const count = Math.floor(Math.random() * 4) + 1; // 1-4 particles per burst
-                emitParticles(count);
-                const nextDelay = Math.random() * 600 + 300; // 300-900ms between bursts
-                setTimeout(particleLoop, nextDelay);
-            }
+            // Ambient background particles
+            setInterval(() => {
+                const rect = ticket.getBoundingClientRect();
+                const px = rect.left + Math.random() * rect.width;
+                const py = rect.top + Math.random() * rect.height;
+                createParticle(px, py);
+            }, 600);
 
-            // Start particle loop
-            setTimeout(particleLoop, 500);
-
-            // Occasional bigger burst
-            function bigBurst() {
-                emitParticles(8 + Math.floor(Math.random() * 10));
-                setTimeout(bigBurst, Math.random() * 5000 + 4000); // Every 4-9 seconds
-            }
-            setTimeout(bigBurst, 2000);
-
-            // ─────────────────────────────────────
-            // CLICK/TAP SPARKLE BURST
-            // ─────────────────────────────────────
-            function handleClick(e) {
-                const pos = getTicketWorldPosition();
-                const clickX = e.clientX;
-                const clickY = e.clientY;
-                // Check if click is near the ticket
-                const nearTicket =
-                    clickX >= pos.left - 40 &&
-                    clickX <= pos.left + pos.width + 40 &&
-                    clickY >= pos.top - 40 &&
-                    clickY <= pos.top + pos.height + 40;
-                if (nearTicket) {
-                    // Burst of particles at click position
-                    for (let i = 0; i < 20; i++) {
-                        const angle = Math.random() * Math.PI * 2;
-                        const dist = Math.random() * 60;
-                        const px = clickX + Math.cos(angle) * dist;
-                        const py = clickY + Math.sin(angle) * dist;
-                        createParticle(px, py);
-                    }
-                    // Brief intensify shimmer
-                    const shimmerEl = ticket.querySelector('.shimmer');
-                    if (shimmerEl) {
-                        shimmerEl.style.opacity = '1';
-                        shimmerEl.style.transition = 'opacity 0.1s';
-                        setTimeout(() => {
-                            shimmerEl.style.opacity = '0.8';
-                            shimmerEl.style.transition = 'opacity 0.6s';
-                        }, 150);
-                    }
-                }
-            }
-
-            document.addEventListener('click', handleClick);
-            document.addEventListener('touchstart', (e) => {
-                if (e.touches && e.touches.length === 1) {
-                    // Small delay to not interfere with rotation touch handling
-                    setTimeout(() => {
-                        if (isMouseOverScene) {
-                            handleClick({
-                                clientX: e.touches[0].clientX, clientY: e.touches[0]
-                                    .clientY
-                            });
-                        }
-                    }, 100);
-                }
-            }, { passive: true });
-
-            
-
-            // ─────────────────────────────────────
-            // INITIALIZATION LOG
-            // ─────────────────────────────────────
-            console.log('%c✨ %cMonka Golden Ticket %cReady %c✨',
-                'font-size:18px;', 'font-size:16px;color:#FFD700;font-weight:bold;',
-                'font-size:14px;color:#DAA520;', 'font-size:18px;');
-            console.log('%c🎫 Hover over the ticket for 3D magic!',
-                'color:#F0C040;font-style:italic;');
-            console.log('%c🪙 Click the ticket to inscribe your name! Click a coin to view its robot.',
-                'color:#FFEC8B;font-style:italic;');
-
-            // ─────────────────────────────────────
-            // HANDLE WINDOW RESIZE
-            // ─────────────────────────────────────
-            window.addEventListener('resize', () => {
-                // Reset rotation on resize to avoid weird states
-                if (!isMouseOverScene) {
-                    rotator.style.transform = '';
-                    rotator.classList.add('swaying');
-                }
-            });
-
-
-            // ─────────────────────────────────────
-            // COIN MATH ANIMATIONS
-            // ─────────────────────────────────────
-            const coin1Bg = document.querySelector('.coin-curiosity .coin-bg');
-            const coin2Bg = document.querySelector('.coin-ingenuity .coin-bg');
-            const coin3Bg = document.querySelector('.coin-perseverance .coin-bg');
-            let animTime = 0;
-
-            function animateCoins(timestamp) {
-                animTime = timestamp / 1000;
-
-                // Continuous spin around Z-axis for background only
-                const speed = 0.3; // rotations per second multiplier roughly
-                const rot1 = animTime * speed * 45;
-                const rot2 = animTime * speed * -55;
-                const rot3 = animTime * speed * 60;
-
-                if (coin1Bg) coin1Bg.style.transform = `rotateZ(${rot1.toFixed(1)}deg)`;
-                if (coin2Bg) coin2Bg.style.transform = `rotateZ(${rot2.toFixed(1)}deg)`;
-                if (coin3Bg) coin3Bg.style.transform = `rotateZ(${rot3.toFixed(1)}deg)`;
-
-                requestAnimationFrame(animateCoins);
-            }
-
-            requestAnimationFrame(animateCoins);
-
-            // ─────────────────────────────────────
-            // NAME PROMPT MODAL
-            // ─────────────────────────────────────
-            const modalOverlay = document.getElementById('nameModal');
+            // Name Personalization Modal
+            const nameModal = document.getElementById('nameModal');
+            const openNameModalBtn = document.getElementById('openNameModalBtn');
+            const modalClose = document.getElementById('modalClose');
             const nameInput = document.getElementById('nameInput');
             const modalSubmit = document.getElementById('modalSubmit');
-            const modalClose = document.getElementById('modalClose');
-            const nameCuriosity = document.getElementById('nameCuriosity');
-            const nameIngenuity = document.getElementById('nameIngenuity');
-            const namePerseverance = document.getElementById('namePerseverance');
-            const ticketTitle = document.querySelector('.ticket-title');
-            let userName = '';
+            const ticketStudentName = document.getElementById('ticketStudentName');
+            const coinNameDisplays = document.querySelectorAll('.coin-name-display');
+
+            let currentStudentName = localStorage.getItem('monka_student_name') || '';
+
+            function updateStudentName(name) {
+                const finalName = name.trim() || 'Space Explorer';
+                currentStudentName = finalName;
+                localStorage.setItem('monka_student_name', finalName);
+
+                ticketStudentName.textContent = `✦ for ${finalName} ✦`;
+                coinNameDisplays.forEach(el => el.textContent = finalName);
+            }
+
+            if (currentStudentName) {
+                updateStudentName(currentStudentName);
+            }
 
             function openModal() {
-                nameInput.value = userName || '';
-                modalOverlay.classList.add('active');
-                setTimeout(() => nameInput.focus(), 400);
+                nameInput.value = currentStudentName;
+                nameModal.classList.add('active');
+                setTimeout(() => nameInput.focus(), 300);
             }
 
             function closeModal() {
-                modalOverlay.classList.remove('active');
+                nameModal.classList.remove('active');
             }
 
-            function applyName(name) {
-                const placeholders = ["Space Traveler", "Explorer", "Willy Wonka", "Star Gazer", "Astronaut"];
-                let finalName = name.trim();
-                if (!finalName) {
-                    finalName = placeholders[Math.floor(Math.random() * placeholders.length)];
-                }
-                const displayName = finalName;
-                userName = finalName;
-                nameCuriosity.textContent = displayName;
-                nameIngenuity.textContent = displayName;
-                namePerseverance.textContent = displayName;
-                if (userName) {
-                    ticketTitle.innerHTML = `Golden Ticket<br><span style="font-size:18px;font-weight:400;letter-spacing:2px;color:#5C3010;display:block;margin-top:2px;">for ${userName}</span>`;
-                } else {
-                    ticketTitle.textContent = 'Golden Ticket';
-                }
-            }
-
-            function handleNameSubmit() {
-                const name = nameInput.value.trim();
-                applyName(name);
-                closeModal();
-                // Celebrate with particles
-                const pos = getTicketWorldPosition();
-                const cx = pos.centerX;
-                const cy = pos.centerY;
-                for (let i = 0; i < 30; i++) {
-                    const angle = Math.random() * Math.PI * 2;
-                    const dist = Math.random() * 80;
-                    createParticle(cx + Math.cos(angle) * dist, cy + Math.sin(angle) * dist);
-                }
-            }
-
-            // Click ticket — open modal (old sparkle also fires via document listener)
-            ticket.addEventListener('click', function (e) {
-                openModal();
+            openNameModalBtn.addEventListener('click', openModal);
+            ticket.addEventListener('click', openModal);
+            modalClose.addEventListener('click', closeModal);
+            nameModal.addEventListener('click', (e) => {
+                if (e.target === nameModal) closeModal();
             });
 
-            // Robot Overlay Logic
+            modalSubmit.addEventListener('click', () => {
+                updateStudentName(nameInput.value);
+                closeModal();
+                const rect = ticket.getBoundingClientRect();
+                triggerBurst(30, rect.left + rect.width / 2, rect.top + rect.height / 2);
+            });
+
+            nameInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    updateStudentName(nameInput.value);
+                    closeModal();
+                    const rect = ticket.getBoundingClientRect();
+                    triggerBurst(30, rect.left + rect.width / 2, rect.top + rect.height / 2);
+                }
+            });
+
+            // Activate Ticket Click Handler
+            const activateBtn = document.getElementById('activateBtn');
+            activateBtn.addEventListener('click', (e) => {
+                const rect = activateBtn.getBoundingClientRect();
+                triggerBurst(40, rect.left + rect.width / 2, rect.top + rect.height / 2);
+            });
+
+            // Robot Overlay Lightbox
             const robotOverlay = document.getElementById('robotOverlay');
             const robotImage = document.getElementById('robotImage');
-
-            robotOverlay.addEventListener('click', function() {
-                robotOverlay.classList.remove('active');
-                ticket.style.opacity = '1';
-                clearTimeout(robotTimeout);
-            });
-
             const robotTitle = document.getElementById('robotTitle');
-            let robotTimeout;
+            const robotDesc = document.getElementById('robotDesc');
+            const robotCloseBtn = document.getElementById('robotCloseBtn');
 
             const robotData = {
-                curiosity: { src: 'public/assets/CuriosityRoverLanding.png', title: 'CURIOSITY ROVER' },
-                ingenuity: { src: 'public/assets/IgenuityDrone.png', title: 'INGENUITY DRONE' },
-                perseverance: { src: 'public/assets/PerseverenceRover.png', title: 'PERSEVERENCE ROVER' }
+                curiosity: {
+                    src: 'public/assets/CuriosityRoverLanding.png',
+                    title: 'CURIOSITY ROVER',
+                    desc: 'NASA\'s nuclear-powered mobile laboratory operating inside Gale Crater on Mars since 2012.'
+                },
+                ingenuity: {
+                    src: 'public/assets/IgenuityDrone.png',
+                    title: 'INGENUITY HELICOPTER DRONE',
+                    desc: 'The historic first aircraft to perform powered, controlled flight on another planet.'
+                },
+                perseverance: {
+                    src: 'public/assets/PerseverenceRover.png',
+                    title: 'PERSEVERANCE ROVER',
+                    desc: 'Searching for signs of ancient microbial life and collecting Martian rock core samples.'
+                }
             };
 
-            // Click coins to open ephemeral robot image
-            document.querySelectorAll('.coin').forEach(coin => {
-                coin.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    const coinId = this.getAttribute('data-coin');
-                    if (robotData[coinId]) {
-                        
-                        // Hide golden ticket to see full image
-                        ticket.style.opacity = '0';
-                        ticket.style.transition = 'opacity 0.3s ease';
-
-                        // Reset animations
-                        robotOverlay.classList.remove('active');
-                        clearTimeout(robotTimeout);
-                        
-                        // Force reflow
-                        void robotOverlay.offsetWidth;
-
-                        robotImage.src = robotData[coinId].src;
-                        robotTitle.textContent = robotData[coinId].title;
+            document.querySelectorAll('.coin-wrapper').forEach(wrapper => {
+                wrapper.addEventListener('click', () => {
+                    const coinKey = wrapper.getAttribute('data-coin');
+                    const data = robotData[coinKey];
+                    if (data) {
+                        robotImage.src = data.src;
+                        robotTitle.textContent = data.title;
+                        robotDesc.textContent = data.desc;
                         robotOverlay.classList.add('active');
-
-                        // Automatically remove after 7 seconds
-                        robotTimeout = setTimeout(() => {
-                            robotOverlay.classList.remove('active');
-                            ticket.style.opacity = '1';
-                        }, 7000);
+                        const rect = wrapper.getBoundingClientRect();
+                        triggerBurst(20, rect.left + rect.width / 2, rect.top + rect.height / 2);
                     }
                 });
             });
 
-            modalSubmit.addEventListener('click', handleNameSubmit);
-            nameInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') handleNameSubmit();
-            });
-            modalClose.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) closeModal();
+            robotCloseBtn.addEventListener('click', () => robotOverlay.classList.remove('active'));
+            robotOverlay.addEventListener('click', (e) => {
+                if (e.target === robotOverlay) robotOverlay.classList.remove('active');
             });
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                if (e.key === 'Escape') {
                     closeModal();
+                    robotOverlay.classList.remove('active');
                 }
             });
 
+            // Coin background rotational spin animation
+            let animTime = 0;
+            function animateCoinBgs(timestamp) {
+                animTime = timestamp / 1000;
+                const coins = document.querySelectorAll('.coin-bg');
+                coins.forEach((c, idx) => {
+                    const speed = (idx + 1) * 20;
+                    c.style.transform = `rotateZ(${(animTime * speed).toFixed(1)}deg)`;
+                });
+                requestAnimationFrame(animateCoinBgs);
+            }
+            requestAnimationFrame(animateCoinBgs);
+
         })();
     </script>
-
 </body>
 
 </html>
