@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moe’s Golden Ticket | Created by MoeMentum for MyPaulBot</title>
     <link rel="icon" href="public/favicon.ico" type="image/x-icon">
-    <meta name="description" sonalize your ticket, meet three remarkable Mars explorers,
-        content="Your Golden Ticket to Robots, Code, and Engineering. Per and begin your MyPaulBot mission.">
+    <meta name="description"
+        content="Your Golden Ticket to Robots, Code, and Engineering. Personalize your ticket, click the medallions to meet three remarkable Mars explorers and animal companions.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,6 @@
             --bg-purple: #160815;
             --surface-glass: rgba(26, 11, 22, 0.78);
             --surface-border: rgba(240, 192, 64, 0.35);
-            --accent-cyan: #38bdf8;
             --ticket-width: 380px;
             --ticket-height: 235px;
         }
@@ -60,6 +59,8 @@
             color: #FEF8E0;
             overflow-x: hidden;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Ambient glowing stars */
@@ -82,33 +83,23 @@
         }
 
         @keyframes bgSparkle {
-
-            0%,
-            100% {
-                opacity: 0.45;
-            }
-
-            50% {
-                opacity: 0.95;
-            }
+            0%, 100% { opacity: 0.45; }
+            50% { opacity: 0.95; }
         }
 
-        /* ==================== HEADER & NAV ==================== */
+        /* Navbar */
         .navbar {
-            position: sticky;
-            top: 0;
-            left: 0;
             width: 100%;
-            z-index: 100;
-            background: rgba(14, 5, 12, 0.88);
+            background: rgba(14, 5, 12, 0.85);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(240, 192, 64, 0.25);
-            padding: 12px 32px;
+            padding: 16px 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
+            z-index: 100;
         }
 
         .nav-brand {
@@ -153,27 +144,6 @@
             font-weight: 400;
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: rgba(254, 248, 224, 0.82);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: color 0.3s, text-shadow 0.3s;
-        }
-
-        .nav-link:hover {
-            color: var(--gold-mid);
-            text-shadow: 0 0 10px rgba(240, 192, 64, 0.5);
-        }
-
         .nav-ctas {
             display: flex;
             align-items: center;
@@ -183,13 +153,12 @@
         .btn-nav-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
             padding: 8px 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(240, 192, 64, 0.4);
             border-radius: 50px;
             color: #FEF8E0;
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 500;
             text-decoration: none;
             transition: all 0.3s ease;
@@ -208,7 +177,6 @@
         .btn-nav-cta {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             padding: 9px 20px;
             background: linear-gradient(135deg, #DAA520, #F0C848, #DAA520);
             background-size: 200% 100%;
@@ -216,7 +184,7 @@
             border-radius: 50px;
             color: var(--chocolate);
             font-family: 'Outfit', sans-serif;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-decoration: none;
             letter-spacing: 0.5px;
@@ -231,26 +199,24 @@
             transform: translateY(-2px);
         }
 
-        /* ==================== HERO SECTION ==================== */
+        /* Hero */
         .hero {
-            position: relative;
-            z-index: 1;
-            padding: 44px 24px 20px;
-            max-width: 1050px;
+            padding: 44px 24px 10px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            z-index: 1;
         }
 
         .badge-pill {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             padding: 6px 18px;
             border-radius: 50px;
             background: rgba(240, 192, 64, 0.12);
             border: 1px solid rgba(240, 192, 64, 0.45);
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 700;
             letter-spacing: 2px;
             color: #FBE9A0;
             text-transform: uppercase;
@@ -260,155 +226,51 @@
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 5.5vw, 56px);
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 900;
-            line-height: 1.15;
-            letter-spacing: 0.5px;
-            margin-bottom: 24px;
-            background: linear-gradient(180deg, #FFFFFF 0%, #FEF8E0 25%, #F0C040 65%, #DAA520 100%);
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FEF8E0 30%, #F0C040 70%, #DAA520 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.7));
-        }
-
-        /* Highlighted 3 Traits Quote Card */
-        .hero-quote-card {
-            background: linear-gradient(135deg, rgba(38, 16, 30, 0.75) 0%, rgba(20, 8, 18, 0.85) 100%);
-            border: 1px solid rgba(240, 192, 64, 0.4);
-            border-radius: 16px;
-            padding: 20px 28px;
-            max-width: 880px;
-            margin: 0 auto 28px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 240, 0.15);
-            backdrop-filter: blur(10px);
-        }
-
-        .quote-intro {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 16px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold-light);
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .traits-quote-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-            text-align: center;
-        }
-
-        .trait-quote-pill {
-            background: rgba(240, 192, 64, 0.08);
-            border: 1px solid rgba(240, 192, 64, 0.25);
-            border-radius: 10px;
-            padding: 10px 14px;
-            font-size: 14px;
-            color: #FEF8E0;
-            transition: all 0.3s ease;
-        }
-
-        .trait-quote-pill:hover {
-            background: rgba(240, 192, 64, 0.18);
-            border-color: rgba(240, 192, 64, 0.6);
-            transform: translateY(-2px);
-        }
-
-        .trait-quote-pill .trait-name {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--gold-mid);
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
         }
 
         .hero-subtitle {
-            font-size: clamp(16px, 2.2vw, 19px);
-            color: rgba(254, 248, 224, 0.9);
-            max-width: 760px;
-            margin: 0 auto 32px;
+            font-size: clamp(15px, 2vw, 17px);
+            color: rgba(254, 248, 224, 0.85);
+            max-width: 600px;
+            margin: 0 auto;
             font-weight: 300;
         }
 
-        /* 3 Steps Bar */
-        .hero-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-            max-width: 900px;
-            margin: 0 auto 10px;
-        }
-
-        .step-card {
-            background: rgba(26, 11, 22, 0.65);
-            border: 1px solid rgba(240, 192, 64, 0.25);
-            border-radius: 14px;
-            padding: 16px 18px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            text-align: left;
-            backdrop-filter: blur(8px);
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            border-color: rgba(240, 192, 64, 0.65);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .step-num {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #DAA520, #F0C848);
-            color: #3B1F0B;
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
-            font-size: 17px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        .step-text h4 {
-            font-size: 15px;
-            font-weight: 700;
-            color: #FEF8E0;
-            margin-bottom: 2px;
-        }
-
-        .step-text p {
-            font-size: 12.5px;
-            color: rgba(254, 248, 224, 0.7);
-            line-height: 1.35;
-        }
-
-        /* ==================== TICKET STAGE & INTERACTION ==================== */
-        .ticket-section {
-            position: relative;
-            z-index: 1;
-            padding: 24px 16px 40px;
+        /* Main Content wrapper */
+        .main-content {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ticket Stage */
+        .ticket-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 16px;
         }
 
         .scene {
-            position: relative;
-            z-index: 1;
             perspective: 1200px;
-            perspective-origin: center center;
             width: 100%;
             max-width: 520px;
-            height: 340px;
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 15px;
         }
 
         .rotator {
@@ -426,23 +288,10 @@
         }
 
         @keyframes gentleSway {
-
-            0%,
-            100% {
-                transform: rotateY(-3deg) rotateX(2deg);
-            }
-
-            25% {
-                transform: rotateY(3deg) rotateX(-1.5deg);
-            }
-
-            50% {
-                transform: rotateY(1.5deg) rotateX(-2deg);
-            }
-
-            75% {
-                transform: rotateY(-2.5deg) rotateX(1deg);
-            }
+            0%, 100% { transform: rotateY(-3deg) rotateX(2deg); }
+            25% { transform: rotateY(3deg) rotateX(-1.5deg); }
+            50% { transform: rotateY(1.5deg) rotateX(-2deg); }
+            75% { transform: rotateY(-2.5deg) rotateX(1deg); }
         }
 
         .ticket {
@@ -490,13 +339,8 @@
             border-radius: 3px;
         }
 
-        .ticket::before {
-            left: 6px;
-        }
-
-        .ticket::after {
-            right: 6px;
-        }
+        .ticket::before { left: 6px; }
+        .ticket::after { right: 6px; }
 
         .shimmer {
             position: absolute;
@@ -513,21 +357,10 @@
         }
 
         @keyframes shimmerSweep {
-            0% {
-                background-position: -250% 0;
-            }
-
-            40% {
-                background-position: -250% 0;
-            }
-
-            60% {
-                background-position: 300% 0;
-            }
-
-            100% {
-                background-position: 300% 0;
-            }
+            0% { background-position: -250% 0; }
+            40% { background-position: -250% 0; }
+            60% { background-position: 300% 0; }
+            100% { background-position: 300% 0; }
         }
 
         .sparkle-spot {
@@ -542,45 +375,16 @@
             animation: sparkleFlash 5s ease-in-out infinite;
         }
 
-        .sparkle-spot:nth-child(1) {
-            top: 8%;
-            left: 15%;
-            animation-delay: 0s;
-        }
-
-        .sparkle-spot:nth-child(2) {
-            top: 12%;
-            right: 20%;
-            animation-delay: 1.7s;
-        }
-
-        .sparkle-spot:nth-child(3) {
-            bottom: 20%;
-            left: 25%;
-            animation-delay: 3.2s;
-        }
+        .sparkle-spot:nth-child(1) { top: 8%; left: 15%; animation-delay: 0s; }
+        .sparkle-spot:nth-child(2) { top: 12%; right: 20%; animation-delay: 1.7s; }
+        .sparkle-spot:nth-child(3) { bottom: 20%; left: 25%; animation-delay: 3.2s; }
 
         @keyframes sparkleFlash {
-
-            0%,
-            90%,
-            100% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-
-            92% {
-                opacity: 1;
-                transform: scale(1.5);
-            }
-
-            96% {
-                opacity: 0.4;
-                transform: scale(0.7);
-            }
+            0%, 90%, 100% { opacity: 0; transform: scale(0.3); }
+            92% { opacity: 1; transform: scale(1.5); }
+            96% { opacity: 0.4; transform: scale(0.7); }
         }
 
-        /* Ticket Content */
         .ticket-content {
             position: relative;
             z-index: 3;
@@ -614,7 +418,11 @@
             background: linear-gradient(180deg, #3B1F0B 0%, #5C3010 50%, #3B1F0B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);
+            text-shadow:
+                0 -1px 1px rgba(0, 0, 0, 0.5),
+                0 1px 1px rgba(255, 255, 255, 0.8),
+                0 2px 4px rgba(0, 0, 0, 0.2),
+                0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .ticket-brand-sub {
@@ -709,7 +517,6 @@
             filter: blur(1px);
         }
 
-        /* Action Buttons Below Ticket */
         .ticket-actions {
             display: flex;
             flex-wrap: wrap;
@@ -727,7 +534,7 @@
             padding: 13px 30px;
             border-radius: 50px;
             font-family: 'Outfit', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -765,102 +572,64 @@
         }
 
         @keyframes pulseGlow {
-
-            0%,
-            100% {
-                box-shadow: 0 0 18px rgba(240, 192, 64, 0.4);
-            }
-
-            50% {
-                box-shadow: 0 0 35px rgba(240, 192, 64, 0.8);
-            }
+            0%, 100% { box-shadow: 0 0 18px rgba(240, 192, 64, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(240, 192, 64, 0.8); }
         }
 
-        /* ==================== MEET YOUR THREE EXPLORERS ==================== */
-        .coins-section {
-            max-width: 1100px;
-            margin: 50px auto 30px;
-            padding: 0 24px;
+        /* Coins Row direct under Ticket Stage */
+        .coins-container {
+            margin-top: 50px;
             text-align: center;
+            width: 100%;
+            max-width: 700px;
+            z-index: 10;
+            padding: 0 16px 40px;
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(28px, 4vw, 36px);
-            font-weight: 800;
-            color: #FEF8E0;
-            margin-bottom: 10px;
-            background: linear-gradient(180deg, #FFFFFF, #F0C040);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .coins-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(254, 248, 224, 0.6);
+            margin-bottom: 24px;
         }
 
-        .section-desc {
-            font-size: 16px;
-            color: rgba(254, 248, 224, 0.8);
-            max-width: 680px;
-            margin: 0 auto 36px;
-        }
-
-        .explorers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
-            justify-content: center;
-        }
-
-        .explorer-card {
-            background: linear-gradient(165deg, rgba(32, 14, 27, 0.8) 0%, rgba(18, 7, 16, 0.9) 100%);
-            border: 1px solid rgba(240, 192, 64, 0.3);
-            border-radius: 20px;
-            padding: 28px 24px;
+        .coins-row {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            backdrop-filter: blur(12px);
-            transition: all 0.35s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .explorer-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
-            opacity: 0.6;
-        }
-
-        .explorer-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(240, 192, 64, 0.7);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(240, 192, 64, 0.25);
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
         }
 
         .coin-wrapper {
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .coin-wrapper:hover {
-            transform: scale(1.08);
+            transform: translateY(-8px);
         }
 
         .coin {
             position: relative;
-            width: 130px;
-            height: 130px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.6), 0 0 22px rgba(240, 192, 64, 0.35);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 20px rgba(240, 192, 64, 0.3);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .coin-wrapper:hover .coin {
+            transform: scale(1.08);
+            z-index: 20;
         }
 
         .coin-bg {
@@ -912,188 +681,21 @@
             z-index: 2;
         }
 
-        .explorer-trait-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--gold-mid);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .explorer-trait-tagline {
-            font-size: 14.5px;
-            font-weight: 600;
-            color: #FEF8E0;
-            margin-bottom: 12px;
-            line-height: 1.35;
-        }
-
-        .explorer-story {
-            font-size: 13.5px;
-            color: rgba(254, 248, 224, 0.75);
-            line-height: 1.5;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .explorer-meta-grid {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(240, 192, 64, 0.2);
-            border-radius: 12px;
-            padding: 12px 14px;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            text-align: left;
-            font-size: 13px;
-        }
-
-        .meta-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .meta-label {
-            color: rgba(254, 248, 224, 0.6);
+        .coin-label {
             font-size: 12px;
-        }
-
-        .meta-value {
-            color: var(--gold-light);
-            font-weight: 600;
-        }
-
-        .btn-inspect-rover {
-            width: 100%;
-            padding: 10px 18px;
-            background: rgba(240, 192, 64, 0.12);
-            border: 1px solid rgba(240, 192, 64, 0.4);
-            border-radius: 50px;
-            color: #FBE9A0;
-            font-family: 'Outfit', sans-serif;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-inspect-rover:hover {
-            background: rgba(240, 192, 64, 0.3);
-            border-color: #F0C848;
-            color: #FFFFFF;
-            transform: translateY(-2px);
-        }
-
-        /* ==================== INSIDE THE MYPAULBOT KIT ==================== */
-        .kit-section {
-            max-width: 1100px;
-            margin: 60px auto 40px;
-            padding: 0 24px;
-        }
-
-        .kit-card {
-            background: linear-gradient(145deg, rgba(30, 13, 25, 0.88) 0%, rgba(16, 6, 14, 0.95) 100%);
-            border: 1.5px solid rgba(240, 192, 64, 0.4);
-            border-radius: 24px;
-            padding: 44px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 240, 0.15);
-            backdrop-filter: blur(14px);
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 44px;
-            align-items: center;
-        }
-
-        .kit-content h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--gold-light);
-            margin-bottom: 8px;
-            line-height: 1.2;
-        }
-
-        .kit-highlight {
-            font-size: 17px;
-            font-weight: 600;
-            color: #F0C040;
-            margin-bottom: 24px;
-            line-height: 1.4;
-        }
-
-        .robots-list {
-            list-style: none;
-            margin-bottom: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .robot-item {
-            background: rgba(0, 0, 0, 0.35);
-            border: 1px solid rgba(240, 192, 64, 0.2);
-            border-radius: 12px;
-            padding: 12px 18px;
-            font-size: 14.5px;
-            color: #FEF8E0;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .robot-item-icon {
-            font-size: 18px;
-            color: var(--gold-mid);
-            margin-top: 1px;
-        }
-
-        .robot-item strong {
-            color: var(--gold-light);
             font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            transition: color 0.3s, text-shadow 0.3s;
         }
 
-        .kit-summary-text {
-            font-size: 14.5px;
-            color: rgba(254, 248, 224, 0.85);
-            line-height: 1.6;
-            margin-bottom: 28px;
+        .coin-wrapper:hover .coin-label {
+            color: #FFFFFF;
+            text-shadow: 0 0 8px rgba(240, 192, 64, 0.6);
         }
 
-        .kit-media {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .kit-preview-wrapper {
-            position: relative;
-            border-radius: 16px;
-            padding: 10px;
-            background: linear-gradient(135deg, rgba(240, 192, 64, 0.3), rgba(218, 165, 32, 0.1));
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(240, 192, 64, 0.25);
-        }
-
-        .kit-preview-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .kit-preview-wrapper:hover .kit-preview-img {
-            transform: scale(1.03);
-        }
-
-        /* ==================== LIGHTBOX & MODALS ==================== */
+        /* Name Modal styling */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -1206,21 +808,21 @@
             box-shadow: 0 0 20px rgba(240, 192, 64, 0.4);
         }
 
-        /* Robot Overlay Lightbox */
+        /* Robot overlay styling (lightbox) */
         .robot-overlay {
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(5, 2, 5, 0.94);
-            backdrop-filter: blur(18px);
+            background: rgba(8, 2, 8, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.4s ease;
-            padding: 24px;
+            padding: 20px;
         }
 
         .robot-overlay.active {
@@ -1228,71 +830,137 @@
             pointer-events: auto;
         }
 
+        .robot-modal-card {
+            background: linear-gradient(145deg, rgba(38, 16, 30, 0.92) 0%, rgba(20, 8, 18, 0.96) 100%);
+            border: 2px solid rgba(240, 192, 64, 0.55);
+            border-radius: 24px;
+            max-width: 820px;
+            width: 100%;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(240, 192, 64, 0.25);
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+
+        .robot-overlay.active .robot-modal-card {
+            transform: scale(1) translateY(0);
+        }
+
         .robot-close-btn {
             position: absolute;
-            top: 24px;
-            right: 24px;
-            background: rgba(240, 192, 64, 0.2);
-            border: 1px solid rgba(240, 192, 64, 0.6);
+            top: 18px;
+            right: 18px;
+            background: rgba(240, 192, 64, 0.15);
+            border: 1px solid rgba(240, 192, 64, 0.45);
             color: #FEF8E0;
-            padding: 10px 22px;
+            padding: 8px 18px;
             border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 700;
             cursor: pointer;
-            z-index: 100;
-            transition: background 0.3s, transform 0.2s;
+            z-index: 10;
+            transition: all 0.3s;
         }
 
         .robot-close-btn:hover {
-            background: rgba(240, 192, 64, 0.5);
+            background: rgba(240, 192, 64, 0.45);
+            color: #FFFFFF;
             transform: translateY(-1px);
         }
 
-        .robot-image-container {
+        .robot-modal-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            min-height: 400px;
+        }
+
+        .robot-modal-media {
             position: relative;
-            max-width: 85vw;
-            max-height: 60vh;
+            background: rgba(0, 0, 0, 0.4);
+            border-right: 1px solid rgba(240, 192, 64, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 24px;
         }
 
         .robot-image {
             max-width: 100%;
-            max-height: 58vh;
+            max-height: 380px;
             object-fit: contain;
-            border-radius: 16px;
-            box-shadow: 0 0 60px rgba(240, 192, 64, 0.35);
+            border-radius: 12px;
+            filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.5));
+            transition: transform 0.5s ease;
         }
 
-        .robot-info-card {
-            margin-top: 20px;
-            text-align: center;
-            max-width: 650px;
-            background: rgba(26, 11, 22, 0.7);
-            border: 1px solid rgba(240, 192, 64, 0.3);
-            border-radius: 16px;
-            padding: 20px 24px;
+        .robot-modal-card:hover .robot-image {
+            transform: scale(1.03);
+        }
+
+        .robot-modal-info {
+            padding: 44px 36px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .robot-modal-badge {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 4px 12px;
+            border-radius: 50px;
+            background: rgba(240, 192, 64, 0.15);
+            border: 1px solid rgba(240, 192, 64, 0.4);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            margin-bottom: 12px;
         }
 
         .robot-title {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
-            color: #F0C848;
-            letter-spacing: 3px;
+            color: #FBE9A0;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 6px;
+            margin-bottom: 20px;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #FFFFFF, var(--gold-mid));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .robot-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(254, 248, 224, 0.1);
+            font-size: 14px;
+        }
+
+        .detail-label {
+            color: rgba(254, 248, 224, 0.6);
+        }
+
+        .detail-value {
+            color: var(--gold-light);
+            font-weight: 700;
         }
 
         .robot-desc {
-            font-size: 15px;
+            font-size: 14.5px;
             color: rgba(254, 248, 224, 0.85);
-            line-height: 1.5;
+            line-height: 1.6;
+            margin-top: 20px;
         }
 
-        /* Particle Canvas/Container */
+        /* Particle Canvas */
         .particles-container {
             position: fixed;
             inset: 0;
@@ -1309,36 +977,24 @@
         }
 
         @keyframes particleFloatUp {
-            0% {
-                transform: translateY(0) scale(1);
-                opacity: 0.9;
-            }
-
-            50% {
-                opacity: 0.6;
-                transform: translateY(-70px) scale(1.3);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-160px) scale(0.1);
-            }
+            0% { transform: translateY(0) scale(1); opacity: 0.9; }
+            50% { opacity: 0.6; transform: translateY(-70px) scale(1.3); }
+            100% { opacity: 0; transform: translateY(-160px) scale(0.1); }
         }
 
-        /* ==================== FOOTER ==================== */
+        /* Footer */
         .footer {
             border-top: 1px solid rgba(240, 192, 64, 0.25);
             background: rgba(8, 3, 7, 0.96);
-            padding: 44px 24px 34px;
-            margin-top: 60px;
+            padding: 36px 24px;
+            margin-top: auto;
             text-align: center;
-            position: relative;
             z-index: 10;
         }
 
         .footer-brand {
             font-family: 'Playfair Display', serif;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             color: var(--gold-mid);
             margin-bottom: 4px;
@@ -1346,19 +1002,9 @@
         }
 
         .footer-sub {
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(254, 248, 224, 0.65);
-            margin-bottom: 20px;
-        }
-
-        .footer-recurring-quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 16px;
-            font-style: italic;
-            color: var(--gold-light);
-            max-width: 600px;
-            margin: 0 auto 24px;
-            letter-spacing: 0.5px;
+            margin-bottom: 16px;
         }
 
         .footer-links {
@@ -1366,14 +1012,14 @@
             justify-content: center;
             gap: 24px;
             list-style: none;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
         }
 
         .footer-links a {
             color: rgba(254, 248, 224, 0.75);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px;
             transition: color 0.3s;
         }
 
@@ -1382,28 +1028,35 @@
         }
 
         .footer-copyright {
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(254, 248, 224, 0.45);
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 900px) {
-            .kit-card {
-                grid-template-columns: 1fr;
-                padding: 30px;
-                gap: 30px;
-            }
-
+        @media (max-width: 768px) {
             .navbar {
                 padding: 12px 18px;
             }
-
-            .nav-links {
-                display: none;
-            }
-
             .btn-nav-secondary {
                 display: none;
+            }
+            .robot-modal-content {
+                grid-template-columns: 1fr;
+            }
+            .robot-modal-media {
+                border-right: none;
+                border-bottom: 1px solid rgba(240, 192, 64, 0.2);
+                padding: 30px;
+            }
+            .robot-image {
+                max-height: 250px;
+            }
+            .robot-modal-info {
+                padding: 30px 24px;
+            }
+            .robot-title {
+                font-size: 26px;
+                margin-bottom: 16px;
             }
         }
 
@@ -1426,12 +1079,8 @@
                 font-size: 9.5px;
             }
 
-            .explorers-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-quote-card {
-                padding: 16px;
+            .coins-row {
+                gap: 20px;
             }
 
             .btn-action {
@@ -1454,262 +1103,122 @@
             </div>
         </a>
 
-        <ul class="nav-links">
-            <li><a href="#hero" class="nav-link">Home</a></li>
-            <li><a href="#ticket-stage" class="nav-link">Golden Ticket</a></li>
-            <li><a href="#rovers" class="nav-link">Three Explorers</a></li>
-            <li><a href="#kit-section" class="nav-link">Inside the Kit</a></li>
-        </ul>
-
         <div class="nav-ctas">
             <a href="https://mypaulbot.com" target="_blank" class="btn-nav-secondary">
-                Already have your kit? <strong>Enter MyPaulBot.com</strong>
+                <strong>Enter MyPaulBot.com</strong>
             </a>
             <a href="https://moementum.org/kits/mypaulbot" target="_blank" class="btn-nav-cta">
-                Ready to begin? <strong>Get the MyPaulBot Kit</strong>
+                <strong>Get MyPaulBot Kit</strong>
             </a>
         </div>
     </header>
 
-    <!-- ==================== HERO SECTION ==================== -->
-    <section class="hero" id="hero">
-        <div class="badge-pill">
-            <span>✨ Created by MoeMentum for MyPaulBot ✨</span>
-        </div>
-        <h1 class="hero-title">Your Golden Ticket to Robots, Code, and Engineering</h1>
-
-        <!-- Core 3 Traits Card -->
-        <div class="hero-quote-card">
-            <p class="quote-intro">Every engineer needs three things:</p>
-            <div class="traits-quote-grid">
-                <div class="trait-quote-pill">
-                    <span class="trait-name">Perseverance</span> to keep going.
-                </div>
-                <div class="trait-quote-pill">
-                    <span class="trait-name">Curiosity</span> to keep asking.
-                </div>
-                <div class="trait-quote-pill">
-                    <span class="trait-name">Ingenuity</span> to find another way.
-                </div>
+    <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+    <main class="main-content">
+        <!-- ==================== HERO SECTION ==================== -->
+        <section class="hero" id="hero">
+            <div class="badge-pill">
+                <span>✨ You've Won! ✨</span>
             </div>
-        </div>
+            <h1 class="hero-title">Your Golden Ticket is Waiting</h1>
+            <p class="hero-subtitle">
+                Personalize your ticket below, and click the coins to learn about your robots & animal companions.
+            </p>
+        </section>
 
-        <p class="hero-subtitle">
-            Personalize your ticket, meet three remarkable Mars explorers, and begin your MyPaulBot mission.
-        </p>
+        <!-- ==================== GOLDEN TICKET STAGE ==================== -->
+        <section class="ticket-section" id="ticket-stage">
+            <div class="scene" id="scene">
+                <div class="rotator swaying" id="rotator">
+                    <div class="ticket" id="ticket">
+                        <div class="shimmer"></div>
+                        <div class="sparkle-spot"></div>
+                        <div class="sparkle-spot"></div>
+                        <div class="sparkle-spot"></div>
 
-        <div class="hero-steps">
-            <div class="step-card">
-                <div class="step-num">1</div>
-                <div class="step-text">
-                    <h4>Stamp Your Ticket</h4>
-                    <p>Add your name to your personal Golden Ticket.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <div class="step-text">
-                    <h4>Discover the Three Traits</h4>
-                    <p>Open each medallion to meet Curiosity, Ingenuity, and Perseverance.</p>
-                </div>
-            </div>
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <div class="step-text">
-                    <h4>Begin Your Mission</h4>
-                    <p>Enter MyPaulBot.com to build robots, wire circuits, and write real Python code.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <div class="ticket-content">
+                            <div class="ticket-ornament">✧ • ◇ • ✧</div>
+                            <h2 class="ticket-main-title">Moe’s Golden Ticket</h2>
+                            <div class="ticket-brand-sub">Created by MoeMentum for MyPaulBot</div>
 
-    <!-- ==================== GOLDEN TICKET STAGE ==================== -->
-    <section class="ticket-section" id="ticket-stage">
-        <div class="scene" id="scene">
-            <div class="rotator swaying" id="rotator">
-                <div class="ticket" id="ticket">
-                    <div class="shimmer"></div>
-                    <div class="sparkle-spot"></div>
-                    <div class="sparkle-spot"></div>
-                    <div class="sparkle-spot"></div>
+                            <div class="ticket-issued-block">
+                                <span class="ticket-issued-label">Issued to</span>
+                                <div class="ticket-student-name" id="ticketStudentName">STUDENT NAME</div>
+                            </div>
 
-                    <div class="ticket-content">
-                        <div class="ticket-ornament">✧ • ◇ • ✧</div>
-                        <h2 class="ticket-main-title">Moe’s Golden Ticket</h2>
-                        <div class="ticket-brand-sub">Created by MoeMentum for MyPaulBot</div>
+                            <div class="ticket-divider"></div>
 
-                        <div class="ticket-issued-block">
-                            <span class="ticket-issued-label">Issued to</span>
-                            <div class="ticket-student-name" id="ticketStudentName">STUDENT NAME</div>
+                            <div class="ticket-traits-header">Three Traits of an Engineer</div>
+                            <div class="ticket-traits-list">PERSEVERANCE • CURIOSITY • INGENUITY</div>
+                            <div class="ticket-access-tag">Entry to the MyPaulBot Robotics Lab</div>
+                            <div class="ticket-ornament">✧ • ◇ • ✧</div>
                         </div>
-
-                        <div class="ticket-divider"></div>
-
-                        <div class="ticket-traits-header">Three Traits of an Engineer</div>
-                        <div class="ticket-traits-list">PERSEVERANCE • CURIOSITY • INGENUITY</div>
-                        <div class="ticket-access-tag">Entry to the MyPaulBot Robotics Lab</div>
-                        <div class="ticket-ornament">✧ • ◇ • ✧</div>
                     </div>
+                    <div class="reflection"></div>
                 </div>
-                <div class="reflection"></div>
             </div>
-        </div>
 
-        <div class="ticket-actions">
-            <button class="btn-action btn-personalize" id="openNameModalBtn">
-                <span>✨ STAMP MY GOLDEN TICKET</span>
-            </button>
-            <a href="https://mypaulbot.com" target="_blank" class="btn-action btn-activate" id="activateBtn">
-                <span>🚀 ACTIVATE MY GOLDEN TICKET</span>
-            </a>
-        </div>
-    </section>
+            <div class="ticket-actions">
+                <button class="btn-action btn-personalize" id="openNameModalBtn">
+                    <span>✨ STAMP MY TICKET</span>
+                </button>
+                <a href="https://mypaulbot.com" target="_blank" class="btn-action btn-activate" id="activateBtn">
+                    <span>🚀 ACTIVATE TICKET</span>
+                </a>
+            </div>
+        </section>
 
-    <!-- ==================== MEET YOUR THREE EXPLORERS ==================== -->
-    <section class="coins-section" id="rovers">
-        <h2 class="section-title">Meet Your Three Explorers</h2>
-        <p class="section-desc">Each coin represents a Mars explorer, an engineering trait, and an animal companion
-            included with your kit.</p>
-
-        <div class="explorers-grid">
-            <!-- Explorer 1: PERSEVERANCE -->
-            <div class="explorer-card">
+        <!-- ==================== INTERACTIVE COINS SECTION ==================== -->
+        <section class="coins-container">
+            <h3 class="coins-section-title">Select a coin to meet your robot companion:</h3>
+            <div class="coins-row">
+                <!-- Coin 1: PERSEVERANCE -->
                 <div class="coin-wrapper" data-coin="perseverance">
                     <div class="coin">
                         <div class="coin-bg"></div>
                         <svg class="coin-svg-text" viewBox="0 0 100 100">
                             <path id="curve-perseverance" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                             <text>
-                                <textPath href="#curve-perseverance" startOffset="50%" text-anchor="middle">PERSEVERANCE
-                                </textPath>
+                                <textPath href="#curve-perseverance" startOffset="50%" text-anchor="middle">PERSEVERANCE</textPath>
                             </text>
                         </svg>
                         <span class="coin-name-text coin-name-display">Explorer</span>
                     </div>
+                    <span class="coin-label">Perseverance</span>
                 </div>
-                <h3 class="explorer-trait-title">PERSEVERANCE</h3>
-                <p class="explorer-trait-tagline">Keep going when things get difficult.</p>
-                <p class="explorer-story">Like a salmon swimming upstream, an engineer keeps trying, testing, and
-                    learning.</p>
-                <div class="explorer-meta-grid">
-                    <div class="meta-row">
-                        <span class="meta-label">Mars Explorer:</span>
-                        <span class="meta-value">Perseverance Rover</span>
-                    </div>
-                    <div class="meta-row">
-                        <span class="meta-label">Animal Companion:</span>
-                        <span class="meta-value">Salmon</span>
-                    </div>
-                </div>
-                <button class="btn-inspect-rover" data-coin="perseverance">Inspect Perseverance 🔍</button>
-            </div>
 
-            <!-- Explorer 2: CURIOSITY -->
-            <div class="explorer-card">
+                <!-- Coin 2: CURIOSITY -->
                 <div class="coin-wrapper" data-coin="curiosity">
                     <div class="coin">
                         <div class="coin-bg"></div>
                         <svg class="coin-svg-text" viewBox="0 0 100 100">
                             <path id="curve-curiosity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                             <text>
-                                <textPath href="#curve-curiosity" startOffset="50%" text-anchor="middle">CURIOSITY
-                                </textPath>
+                                <textPath href="#curve-curiosity" startOffset="50%" text-anchor="middle">CURIOSITY</textPath>
                             </text>
                         </svg>
                         <span class="coin-name-text coin-name-display">Explorer</span>
                     </div>
+                    <span class="coin-label">Curiosity</span>
                 </div>
-                <h3 class="explorer-trait-title">CURIOSITY</h3>
-                <p class="explorer-trait-tagline">Ask questions and explore what happens.</p>
-                <p class="explorer-story">Like a fox investigating its surroundings, an engineer looks closer and asks,
-                    “What if?”</p>
-                <div class="explorer-meta-grid">
-                    <div class="meta-row">
-                        <span class="meta-label">Mars Explorer:</span>
-                        <span class="meta-value">Curiosity Rover</span>
-                    </div>
-                    <div class="meta-row">
-                        <span class="meta-label">Animal Companion:</span>
-                        <span class="meta-value">Fox</span>
-                    </div>
-                </div>
-                <button class="btn-inspect-rover" data-coin="curiosity">Inspect Curiosity 🔍</button>
-            </div>
 
-            <!-- Explorer 3: INGENUITY -->
-            <div class="explorer-card">
+                <!-- Coin 3: INGENUITY -->
                 <div class="coin-wrapper" data-coin="ingenuity">
                     <div class="coin">
                         <div class="coin-bg"></div>
                         <svg class="coin-svg-text" viewBox="0 0 100 100">
                             <path id="curve-ingenuity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
                             <text>
-                                <textPath href="#curve-ingenuity" startOffset="50%" text-anchor="middle">INGENUITY
-                                </textPath>
+                                <textPath href="#curve-ingenuity" startOffset="50%" text-anchor="middle">INGENUITY</textPath>
                             </text>
                         </svg>
                         <span class="coin-name-text coin-name-display">Explorer</span>
                     </div>
-                </div>
-                <h3 class="explorer-trait-title">INGENUITY</h3>
-                <p class="explorer-trait-tagline">Create a way forward.</p>
-                <p class="explorer-story">Like a spider building a web from simple threads, an engineer turns basic
-                    parts into something remarkable.</p>
-                <div class="explorer-meta-grid">
-                    <div class="meta-row">
-                        <span class="meta-label">Mars Explorer:</span>
-                        <span class="meta-value">Ingenuity Marscopter</span>
-                    </div>
-                    <div class="meta-row">
-                        <span class="meta-label">Animal Companion:</span>
-                        <span class="meta-value">Spider</span>
-                    </div>
-                </div>
-                <button class="btn-inspect-rover" data-coin="ingenuity">Inspect Ingenuity 🔍</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== INSIDE THE MYPAULBOT KIT ==================== -->
-    <section class="kit-section" id="kit-section">
-        <div class="kit-card">
-            <div class="kit-content">
-                <h2>Inside the MyPaulBot Kit</h2>
-                <div class="kit-highlight">Two physical robots and a third robot waiting inside the code.</div>
-
-                <ul class="robots-list">
-                    <li class="robot-item">
-                        <span class="robot-item-icon">🤖</span>
-                        <div><strong>Paulbot:</strong> ready to play with, control, and program</div>
-                    </li>
-                    <li class="robot-item">
-                        <span class="robot-item-icon">⚡</span>
-                        <div><strong>MyBot:</strong> built by hand on a real breadboard</div>
-                    </li>
-                    <li class="robot-item">
-                        <span class="robot-item-icon">💻</span>
-                        <div><strong>Curiosity:</strong> Python lessons where students experiment, ask questions, and
-                            make their robots behave in new ways</div>
-                    </li>
-                </ul>
-
-                <p class="kit-summary-text">
-                    The kit introduces real circuitry, sensors, microcontrollers, robotics, and Python through guided
-                    hands-on missions.
-                </p>
-
-                <a href="https://moementum.org/kits/mypaulbot" target="_blank" class="btn-action btn-activate">
-                    <span>GET THE MYPAULBOT KIT ➔</span>
-                </a>
-            </div>
-
-            <div class="kit-media">
-                <div class="kit-preview-wrapper">
-                    <img src="public/assets/paulbot.png" alt="MyPaulBot Physical Kit & Robots" class="kit-preview-img">
+                    <span class="coin-label">Ingenuity</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- ==================== PARTICLES CONTAINER ==================== -->
     <div class="particles-container" id="particlesContainer"></div>
@@ -1736,16 +1245,28 @@
 
     <!-- ==================== ROBOT / TECH LIGHTBOX OVERLAY ==================== -->
     <div class="robot-overlay" id="robotOverlay">
-        <button class="robot-close-btn" id="robotCloseBtn">✕ Close View</button>
-
-        <div class="robot-image-container">
-            <img class="robot-image" id="robotImage" src="" alt="Mars Explorer">
-        </div>
-
-        <div class="robot-info-card">
-            <h3 class="robot-title" id="robotTitle">PERSEVERANCE ROVER</h3>
-            <p class="robot-desc" id="robotDesc">Exploring Mars, testing new engineering systems, and gathering
-                scientific insights.</p>
+        <div class="robot-modal-card">
+            <button class="robot-close-btn" id="robotCloseBtn">✕ Close</button>
+            <div class="robot-modal-content">
+                <div class="robot-modal-media">
+                    <img class="robot-image" id="robotImage" src="" alt="Mars Explorer">
+                </div>
+                <div class="robot-modal-info">
+                    <span class="robot-modal-badge" id="robotBadge">TRAIT</span>
+                    <h3 class="robot-title" id="robotTitle">PERSEVERANCE</h3>
+                    
+                    <div class="robot-detail-row">
+                        <span class="detail-label">Mars Explorer:</span>
+                        <span class="detail-value" id="robotDetailExplorer">Perseverance Rover</span>
+                    </div>
+                    <div class="robot-detail-row">
+                        <span class="detail-label">Animal Companion:</span>
+                        <span class="detail-value" id="robotDetailCompanion">Salmon</span>
+                    </div>
+                    
+                    <p class="robot-desc" id="robotDesc">Like a salmon swimming upstream, an engineer keeps trying, testing, and learning.</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1753,16 +1274,7 @@
     <footer class="footer">
         <div class="footer-brand">Moe’s Golden Ticket</div>
         <div class="footer-sub">Created by MoeMentum for MyPaulBot</div>
-
-        <div class="footer-recurring-quote">
-            “Perseverance to keep going. Curiosity to keep asking. Ingenuity to find another way.”
-        </div>
-
         <ul class="footer-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#ticket-stage">Golden Ticket</a></li>
-            <li><a href="#rovers">Three Explorers</a></li>
-            <li><a href="#kit-section">Inside the Kit</a></li>
             <li><a href="https://mypaulbot.com" target="_blank">Enter MyPaulBot.com</a></li>
             <li><a href="https://moementum.org/kits/mypaulbot" target="_blank">Get MyPaulBot Kit</a></li>
         </ul>
@@ -2002,25 +1514,37 @@
             // Robot Overlay Lightbox
             const robotOverlay = document.getElementById('robotOverlay');
             const robotImage = document.getElementById('robotImage');
+            const robotBadge = document.getElementById('robotBadge');
             const robotTitle = document.getElementById('robotTitle');
+            const robotDetailExplorer = document.getElementById('robotDetailExplorer');
+            const robotDetailCompanion = document.getElementById('robotDetailCompanion');
             const robotDesc = document.getElementById('robotDesc');
             const robotCloseBtn = document.getElementById('robotCloseBtn');
 
             const robotData = {
                 curiosity: {
                     src: 'public/assets/CuriosityRoverLanding.png',
-                    title: 'CURIOSITY ROVER • FOX COMPANION',
-                    desc: 'Mars Explorer: Curiosity Rover. Animal Companion: Fox. Ask questions, explore your surroundings, and discover what happens when you test new code!'
+                    trait: 'Curiosity',
+                    title: 'Curiosity Rover',
+                    explorer: 'Curiosity Rover',
+                    companion: 'Fox',
+                    desc: 'Like a fox investigating its surroundings, an engineer looks closer and asks, “What if?”. Ask questions, explore, and discover new behaviors in your code!'
                 },
                 ingenuity: {
                     src: 'public/assets/IgenuityDrone.png',
-                    title: 'INGENUITY MARSCOPTER • SPIDER COMPANION',
-                    desc: 'Mars Explorer: Ingenuity marscopter. Animal Companion: Spider. Create a way forward and turn simple breadboard threads into something extraordinary.'
+                    trait: 'Ingenuity',
+                    title: 'Ingenuity Marscopter',
+                    explorer: 'Ingenuity Marscopter',
+                    companion: 'Spider',
+                    desc: 'Like a spider building a web from simple threads, an engineer turns basic parts into something remarkable. Create your own way forward!'
                 },
                 perseverance: {
                     src: 'public/assets/PerseverenceRover.png',
-                    title: 'PERSEVERANCE ROVER • SALMON COMPANION',
-                    desc: 'Mars Explorer: Perseverance Rover. Animal Companion: Salmon. Keep swimming upstream and keep going when things get difficult to solve tough engineering challenges.'
+                    trait: 'Perseverance',
+                    title: 'Perseverance Rover',
+                    explorer: 'Perseverance Rover',
+                    companion: 'Salmon',
+                    desc: 'Like a salmon swimming upstream, an engineer keeps trying, testing, and learning. Keep going even when solving the toughest challenges!'
                 }
             };
 
@@ -2029,7 +1553,10 @@
                 if (data) {
                     playClink();
                     robotImage.src = data.src;
+                    robotBadge.textContent = data.trait;
                     robotTitle.textContent = data.title;
+                    robotDetailExplorer.textContent = data.explorer;
+                    robotDetailCompanion.textContent = data.companion;
                     robotDesc.textContent = data.desc;
                     robotOverlay.classList.add('active');
                     const rect = sourceEl.getBoundingClientRect();
@@ -2041,14 +1568,6 @@
                 wrapper.addEventListener('click', () => {
                     const coinKey = wrapper.getAttribute('data-coin');
                     openExplorerView(coinKey, wrapper);
-                });
-            });
-
-            document.querySelectorAll('.btn-inspect-rover').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const coinKey = btn.getAttribute('data-coin');
-                    openExplorerView(coinKey, btn);
                 });
             });
 
