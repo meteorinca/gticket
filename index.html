@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monka Golden Ticket | MyPaulBot & Moementum Robotics</title>
+    <title>Moe’s Golden Ticket | Created by MoeMentum for MyPaulBot</title>
     <link rel="icon" href="public/favicon.ico" type="image/x-icon">
     <meta name="description"
-        content="Personalize your Monka Golden Ticket, explore space robotics technology, and activate your pass to MyPaulBot.com and Moementum STEM Academy.">
+        content="Your Golden Ticket to Robots, Code, and Engineering. Personalize your ticket, meet three remarkable Mars explorers, and begin your MyPaulBot mission.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <style>
@@ -26,13 +26,13 @@
             --gold-dark: #8B6914;
             --gold-darkest: #5C3D0E;
             --chocolate: #3B1F0B;
-            --bg-dark: #0a0408;
-            --bg-purple: #180914;
-            --surface-glass: rgba(28, 12, 22, 0.75);
-            --surface-border: rgba(218, 165, 32, 0.3);
+            --bg-dark: #09040a;
+            --bg-purple: #160815;
+            --surface-glass: rgba(26, 11, 22, 0.78);
+            --surface-border: rgba(240, 192, 64, 0.35);
             --accent-cyan: #38bdf8;
-            --ticket-width: 360px;
-            --ticket-height: 220px;
+            --ticket-width: 380px;
+            --ticket-height: 235px;
         }
 
         * {
@@ -50,7 +50,7 @@
             min-height: 100vh;
             background-color: var(--bg-dark);
             background-image:
-                radial-gradient(ellipse at top center, rgba(60, 20, 45, 0.8) 0%, rgba(24, 9, 20, 0.92) 50%, rgba(10, 4, 8, 0.98) 100%),
+                radial-gradient(ellipse at top center, rgba(70, 25, 50, 0.85) 0%, rgba(22, 8, 21, 0.95) 50%, rgba(9, 4, 10, 0.99) 100%),
                 url('public/assets/bg.png');
             background-size: 100% 100%, cover;
             background-position: center, center;
@@ -85,7 +85,7 @@
 
             0%,
             100% {
-                opacity: 0.5;
+                opacity: 0.45;
             }
 
             50% {
@@ -100,43 +100,57 @@
             left: 0;
             width: 100%;
             z-index: 100;
-            background: rgba(15, 5, 12, 0.82);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(218, 165, 32, 0.25);
-            padding: 12px 24px;
+            background: rgba(14, 5, 12, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(240, 192, 64, 0.25);
+            padding: 12px 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 20px;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
         }
 
         .nav-logo {
-            height: 38px;
+            height: 42px;
             width: auto;
-            filter: drop-shadow(0 0 8px rgba(218, 165, 32, 0.5));
+            filter: drop-shadow(0 0 10px rgba(240, 192, 64, 0.6));
             transition: transform 0.3s;
         }
 
         .nav-brand:hover .nav-logo {
-            transform: scale(1.05);
+            transform: scale(1.06);
+        }
+
+        .brand-text-container {
+            display: flex;
+            flex-direction: column;
         }
 
         .nav-brand-title {
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #FEF8E0, #F0C040, #DAA520);
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            background: linear-gradient(135deg, #FEF8E0 0%, #F0C040 50%, #DAA520 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .nav-brand-sub {
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            color: rgba(254, 248, 224, 0.65);
+            font-weight: 400;
         }
 
         .nav-links {
@@ -147,7 +161,7 @@
         }
 
         .nav-link {
-            color: rgba(254, 248, 224, 0.8);
+            color: rgba(254, 248, 224, 0.82);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -160,46 +174,69 @@
             text-shadow: 0 0 10px rgba(240, 192, 64, 0.5);
         }
 
-        .btn-nav-cta {
+        .nav-ctas {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-nav-secondary {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 18px;
-            background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(240, 192, 64, 0.3));
-            border: 1px solid rgba(240, 192, 64, 0.6);
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(240, 192, 64, 0.4);
             border-radius: 50px;
-            color: #FFF8DC;
-            font-family: 'Outfit', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
+            color: #FEF8E0;
+            font-size: 12.5px;
+            font-weight: 500;
             text-decoration: none;
-            letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(218, 165, 32, 0.2);
         }
 
-        .btn-nav-cta:hover {
-            background: linear-gradient(135deg, #DAA520, #F0C848);
-            color: var(--chocolate);
-            box-shadow: 0 0 25px rgba(240, 192, 64, 0.6);
+        .btn-nav-secondary strong {
+            color: var(--gold-mid);
+        }
+
+        .btn-nav-secondary:hover {
+            background: rgba(240, 192, 64, 0.15);
+            border-color: #F0C848;
             transform: translateY(-1px);
         }
 
-        .nav-mobile-toggle {
-            display: none;
-            background: none;
+        .btn-nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 20px;
+            background: linear-gradient(135deg, #DAA520, #F0C848, #DAA520);
+            background-size: 200% 100%;
             border: none;
-            color: var(--gold-mid);
-            font-size: 24px;
-            cursor: pointer;
+            border-radius: 50px;
+            color: var(--chocolate);
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 18px rgba(240, 192, 64, 0.4);
+        }
+
+        .btn-nav-cta:hover {
+            background-position: 100% 0;
+            color: #241103;
+            box-shadow: 0 0 28px rgba(240, 192, 64, 0.7);
+            transform: translateY(-2px);
         }
 
         /* ==================== HERO SECTION ==================== */
         .hero {
             position: relative;
             z-index: 1;
-            padding: 48px 24px 20px;
-            max-width: 1000px;
+            padding: 44px 24px 20px;
+            max-width: 1050px;
             margin: 0 auto;
             text-align: center;
         }
@@ -208,100 +245,153 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 50px;
-            background: rgba(218, 165, 32, 0.12);
-            border: 1px solid rgba(218, 165, 32, 0.4);
+            background: rgba(240, 192, 64, 0.12);
+            border: 1px solid rgba(240, 192, 64, 0.45);
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 2px;
             color: #FBE9A0;
             text-transform: uppercase;
             margin-bottom: 16px;
-            box-shadow: inset 0 0 12px rgba(218, 165, 32, 0.15);
+            box-shadow: inset 0 0 15px rgba(240, 192, 64, 0.15);
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 5vw, 56px);
+            font-size: clamp(32px, 5.5vw, 56px);
             font-weight: 900;
             line-height: 1.15;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            background: linear-gradient(180deg, #FFFFFF 0%, #FEF8E0 30%, #F0C040 70%, #DAA520 100%);
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FEF8E0 25%, #F0C040 65%, #DAA520 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+            filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.7));
         }
 
-        .hero-subtitle {
-            font-size: clamp(16px, 2vw, 19px);
-            color: rgba(254, 248, 224, 0.85);
-            max-width: 720px;
+        /* Highlighted 3 Traits Quote Card */
+        .hero-quote-card {
+            background: linear-gradient(135deg, rgba(38, 16, 30, 0.75) 0%, rgba(20, 8, 18, 0.85) 100%);
+            border: 1px solid rgba(240, 192, 64, 0.4);
+            border-radius: 16px;
+            padding: 20px 28px;
+            max-width: 880px;
             margin: 0 auto 28px;
-            font-weight: 300;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 240, 0.15);
+            backdrop-filter: blur(10px);
         }
 
-        /* Steps bar */
-        .hero-steps {
+        .quote-intro {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .traits-quote-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            max-width: 850px;
-            margin: 0 auto 10px;
-        }
-
-        .step-card {
-            background: rgba(28, 12, 22, 0.6);
-            border: 1px solid rgba(218, 165, 32, 0.2);
-            border-radius: 12px;
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
             gap: 12px;
-            text-align: left;
-            backdrop-filter: blur(8px);
-            transition: border-color 0.3s, transform 0.3s;
+            text-align: center;
         }
 
-        .step-card:hover {
+        .trait-quote-pill {
+            background: rgba(240, 192, 64, 0.08);
+            border: 1px solid rgba(240, 192, 64, 0.25);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 14px;
+            color: #FEF8E0;
+            transition: all 0.3s ease;
+        }
+
+        .trait-quote-pill:hover {
+            background: rgba(240, 192, 64, 0.18);
             border-color: rgba(240, 192, 64, 0.6);
             transform: translateY(-2px);
         }
 
+        .trait-quote-pill .trait-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--gold-mid);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2.2vw, 19px);
+            color: rgba(254, 248, 224, 0.9);
+            max-width: 760px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+        }
+
+        /* 3 Steps Bar */
+        .hero-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            max-width: 900px;
+            margin: 0 auto 10px;
+        }
+
+        .step-card {
+            background: rgba(26, 11, 22, 0.65);
+            border: 1px solid rgba(240, 192, 64, 0.25);
+            border-radius: 14px;
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: left;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            border-color: rgba(240, 192, 64, 0.65);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
         .step-num {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: linear-gradient(135deg, #DAA520, #F0C848);
             color: #3B1F0B;
             font-family: 'Playfair Display', serif;
             font-weight: 900;
-            font-size: 16px;
+            font-size: 17px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
 
         .step-text h4 {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 700;
             color: #FEF8E0;
             margin-bottom: 2px;
         }
 
         .step-text p {
-            font-size: 12px;
-            color: rgba(254, 248, 224, 0.65);
-            line-height: 1.3;
+            font-size: 12.5px;
+            color: rgba(254, 248, 224, 0.7);
+            line-height: 1.35;
         }
 
         /* ==================== TICKET STAGE & INTERACTION ==================== */
         .ticket-section {
             position: relative;
             z-index: 1;
-            padding: 20px 16px 40px;
+            padding: 24px 16px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -313,12 +403,12 @@
             perspective: 1200px;
             perspective-origin: center center;
             width: 100%;
-            max-width: 480px;
-            height: 320px;
+            max-width: 520px;
+            height: 340px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .rotator {
@@ -359,7 +449,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            border-radius: 8px;
+            border-radius: 10px;
             background: linear-gradient(165deg,
                     #FEF8E0 0%, #FDF0C8 4%, #FBE9A0 8%, #F5D060 15%,
                     #E8B830 22%, #DAA520 30%, #F0C848 36%, #FEF0C8 42%,
@@ -369,8 +459,8 @@
                 0 4px 8px rgba(0, 0, 0, 0.3),
                 0 12px 24px rgba(0, 0, 0, 0.4),
                 0 20px 50px rgba(0, 0, 0, 0.5),
-                0 0 35px rgba(218, 165, 32, 0.45),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                0 0 40px rgba(240, 192, 64, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
             border: 3px solid;
             border-image: linear-gradient(180deg, #C8963E, #F5D878, #DAA520, #B8860B, #DAAA30, #F0C848, #C8963E) 1;
             overflow: hidden;
@@ -415,7 +505,7 @@
             pointer-events: none;
             background: linear-gradient(115deg,
                     transparent 0%, transparent 30%,
-                    rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.65) 48%,
+                    rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.7) 48%,
                     rgba(255, 255, 255, 0) 55%, transparent 100%);
             background-size: 250% 100%;
             animation: shimmerSweep 4.5s ease-in-out infinite;
@@ -500,7 +590,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 14px 22px;
+            padding: 12px 24px;
             text-align: center;
         }
 
@@ -513,62 +603,90 @@
             text-transform: uppercase;
         }
 
-        .ticket-monka {
-            font-family: 'Dancing Script', cursive;
-            font-size: 22px;
-            color: #4A2008;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: -2px;
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
-        }
-
-        .ticket-title {
+        .ticket-main-title {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             line-height: 1.05;
-            margin: 2px 0;
-            background: linear-gradient(180deg, #3B1F0B 0%, #5C3010 40%, #3B1F0B 100%);
+            margin: 2px 0 0;
+            background: linear-gradient(180deg, #3B1F0B 0%, #5C3010 50%, #3B1F0B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 1px 1px rgba(255, 255, 200, 0.5));
+            text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.8);
         }
 
-        .ticket-student-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 15px;
-            font-weight: 700;
+        .ticket-brand-sub {
+            font-size: 9.5px;
+            letter-spacing: 1.5px;
             color: #5C3010;
-            letter-spacing: 1px;
-            margin-top: 2px;
-            min-height: 22px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 4px;
+            opacity: 0.9;
         }
 
-        .ticket-divider {
-            width: 65%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(60, 25, 5, 0.5) 30%, rgba(60, 25, 5, 0.5) 70%, transparent);
-            margin: 4px 0;
+        .ticket-issued-block {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 2px 0;
         }
 
-        .ticket-subtitle {
+        .ticket-issued-label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 12px;
-            letter-spacing: 4px;
+            font-size: 11px;
+            letter-spacing: 2px;
             color: #4A2008;
             text-transform: uppercase;
             font-weight: 600;
         }
 
-        .ticket-number {
+        .ticket-student-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 800;
+            color: #3B1F0B;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.35);
+            padding: 2px 14px;
+            border-radius: 4px;
+            border: 1px dashed rgba(92, 48, 16, 0.4);
+            min-width: 140px;
+        }
+
+        .ticket-divider {
+            width: 70%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(60, 25, 5, 0.5) 30%, rgba(60, 25, 5, 0.5) 70%, transparent);
+            margin: 4px 0;
+        }
+
+        .ticket-traits-header {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 10.5px;
+            letter-spacing: 3px;
+            color: #4A2008;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .ticket-traits-list {
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #3B1F0B;
+            text-transform: uppercase;
+            margin-top: 1px;
+        }
+
+        .ticket-access-tag {
             font-family: 'Cormorant Garamond', serif;
             font-size: 11px;
             letter-spacing: 2px;
             color: #5C3010;
-            opacity: 0.8;
             margin-top: 3px;
             font-weight: 700;
         }
@@ -578,7 +696,7 @@
             top: calc(100% + 10px);
             left: 0;
             width: 100%;
-            height: 80%;
+            height: 75%;
             z-index: 1;
             pointer-events: none;
             border-radius: 6px;
@@ -598,15 +716,15 @@
             align-items: center;
             justify-content: center;
             gap: 16px;
-            margin-top: 20px;
+            margin-top: 24px;
             z-index: 10;
         }
 
         .btn-action {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
+            gap: 10px;
+            padding: 13px 30px;
             border-radius: 50px;
             font-family: 'Outfit', sans-serif;
             font-size: 15px;
@@ -617,100 +735,132 @@
         }
 
         .btn-personalize {
-            background: rgba(28, 12, 22, 0.8);
+            background: rgba(26, 11, 22, 0.85);
             border: 1.5px solid rgba(240, 192, 64, 0.6);
             color: #FBE9A0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
         }
 
         .btn-personalize:hover {
-            background: rgba(218, 165, 32, 0.25);
+            background: rgba(240, 192, 64, 0.25);
             border-color: #F0C848;
             color: #FFFFFF;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(240, 192, 64, 0.3);
+            box-shadow: 0 6px 22px rgba(240, 192, 64, 0.35);
         }
 
         .btn-activate {
-            background: linear-gradient(135deg, #DAA520, #F0C848, #DAA520);
+            background: linear-gradient(135deg, #DAA520 0%, #F0C848 50%, #DAA520 100%);
             background-size: 200% 100%;
             border: none;
             color: #3B1F0B;
-            box-shadow: 0 4px 20px rgba(240, 192, 64, 0.4);
+            box-shadow: 0 4px 22px rgba(240, 192, 64, 0.45);
             animation: pulseGlow 3s infinite;
         }
 
         .btn-activate:hover {
             background-position: 100% 0;
             transform: scale(1.04) translateY(-2px);
-            box-shadow: 0 8px 30px rgba(240, 192, 64, 0.7);
+            box-shadow: 0 8px 32px rgba(240, 192, 64, 0.8);
         }
 
         @keyframes pulseGlow {
 
             0%,
             100% {
-                box-shadow: 0 0 15px rgba(240, 192, 64, 0.4);
+                box-shadow: 0 0 18px rgba(240, 192, 64, 0.4);
             }
 
             50% {
-                box-shadow: 0 0 30px rgba(240, 192, 64, 0.75);
+                box-shadow: 0 0 35px rgba(240, 192, 64, 0.8);
             }
         }
 
-        /* ==================== MARS ROVERS COINS SECTION ==================== */
+        /* ==================== MEET YOUR THREE EXPLORERS ==================== */
         .coins-section {
-            max-width: 1000px;
-            margin: 40px auto 20px;
+            max-width: 1100px;
+            margin: 50px auto 30px;
             padding: 0 24px;
             text-align: center;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 800;
             color: #FEF8E0;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            background: linear-gradient(180deg, #FFFFFF, #F0C040);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-desc {
-            font-size: 15px;
-            color: rgba(254, 248, 224, 0.7);
-            max-width: 600px;
-            margin: 0 auto 30px;
+            font-size: 16px;
+            color: rgba(254, 248, 224, 0.8);
+            max-width: 680px;
+            margin: 0 auto 36px;
         }
 
-        .coins-grid {
-            display: flex;
+        .explorers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
             justify-content: center;
-            align-items: center;
-            gap: 36px;
-            flex-wrap: wrap;
         }
 
-        .coin-wrapper {
+        .explorer-card {
+            background: linear-gradient(165deg, rgba(32, 14, 27, 0.8) 0%, rgba(18, 7, 16, 0.9) 100%);
+            border: 1px solid rgba(240, 192, 64, 0.3);
+            border-radius: 20px;
+            padding: 28px 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            transition: all 0.35s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .explorer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+            opacity: 0.6;
+        }
+
+        .explorer-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(240, 192, 64, 0.7);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(240, 192, 64, 0.25);
+        }
+
+        .coin-wrapper {
+            margin-bottom: 20px;
             cursor: pointer;
             transition: transform 0.3s;
         }
 
         .coin-wrapper:hover {
-            transform: translateY(-6px);
+            transform: scale(1.08);
         }
 
         .coin {
             position: relative;
-            width: 124px;
-            height: 124px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(218, 165, 32, 0.3);
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.6), 0 0 22px rgba(240, 192, 64, 0.35);
         }
 
         .coin-bg {
@@ -719,14 +869,13 @@
             border-radius: 50%;
             background:
                 url('coin.png') center/cover no-repeat,
-                radial-gradient(circle at 35% 35%, rgba(255, 255, 240, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+                radial-gradient(circle at 35% 35%, rgba(255, 255, 240, 0.6) 0%, rgba(0, 0, 0, 0.35) 100%);
             z-index: 1;
             transition: filter 0.3s;
-            will-change: transform;
         }
 
         .coin-wrapper:hover .coin-bg {
-            filter: brightness(1.25);
+            filter: brightness(1.3);
         }
 
         .coin-svg-text {
@@ -736,7 +885,7 @@
             height: 100%;
             z-index: 3;
             pointer-events: none;
-            filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.6));
+            filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.7));
         }
 
         .coin-svg-text text {
@@ -763,72 +912,160 @@
             z-index: 2;
         }
 
-        .coin-label {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            color: #FBE9A0;
+        .explorer-trait-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--gold-mid);
+            letter-spacing: 2px;
             text-transform: uppercase;
+            margin-bottom: 6px;
         }
 
-        /* ==================== PARENTS & EDUCATORS SECTION ==================== */
-        .parents-section {
-            max-width: 1000px;
+        .explorer-trait-tagline {
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #FEF8E0;
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .explorer-story {
+            font-size: 13.5px;
+            color: rgba(254, 248, 224, 0.75);
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .explorer-meta-grid {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(240, 192, 64, 0.2);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        .meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .meta-label {
+            color: rgba(254, 248, 224, 0.6);
+            font-size: 12px;
+        }
+
+        .meta-value {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        .btn-inspect-rover {
+            width: 100%;
+            padding: 10px 18px;
+            background: rgba(240, 192, 64, 0.12);
+            border: 1px solid rgba(240, 192, 64, 0.4);
+            border-radius: 50px;
+            color: #FBE9A0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-inspect-rover:hover {
+            background: rgba(240, 192, 64, 0.3);
+            border-color: #F0C848;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        /* ==================== INSIDE THE MYPAULBOT KIT ==================== */
+        .kit-section {
+            max-width: 1100px;
             margin: 60px auto 40px;
             padding: 0 24px;
         }
 
-        .parents-card {
-            background: linear-gradient(135deg, rgba(28, 12, 22, 0.85) 0%, rgba(18, 7, 15, 0.9) 100%);
-            border: 1px solid rgba(218, 165, 32, 0.35);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 240, 0.1);
-            backdrop-filter: blur(12px);
+        .kit-card {
+            background: linear-gradient(145deg, rgba(30, 13, 25, 0.88) 0%, rgba(16, 6, 14, 0.95) 100%);
+            border: 1.5px solid rgba(240, 192, 64, 0.4);
+            border-radius: 24px;
+            padding: 44px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 240, 0.15);
+            backdrop-filter: blur(14px);
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 44px;
             align-items: center;
         }
 
-        .parents-content h3 {
+        .kit-content h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
+            font-size: 32px;
+            font-weight: 800;
             color: var(--gold-light);
-            margin-bottom: 12px;
-            line-height: 1.25;
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
 
-        .parents-content p {
-            font-size: 15px;
-            color: rgba(254, 248, 224, 0.8);
+        .kit-highlight {
+            font-size: 17px;
+            font-weight: 600;
+            color: #F0C040;
             margin-bottom: 24px;
-            line-height: 1.6;
+            line-height: 1.4;
         }
 
-        .feature-list {
+        .robots-list {
             list-style: none;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 14px;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
+        .robot-item {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(240, 192, 64, 0.2);
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-size: 14.5px;
             color: #FEF8E0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
         }
 
-        .feature-icon {
+        .robot-item-icon {
+            font-size: 18px;
             color: var(--gold-mid);
-            font-size: 16px;
+            margin-top: 1px;
         }
 
-        .parents-media {
+        .robot-item strong {
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .kit-summary-text {
+            font-size: 14.5px;
+            color: rgba(254, 248, 224, 0.85);
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .kit-media {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -836,15 +1073,23 @@
             position: relative;
         }
 
+        .kit-preview-wrapper {
+            position: relative;
+            border-radius: 16px;
+            padding: 10px;
+            background: linear-gradient(135deg, rgba(240, 192, 64, 0.3), rgba(218, 165, 32, 0.1));
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(240, 192, 64, 0.25);
+        }
+
         .kit-preview-img {
             max-width: 100%;
             height: auto;
             border-radius: 12px;
-            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 15px rgba(218, 165, 32, 0.3));
-            transition: transform 0.4s;
+            display: block;
+            transition: transform 0.4s ease;
         }
 
-        .kit-preview-img:hover {
+        .kit-preview-wrapper:hover .kit-preview-img {
             transform: scale(1.03);
         }
 
@@ -853,9 +1098,9 @@
             position: fixed;
             inset: 0;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -871,14 +1116,14 @@
         }
 
         .modal-card {
-            background: linear-gradient(165deg, #3B1F0B 0%, #2d1220 40%, #1c0915 100%);
-            border: 2px solid rgba(218, 165, 32, 0.5);
-            border-radius: 18px;
-            padding: 32px;
-            max-width: 420px;
+            background: linear-gradient(165deg, #3B1F0B 0%, #280e1d 50%, #170713 100%);
+            border: 2px solid rgba(240, 192, 64, 0.6);
+            border-radius: 20px;
+            padding: 36px 30px;
+            max-width: 440px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 0 50px rgba(218, 165, 32, 0.35), 0 25px 70px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 60px rgba(240, 192, 64, 0.4), 0 30px 80px rgba(0, 0, 0, 0.7);
             transform: scale(0.9) translateY(20px);
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
@@ -892,12 +1137,12 @@
             position: absolute;
             top: 14px;
             right: 16px;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(218, 165, 32, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(240, 192, 64, 0.4);
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            color: rgba(218, 165, 32, 0.8);
+            width: 34px;
+            height: 34px;
+            color: rgba(240, 192, 64, 0.9);
             font-size: 16px;
             cursor: pointer;
             display: flex;
@@ -908,41 +1153,57 @@
 
         .modal-close:hover {
             color: #FFFFFF;
-            background: rgba(218, 165, 32, 0.4);
+            background: rgba(240, 192, 64, 0.4);
         }
 
         .modal-title {
             font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: 800;
             color: #F0C848;
             margin-bottom: 8px;
         }
 
         .modal-subtitle {
             font-size: 14px;
-            color: rgba(218, 165, 32, 0.85);
-            margin-bottom: 20px;
+            color: rgba(254, 248, 224, 0.85);
+            margin-bottom: 22px;
+            line-height: 1.4;
+        }
+
+        .modal-input-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .modal-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+            margin-left: 4px;
         }
 
         .modal-input {
             width: 100%;
-            padding: 12px 18px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(218, 165, 32, 0.4);
-            border-radius: 10px;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1.5px solid rgba(240, 192, 64, 0.5);
+            border-radius: 12px;
             color: #FFF8DC;
             font-family: 'Playfair Display', serif;
-            font-size: 17px;
+            font-size: 18px;
             text-align: center;
             outline: none;
-            margin-bottom: 20px;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .modal-input:focus {
             border-color: #F0C848;
-            box-shadow: 0 0 15px rgba(240, 192, 64, 0.3);
+            box-shadow: 0 0 20px rgba(240, 192, 64, 0.4);
         }
 
         /* Robot Overlay Lightbox */
@@ -950,15 +1211,15 @@
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(5, 2, 5, 0.92);
-            backdrop-filter: blur(16px);
+            background: rgba(5, 2, 5, 0.94);
+            backdrop-filter: blur(18px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease;
             padding: 24px;
         }
 
@@ -971,26 +1232,27 @@
             position: absolute;
             top: 24px;
             right: 24px;
-            background: rgba(218, 165, 32, 0.2);
-            border: 1px solid rgba(218, 165, 32, 0.5);
+            background: rgba(240, 192, 64, 0.2);
+            border: 1px solid rgba(240, 192, 64, 0.6);
             color: #FEF8E0;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             z-index: 100;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
 
         .robot-close-btn:hover {
-            background: rgba(218, 165, 32, 0.5);
+            background: rgba(240, 192, 64, 0.5);
+            transform: translateY(-1px);
         }
 
         .robot-image-container {
             position: relative;
-            max-width: 90vw;
-            max-height: 70vh;
+            max-width: 85vw;
+            max-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -998,31 +1260,35 @@
 
         .robot-image {
             max-width: 100%;
-            max-height: 65vh;
+            max-height: 58vh;
             object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 0 50px rgba(218, 165, 32, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 0 60px rgba(240, 192, 64, 0.35);
         }
 
         .robot-info-card {
             margin-top: 20px;
             text-align: center;
-            max-width: 600px;
+            max-width: 650px;
+            background: rgba(26, 11, 22, 0.7);
+            border: 1px solid rgba(240, 192, 64, 0.3);
+            border-radius: 16px;
+            padding: 20px 24px;
         }
 
         .robot-title {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             color: #F0C848;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .robot-desc {
             font-size: 15px;
-            color: rgba(254, 248, 224, 0.8);
+            color: rgba(254, 248, 224, 0.85);
             line-height: 1.5;
         }
 
@@ -1031,7 +1297,7 @@
             position: fixed;
             inset: 0;
             pointer-events: none;
-            z-index: 20;
+            z-index: 50;
         }
 
         .particle {
@@ -1061,9 +1327,9 @@
 
         /* ==================== FOOTER ==================== */
         .footer {
-            border-top: 1px solid rgba(218, 165, 32, 0.25);
-            background: rgba(10, 4, 8, 0.95);
-            padding: 40px 24px 30px;
+            border-top: 1px solid rgba(240, 192, 64, 0.25);
+            background: rgba(8, 3, 7, 0.96);
+            padding: 44px 24px 34px;
             margin-top: 60px;
             text-align: center;
             position: relative;
@@ -1072,11 +1338,27 @@
 
         .footer-brand {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 800;
             color: var(--gold-mid);
-            margin-bottom: 12px;
+            margin-bottom: 4px;
             letter-spacing: 2px;
+        }
+
+        .footer-sub {
+            font-size: 13px;
+            color: rgba(254, 248, 224, 0.65);
+            margin-bottom: 20px;
+        }
+
+        .footer-recurring-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: var(--gold-light);
+            max-width: 600px;
+            margin: 0 auto 24px;
+            letter-spacing: 0.5px;
         }
 
         .footer-links {
@@ -1084,12 +1366,12 @@
             justify-content: center;
             gap: 24px;
             list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
         }
 
         .footer-links a {
-            color: rgba(254, 248, 224, 0.7);
+            color: rgba(254, 248, 224, 0.75);
             text-decoration: none;
             font-size: 14px;
             transition: color 0.3s;
@@ -1105,42 +1387,56 @@
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 850px) {
-            .parents-card {
+        @media (max-width: 900px) {
+            .kit-card {
                 grid-template-columns: 1fr;
-                padding: 28px;
+                padding: 30px;
+                gap: 30px;
+            }
+
+            .navbar {
+                padding: 12px 18px;
             }
 
             .nav-links {
                 display: none;
             }
 
-            .nav-mobile-toggle {
-                display: block;
+            .btn-nav-secondary {
+                display: none;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 500px) {
             :root {
-                --ticket-width: 300px;
-                --ticket-height: 185px;
+                --ticket-width: 310px;
+                --ticket-height: 200px;
             }
 
-            .ticket-title {
-                font-size: 22px;
+            .ticket-main-title {
+                font-size: 21px;
             }
 
-            .ticket-monka {
-                font-size: 18px;
+            .ticket-student-name {
+                font-size: 14px;
+                min-width: 110px;
             }
 
-            .coins-grid {
-                gap: 20px;
+            .ticket-traits-list {
+                font-size: 9.5px;
             }
 
-            .coin {
-                width: 100px;
-                height: 100px;
+            .explorers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-quote-card {
+                padding: 16px;
+            }
+
+            .btn-action {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -1151,57 +1447,77 @@
     <!-- ==================== HEADER / NAVIGATION ==================== -->
     <header class="navbar">
         <a href="#" class="nav-brand">
-            <img src="public/assets/moementum-logo.png" alt="Monka & Moementum Logo" class="nav-logo">
-            <span class="nav-brand-title">Monka Golden Ticket</span>
+            <img src="public/assets/moementum-logo.png" alt="Moe's Golden Ticket Logo" class="nav-logo">
+            <div class="brand-text-container">
+                <span class="nav-brand-title">Moe’s Golden Ticket</span>
+                <span class="nav-brand-sub">Created by MoeMentum for MyPaulBot</span>
+            </div>
         </a>
 
         <ul class="nav-links">
             <li><a href="#hero" class="nav-link">Home</a></li>
             <li><a href="#ticket-stage" class="nav-link">Golden Ticket</a></li>
-            <li><a href="#rovers" class="nav-link">Mars Tech</a></li>
-            <li><a href="#parents" class="nav-link">Parents & Educators</a></li>
-            <li><a href="https://mypaulbot.com" target="_blank" class="nav-link">MyPaulBot.com ↗</a></li>
+            <li><a href="#rovers" class="nav-link">Three Explorers</a></li>
+            <li><a href="#kit-section" class="nav-link">Inside the Kit</a></li>
         </ul>
 
-        <a href="https://moementum.org/kits/mypaulbot" target="_blank" class="btn-nav-cta">
-            <span>Get MyPaulBot Kit</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-        </a>
+        <div class="nav-ctas">
+            <a href="https://mypaulbot.com" target="_blank" class="btn-nav-secondary">
+                Already have your kit? <strong>Enter MyPaulBot.com</strong>
+            </a>
+            <a href="https://moementum.org/kits/mypaulbot" target="_blank" class="btn-nav-cta">
+                Ready to begin? <strong>Get the MyPaulBot Kit</strong>
+            </a>
+        </div>
     </header>
 
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero" id="hero">
         <div class="badge-pill">
-            <span>✨ Official Monka STEM Pass ✨</span>
+            <span> Created by MoeMentum for MyPaulBot </span>
         </div>
-        <h1 class="hero-title">Your Golden Ticket to Hands-On Robotics</h1>
+        <h1 class="hero-title">Your Golden Ticket to Robots, Code, and Engineering</h1>
+
+        <!-- Core 3 Traits Card -->
+        <div class="hero-quote-card">
+            <p class="quote-intro">Every engineer needs three things:</p>
+            <div class="traits-quote-grid">
+                <div class="trait-quote-pill">
+                    <span class="trait-name">Perseverance</span> to keep going.
+                </div>
+                <div class="trait-quote-pill">
+                    <span class="trait-name">Curiosity</span> to keep asking.
+                </div>
+                <div class="trait-quote-pill">
+                    <span class="trait-name">Ingenuity</span> to find another way.
+                </div>
+            </div>
+        </div>
+
         <p class="hero-subtitle">
-            Welcome, young engineer! Personalize your official Monka Golden Ticket, explore Mars exploration rovers, and
-            activate your VIP pass into <strong>MyPaulBot.com</strong>.
+            Personalize your ticket, meet three remarkable Mars explorers, and begin your MyPaulBot mission.
         </p>
 
         <div class="hero-steps">
             <div class="step-card">
                 <div class="step-num">1</div>
                 <div class="step-text">
-                    <h4>Personalize Pass</h4>
-                    <p>Enter your student name to stamp your Golden Ticket.</p>
+                    <h4>Stamp Your Ticket</h4>
+                    <p>Add your name to your personal Golden Ticket.</p>
                 </div>
             </div>
             <div class="step-card">
                 <div class="step-num">2</div>
                 <div class="step-text">
-                    <h4>Explore Space Tech</h4>
-                    <p>Click rover coins to inspect Curiosity, Ingenuity & Perseverance.</p>
+                    <h4>Discover the Three Traits</h4>
+                    <p>Open each medallion to meet Curiosity, Ingenuity, and Perseverance.</p>
                 </div>
             </div>
             <div class="step-card">
                 <div class="step-num">3</div>
                 <div class="step-text">
-                    <h4>Activate Portal</h4>
-                    <p>Launch directly to MyPaulBot.com and start breadboarding!</p>
+                    <h4>Begin Your Mission</h4>
+                    <p>Enter MyPaulBot.com to build robots, wire circuits, and write real Python code.</p>
                 </div>
             </div>
         </div>
@@ -1219,12 +1535,19 @@
 
                     <div class="ticket-content">
                         <div class="ticket-ornament">✧ • ◇ • ✧</div>
-                        <div class="ticket-monka">Monka & Moementum</div>
-                        <h2 class="ticket-title">Golden Ticket</h2>
-                        <div class="ticket-student-name" id="ticketStudentName">✦ Student Pass ✦</div>
+                        <h2 class="ticket-main-title">Moe’s Golden Ticket</h2>
+                        <div class="ticket-brand-sub">Created by MoeMentum for MyPaulBot</div>
+
+                        <div class="ticket-issued-block">
+                            <span class="ticket-issued-label">Issued to</span>
+                            <div class="ticket-student-name" id="ticketStudentName">STUDENT NAME</div>
+                        </div>
+
                         <div class="ticket-divider"></div>
-                        <p class="ticket-subtitle">Admit One • VIP Access</p>
-                        <p class="ticket-number">• MYPAULBOT ROBOTICS & ELECTRONICS LAB •</p>
+
+                        <div class="ticket-traits-header">Three Traits of an Engineer</div>
+                        <div class="ticket-traits-list">PERSEVERANCE • CURIOSITY • INGENUITY</div>
+                        <div class="ticket-access-tag">Entry to the MyPaulBot Robotics Lab</div>
                         <div class="ticket-ornament">✧ • ◇ • ✧</div>
                     </div>
                 </div>
@@ -1234,96 +1557,156 @@
 
         <div class="ticket-actions">
             <button class="btn-action btn-personalize" id="openNameModalBtn">
-                <span>✨ Personalize Ticket</span>
+                <span> STAMP MY GOLDEN TICKET</span>
             </button>
             <a href="https://mypaulbot.com" target="_blank" class="btn-action btn-activate" id="activateBtn">
-                <span>🚀 ACTIVATE GOLDEN TICKET</span>
+                <span> ACTIVATE MY GOLDEN TICKET</span>
             </a>
         </div>
     </section>
 
-    <!-- ==================== MARS ROVERS COIN GALLERY ==================== -->
+    <!-- ==================== MEET YOUR THREE EXPLORERS ==================== -->
     <section class="coins-section" id="rovers">
-        <h2 class="section-title">Interplanetary Engineering Inspiration</h2>
-        <p class="section-desc">Click on any space exploration medallion to view mission details and real robotics
-            technology.</p>
+        <h2 class="section-title">Meet Your Three Explorers</h2>
+        <p class="section-desc">Each coin represents a Mars explorer, an engineering trait, and an animal companion
+            included with your kit.</p>
 
-        <div class="coins-grid">
-            <div class="coin-wrapper" data-coin="curiosity">
-                <div class="coin">
-                    <div class="coin-bg"></div>
-                    <svg class="coin-svg-text" viewBox="0 0 100 100">
-                        <path id="curve-curiosity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
-                        <text>
-                            <textPath href="#curve-curiosity" startOffset="50%" text-anchor="middle">CURIOSITY
-                            </textPath>
-                        </text>
-                    </svg>
-                    <span class="coin-name-text coin-name-display">Explorer</span>
+        <div class="explorers-grid">
+            <!-- Explorer 1: PERSEVERANCE -->
+            <div class="explorer-card">
+                <div class="coin-wrapper" data-coin="perseverance">
+                    <div class="coin">
+                        <div class="coin-bg"></div>
+                        <svg class="coin-svg-text" viewBox="0 0 100 100">
+                            <path id="curve-perseverance" d="M 12 45 Q 50 85 88 45" fill="transparent" />
+                            <text>
+                                <textPath href="#curve-perseverance" startOffset="50%" text-anchor="middle">PERSEVERANCE
+                                </textPath>
+                            </text>
+                        </svg>
+                        <span class="coin-name-text coin-name-display">Explorer</span>
+                    </div>
                 </div>
-                <span class="coin-label">Curiosity Rover</span>
+                <h3 class="explorer-trait-title">PERSEVERANCE</h3>
+                <p class="explorer-trait-tagline">Keep going when things get difficult.</p>
+                <p class="explorer-story">Like a salmon swimming upstream, an engineer keeps trying, testing, and
+                    learning.</p>
+                <div class="explorer-meta-grid">
+                    <div class="meta-row">
+                        <span class="meta-label">Mars Explorer:</span>
+                        <span class="meta-value">Perseverance Rover</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Animal Companion:</span>
+                        <span class="meta-value">Salmon</span>
+                    </div>
+                </div>
+                <button class="btn-inspect-rover" data-coin="perseverance">Inspect Perseverance </button>
             </div>
 
-            <div class="coin-wrapper" data-coin="ingenuity">
-                <div class="coin">
-                    <div class="coin-bg"></div>
-                    <svg class="coin-svg-text" viewBox="0 0 100 100">
-                        <path id="curve-ingenuity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
-                        <text>
-                            <textPath href="#curve-ingenuity" startOffset="50%" text-anchor="middle">INGENUITY
-                            </textPath>
-                        </text>
-                    </svg>
-                    <span class="coin-name-text coin-name-display">Explorer</span>
+            <!-- Explorer 2: CURIOSITY -->
+            <div class="explorer-card">
+                <div class="coin-wrapper" data-coin="curiosity">
+                    <div class="coin">
+                        <div class="coin-bg"></div>
+                        <svg class="coin-svg-text" viewBox="0 0 100 100">
+                            <path id="curve-curiosity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
+                            <text>
+                                <textPath href="#curve-curiosity" startOffset="50%" text-anchor="middle">CURIOSITY
+                                </textPath>
+                            </text>
+                        </svg>
+                        <span class="coin-name-text coin-name-display">Explorer</span>
+                    </div>
                 </div>
-                <span class="coin-label">Ingenuity Drone</span>
+                <h3 class="explorer-trait-title">CURIOSITY</h3>
+                <p class="explorer-trait-tagline">Ask questions and explore what happens.</p>
+                <p class="explorer-story">Like a fox investigating its surroundings, an engineer looks closer and asks,
+                    “What if?”</p>
+                <div class="explorer-meta-grid">
+                    <div class="meta-row">
+                        <span class="meta-label">Mars Explorer:</span>
+                        <span class="meta-value">Curiosity Rover</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Animal Companion:</span>
+                        <span class="meta-value">Fox</span>
+                    </div>
+                </div>
+                <button class="btn-inspect-rover" data-coin="curiosity">Inspect Curiosity </button>
             </div>
 
-            <div class="coin-wrapper" data-coin="perseverance">
-                <div class="coin">
-                    <div class="coin-bg"></div>
-                    <svg class="coin-svg-text" viewBox="0 0 100 100">
-                        <path id="curve-perseverance" d="M 12 45 Q 50 85 88 45" fill="transparent" />
-                        <text>
-                            <textPath href="#curve-perseverance" startOffset="50%" text-anchor="middle">PERSEVERANCE
-                            </textPath>
-                        </text>
-                    </svg>
-                    <span class="coin-name-text coin-name-display">Explorer</span>
+            <!-- Explorer 3: INGENUITY -->
+            <div class="explorer-card">
+                <div class="coin-wrapper" data-coin="ingenuity">
+                    <div class="coin">
+                        <div class="coin-bg"></div>
+                        <svg class="coin-svg-text" viewBox="0 0 100 100">
+                            <path id="curve-ingenuity" d="M 12 45 Q 50 85 88 45" fill="transparent" />
+                            <text>
+                                <textPath href="#curve-ingenuity" startOffset="50%" text-anchor="middle">INGENUITY
+                                </textPath>
+                            </text>
+                        </svg>
+                        <span class="coin-name-text coin-name-display">Explorer</span>
+                    </div>
                 </div>
-                <span class="coin-label">Perseverance Rover</span>
+                <h3 class="explorer-trait-title">INGENUITY</h3>
+                <p class="explorer-trait-tagline">Create a way forward.</p>
+                <p class="explorer-story">Like a spider building a web from simple threads, an engineer turns basic
+                    parts into something remarkable.</p>
+                <div class="explorer-meta-grid">
+                    <div class="meta-row">
+                        <span class="meta-label">Mars Explorer:</span>
+                        <span class="meta-value">Ingenuity marscopter</span>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">Animal Companion:</span>
+                        <span class="meta-value">Spider</span>
+                    </div>
+                </div>
+                <button class="btn-inspect-rover" data-coin="ingenuity">Inspect Ingenuity </button>
             </div>
         </div>
     </section>
 
-    <!-- ==================== PARENTS & EDUCATORS SECTION ==================== -->
-    <section class="parents-section" id="parents">
-        <div class="parents-card">
-            <div class="parents-content">
-                <h3>For Parents & Educators</h3>
-                <p>
-                    MyPaulBot is a comprehensive hands-on robotics and breadboard kit designed by Moementum STEM
-                    Academy. It transitions students from beginner concepts to real-world circuit wiring, sensor
-                    programming, and embedded Python coding.
-                </p>
-                <ul class="feature-list">
-                    <li class="feature-item"><span class="feature-icon">✦</span> Real Breadboard Circuitry & Component
-                        Wiring</li>
-                    <li class="feature-item"><span class="feature-icon">✦</span> Microcontroller & Sensor Integration
+    <!-- ==================== INSIDE THE MYPAULBOT KIT ==================== -->
+    <section class="kit-section" id="kit-section">
+        <div class="kit-card">
+            <div class="kit-content">
+                <h2>Inside the MyPaulBot Kit</h2>
+                <div class="kit-highlight">Two physical robots and a third robot waiting inside the code.</div>
+
+                <ul class="robots-list">
+                    <li class="robot-item">
+                        <span class="robot-item-icon"></span>
+                        <div><strong>Paulbot:</strong> ready to play with, control, and program</div>
                     </li>
-                    <li class="feature-item"><span class="feature-icon">✦</span> Hands-On Python Programming Exercises
+                    <li class="robot-item">
+                        <span class="robot-item-icon"></span>
+                        <div><strong>MyBot:</strong> built by hand on a real breadboard</div>
                     </li>
-                    <li class="feature-item"><span class="feature-icon">✦</span> Designed for Home Explorers & Classroom
-                        STEM Labs</li>
+                    <li class="robot-item">
+                        <span class="robot-item-icon"></span>
+                        <div><strong>Curiosity:</strong> Python lessons where students experiment, ask questions, and
+                            make their robots behave in new ways</div>
+                    </li>
                 </ul>
 
+                <p class="kit-summary-text">
+                    The kit introduces real circuitry, sensors, microcontrollers, robotics, and Python through guided
+                    hands-on missions.
+                </p>
+
                 <a href="https://moementum.org/kits/mypaulbot" target="_blank" class="btn-action btn-activate">
-                    <span>Order MyPaulBot Kit on Moementum.org ➔</span>
+                    <span>GET THE MYPAULBOT KIT ➔</span>
                 </a>
             </div>
 
-            <div class="parents-media">
-                <img src="public/assets/paulbot.png" alt="MyPaulBot Kit" class="kit-preview-img">
+            <div class="kit-media">
+                <div class="kit-preview-wrapper">
+                    <img src="public/assets/paulbot.png" alt="MyPaulBot Physical Kit & Robots" class="kit-preview-img">
+                </div>
             </div>
         </div>
     </section>
@@ -1335,15 +1718,18 @@
     <div class="modal-overlay" id="nameModal">
         <div class="modal-card">
             <button class="modal-close" id="modalClose">✕</button>
-            <div style="font-size:36px;margin-bottom:8px;">✨</div>
-            <h3 class="modal-title">Personalize Your Pass</h3>
-            <p class="modal-subtitle">Enter your name to stamp your official Monka Golden Ticket!</p>
+            <div style="font-size:36px;margin-bottom:8px;"></div>
+            <h3 class="modal-title">Put Your Name on the Ticket</h3>
+            <p class="modal-subtitle">Every Golden Ticket belongs to one engineer. Enter your name to stamp yours.</p>
 
-            <input type="text" class="modal-input" id="nameInput" placeholder="Enter student name..." maxlength="22"
-                autocomplete="off">
+            <div class="modal-input-group">
+                <label class="modal-label" for="nameInput">Student name</label>
+                <input type="text" class="modal-input" id="nameInput" placeholder="Enter student name..." maxlength="24"
+                    autocomplete="off">
+            </div>
 
             <button class="btn-action btn-activate" id="modalSubmit" style="width:100%;justify-content:center;">
-                <span>✦ STAMP MY GOLDEN TICKET ✦</span>
+                <span>STAMP MY GOLDEN TICKET</span>
             </button>
         </div>
     </div>
@@ -1353,26 +1739,34 @@
         <button class="robot-close-btn" id="robotCloseBtn">✕ Close View</button>
 
         <div class="robot-image-container">
-            <img class="robot-image" id="robotImage" src="" alt="Mars Robot">
+            <img class="robot-image" id="robotImage" src="" alt="Mars Explorer">
         </div>
 
         <div class="robot-info-card">
-            <h3 class="robot-title" id="robotTitle">CURIOSITY ROVER</h3>
-            <p class="robot-desc" id="robotDesc">Inspecting planetary science, autonomous navigation, and electronic
-                systems on the surface of Mars.</p>
+            <h3 class="robot-title" id="robotTitle">PERSEVERANCE ROVER</h3>
+            <p class="robot-desc" id="robotDesc">Exploring Mars, testing new engineering systems, and gathering
+                scientific insights.</p>
         </div>
     </div>
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
-        <div class="footer-brand">MONKA & MOEMENTUM STEM ACADEMY</div>
+        <div class="footer-brand">Moe’s Golden Ticket</div>
+        <div class="footer-sub">Created by MoeMentum for MyPaulBot</div>
+
+        <div class="footer-recurring-quote">
+            “Perseverance to keep going. Curiosity to keep asking. Ingenuity to find another way.”
+        </div>
+
         <ul class="footer-links">
             <li><a href="#hero">Home</a></li>
             <li><a href="#ticket-stage">Golden Ticket</a></li>
-            <li><a href="https://mypaulbot.com" target="_blank">MyPaulBot.com</a></li>
-            <li><a href="https://moementum.org/kits/mypaulbot" target="_blank">Buy Kit (Moementum)</a></li>
+            <li><a href="#rovers">Three Explorers</a></li>
+            <li><a href="#kit-section">Inside the Kit</a></li>
+            <li><a href="https://mypaulbot.com" target="_blank">Enter MyPaulBot.com</a></li>
+            <li><a href="https://moementum.org/kits/mypaulbot" target="_blank">Get MyPaulBot Kit</a></li>
         </ul>
-        <p class="footer-copyright">© 2026 Monka & Moementum STEM Academy. All Rights Reserved.</p>
+        <p class="footer-copyright">© 2026 Moe’s Golden Ticket. Created by MoeMentum for MyPaulBot.</p>
     </footer>
 
     <!-- ==================== JAVASCRIPT LOGIC ==================== -->
@@ -1383,6 +1777,60 @@
             const rotator = document.getElementById('rotator');
             const ticket = document.getElementById('ticket');
             const particlesContainer = document.getElementById('particlesContainer');
+
+            // ─────────────────────────────────────
+            // AUDIO DESIGN (Web Audio API)
+            // ─────────────────────────────────────
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            let audioCtx = null;
+
+            function initAudio() {
+                if (!audioCtx) {
+                    audioCtx = new AudioContext();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+            }
+
+            function playChime() {
+                initAudio();
+                if (!audioCtx) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime); // G5
+                osc.frequency.exponentialRampToValueAtTime(1567.98, audioCtx.currentTime + 0.12); // G6
+
+                gain.gain.setValueAtTime(0, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.2);
+            }
+
+            function playClink() {
+                initAudio();
+                if (!audioCtx) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
+
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            }
+
+            document.body.addEventListener('click', initAudio, { once: true });
 
             // 3D Tilt Interaction
             const maxRotationX = 18;
@@ -1403,10 +1851,31 @@
                 rotator.style.transform = `rotateY(${rotateY.toFixed(2)}deg) rotateX(${rotateX.toFixed(2)}deg)`;
                 rotator.classList.remove('swaying');
 
+                // Dynamic shimmer position
+                const shimmerEl = ticket.querySelector('.shimmer');
+                if (shimmerEl) {
+                    const shimmerX = (nx + 1) * 50;
+                    shimmerEl.style.background = `linear-gradient(115deg, 
+                        transparent 0%, 
+                        transparent calc(${shimmerX}% - 15%), 
+                        rgba(255, 255, 255, 0) calc(${shimmerX}% - 5%), 
+                        rgba(255, 255, 255, 0.65) ${shimmerX}%, 
+                        rgba(255, 255, 255, 0.8) calc(${shimmerX}% + 3%), 
+                        rgba(255, 255, 255, 0.65) calc(${shimmerX}% + 6%), 
+                        rgba(255, 255, 255, 0) calc(${shimmerX}% + 10%), 
+                        transparent calc(${shimmerX}% + 15%), 
+                        transparent 100%)`;
+                    shimmerEl.style.animation = 'none';
+                }
+
                 clearTimeout(mouseTimeout);
                 mouseTimeout = setTimeout(() => {
                     rotator.style.transform = '';
                     rotator.classList.add('swaying');
+                    if (shimmerEl) {
+                        shimmerEl.style.background = '';
+                        shimmerEl.style.animation = 'shimmerSweep 4.5s ease-in-out infinite';
+                    }
                 }, 3500);
             }
 
@@ -1414,6 +1883,11 @@
             scene.addEventListener('mouseleave', () => {
                 rotator.style.transform = '';
                 rotator.classList.add('swaying');
+                const shimmerEl = ticket.querySelector('.shimmer');
+                if (shimmerEl) {
+                    shimmerEl.style.background = '';
+                    shimmerEl.style.animation = 'shimmerSweep 4.5s ease-in-out infinite';
+                }
             });
 
             // Particles Generator
@@ -1453,7 +1927,7 @@
                 const px = rect.left + Math.random() * rect.width;
                 const py = rect.top + Math.random() * rect.height;
                 createParticle(px, py);
-            }, 600);
+            }, 650);
 
             // Name Personalization Modal
             const nameModal = document.getElementById('nameModal');
@@ -1464,15 +1938,17 @@
             const ticketStudentName = document.getElementById('ticketStudentName');
             const coinNameDisplays = document.querySelectorAll('.coin-name-display');
 
-            let currentStudentName = localStorage.getItem('monka_student_name') || '';
+            let currentStudentName = localStorage.getItem('moes_student_name') || '';
 
             function updateStudentName(name) {
-                const finalName = name.trim() || 'Space Explorer';
+                const finalName = name.trim() || 'STUDENT NAME';
                 currentStudentName = finalName;
-                localStorage.setItem('monka_student_name', finalName);
+                if (name.trim()) {
+                    localStorage.setItem('moes_student_name', finalName);
+                }
 
-                ticketStudentName.textContent = `✦ for ${finalName} ✦`;
-                coinNameDisplays.forEach(el => el.textContent = finalName);
+                ticketStudentName.textContent = finalName;
+                coinNameDisplays.forEach(el => el.textContent = finalName === 'STUDENT NAME' ? 'Explorer' : finalName);
             }
 
             if (currentStudentName) {
@@ -1480,7 +1956,8 @@
             }
 
             function openModal() {
-                nameInput.value = currentStudentName;
+                playChime();
+                nameInput.value = currentStudentName === 'STUDENT NAME' ? '' : currentStudentName;
                 nameModal.classList.add('active');
                 setTimeout(() => nameInput.focus(), 300);
             }
@@ -1497,26 +1974,29 @@
             });
 
             modalSubmit.addEventListener('click', () => {
+                playChime();
                 updateStudentName(nameInput.value);
                 closeModal();
                 const rect = ticket.getBoundingClientRect();
-                triggerBurst(30, rect.left + rect.width / 2, rect.top + rect.height / 2);
+                triggerBurst(35, rect.left + rect.width / 2, rect.top + rect.height / 2);
             });
 
             nameInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
+                    playChime();
                     updateStudentName(nameInput.value);
                     closeModal();
                     const rect = ticket.getBoundingClientRect();
-                    triggerBurst(30, rect.left + rect.width / 2, rect.top + rect.height / 2);
+                    triggerBurst(35, rect.left + rect.width / 2, rect.top + rect.height / 2);
                 }
             });
 
             // Activate Ticket Click Handler
             const activateBtn = document.getElementById('activateBtn');
             activateBtn.addEventListener('click', (e) => {
+                playChime();
                 const rect = activateBtn.getBoundingClientRect();
-                triggerBurst(40, rect.left + rect.width / 2, rect.top + rect.height / 2);
+                triggerBurst(45, rect.left + rect.width / 2, rect.top + rect.height / 2);
             });
 
             // Robot Overlay Lightbox
@@ -1529,33 +2009,46 @@
             const robotData = {
                 curiosity: {
                     src: 'public/assets/CuriosityRoverLanding.png',
-                    title: 'CURIOSITY ROVER',
-                    desc: 'NASA\'s nuclear-powered mobile laboratory operating inside Gale Crater on Mars since 2012.'
+                    title: 'CURIOSITY ROVER • FOX COMPANION',
+                    desc: 'Mars Explorer: Curiosity Rover. Animal Companion: Fox. Ask questions, explore your surroundings, and discover what happens when you test new code!'
                 },
                 ingenuity: {
                     src: 'public/assets/IgenuityDrone.png',
-                    title: 'INGENUITY HELICOPTER DRONE',
-                    desc: 'The historic first aircraft to perform powered, controlled flight on another planet.'
+                    title: 'INGENUITY MARSCOPTER • SPIDER COMPANION',
+                    desc: 'Mars Explorer: Ingenuity marscopter. Animal Companion: Spider. Create a way forward and turn simple breadboard threads into something extraordinary.'
                 },
                 perseverance: {
                     src: 'public/assets/PerseverenceRover.png',
-                    title: 'PERSEVERANCE ROVER',
-                    desc: 'Searching for signs of ancient microbial life and collecting Martian rock core samples.'
+                    title: 'PERSEVERANCE ROVER • SALMON COMPANION',
+                    desc: 'Mars Explorer: Perseverance Rover. Animal Companion: Salmon. Keep swimming upstream and keep going when things get difficult to solve tough engineering challenges.'
                 }
             };
+
+            function openExplorerView(coinKey, sourceEl) {
+                const data = robotData[coinKey];
+                if (data) {
+                    playClink();
+                    robotImage.src = data.src;
+                    robotTitle.textContent = data.title;
+                    robotDesc.textContent = data.desc;
+                    robotOverlay.classList.add('active');
+                    const rect = sourceEl.getBoundingClientRect();
+                    triggerBurst(25, rect.left + rect.width / 2, rect.top + rect.height / 2);
+                }
+            }
 
             document.querySelectorAll('.coin-wrapper').forEach(wrapper => {
                 wrapper.addEventListener('click', () => {
                     const coinKey = wrapper.getAttribute('data-coin');
-                    const data = robotData[coinKey];
-                    if (data) {
-                        robotImage.src = data.src;
-                        robotTitle.textContent = data.title;
-                        robotDesc.textContent = data.desc;
-                        robotOverlay.classList.add('active');
-                        const rect = wrapper.getBoundingClientRect();
-                        triggerBurst(20, rect.left + rect.width / 2, rect.top + rect.height / 2);
-                    }
+                    openExplorerView(coinKey, wrapper);
+                });
+            });
+
+            document.querySelectorAll('.btn-inspect-rover').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const coinKey = btn.getAttribute('data-coin');
+                    openExplorerView(coinKey, btn);
                 });
             });
 
@@ -1563,6 +2056,7 @@
             robotOverlay.addEventListener('click', (e) => {
                 if (e.target === robotOverlay) robotOverlay.classList.remove('active');
             });
+
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeModal();
@@ -1576,7 +2070,7 @@
                 animTime = timestamp / 1000;
                 const coins = document.querySelectorAll('.coin-bg');
                 coins.forEach((c, idx) => {
-                    const speed = (idx + 1) * 20;
+                    const speed = (idx + 1) * 15;
                     c.style.transform = `rotateZ(${(animTime * speed).toFixed(1)}deg)`;
                 });
                 requestAnimationFrame(animateCoinBgs);
