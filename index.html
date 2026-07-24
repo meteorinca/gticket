@@ -683,15 +683,11 @@
             overflow: visible;
         }
 
-        .gear-cw {
-            transform-box: fill-box;
-            transform-origin: center;
+        .gear-spin-cw {
             animation: gearRotateCW 26s linear infinite;
         }
 
-        .gear-ccw {
-            transform-box: fill-box;
-            transform-origin: center;
+        .gear-spin-ccw {
             animation: gearRotateCCW 26s linear infinite;
         }
 
@@ -711,30 +707,30 @@
         }
 
         .gear-interactive:hover {
-            filter: drop-shadow(0 0 22px rgba(240, 192, 64, 0.9)) brightness(1.14);
+            filter: drop-shadow(0 0 24px rgba(240, 192, 64, 0.95)) brightness(1.15);
         }
 
         .gear-text-name {
+            font-family: 'Fredoka', 'Grandstander', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            fill: #1e2830;
+            letter-spacing: 1px;
+            filter: drop-shadow(1.5px 1.5px 0px rgba(255, 255, 255, 0.85)) drop-shadow(-1.5px -1.5px 0px rgba(0, 0, 0, 0.7));
+        }
+
+        .gear-text-trait {
             font-family: 'Fredoka', 'Grandstander', sans-serif;
             font-size: 24px;
             font-weight: 700;
             fill: #1e2830;
             letter-spacing: 1px;
-            filter: drop-shadow(1.5px 1.5px 0px rgba(255, 255, 255, 0.8)) drop-shadow(-1px -1px 0px rgba(0, 0, 0, 0.7));
-        }
-
-        .gear-text-trait {
-            font-family: 'Fredoka', 'Grandstander', sans-serif;
-            font-size: 19px;
-            font-weight: 700;
-            fill: #1e2830;
-            letter-spacing: 1px;
-            filter: drop-shadow(1.5px 1.5px 0px rgba(255, 255, 255, 0.8)) drop-shadow(-1px -1px 0px rgba(0, 0, 0, 0.7));
+            filter: drop-shadow(1.5px 1.5px 0px rgba(255, 255, 255, 0.85)) drop-shadow(-1.5px -1.5px 0px rgba(0, 0, 0, 0.7));
         }
 
         .gear-text-orange {
             fill: #421c00 !important;
-            filter: drop-shadow(1.5px 1.5px 0px rgba(255, 225, 140, 0.9)) drop-shadow(-1px -1px 0px rgba(50, 15, 0, 0.8)) !important;
+            filter: drop-shadow(1.5px 1.5px 0px rgba(255, 225, 140, 0.95)) drop-shadow(-1.5px -1.5px 0px rgba(50, 15, 0, 0.85)) !important;
         }
 
         /* Name Modal styling */
@@ -1228,7 +1224,7 @@
         <section class="coins-container">
             <h3 class="coins-section-title">Select a gear coin to meet your robot companion:</h3>
             <div class="gears-stage">
-                <svg class="gears-svg" viewBox="0 0 850 400" xmlns="http://www.w3.org/2000/svg">
+                <svg class="gears-svg" viewBox="0 0 850 460" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <!-- Metallic Cyan Gear Rim Gradient -->
                         <linearGradient id="gearMetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1272,88 +1268,80 @@
                             <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#73a9bd" flood-opacity="0.3" />
                         </filter>
 
-                        <!-- Text Paths for Left Coin (Center 225.7, 240.5) -->
-                        <path id="curve-top-left" d="M 179.0 220.0 A 52 52 0 0 1 272.4 220.0" fill="none" />
-                        <path id="curve-bot-left" d="M 174.0 252.0 A 54 54 0 0 0 277.4 252.0" fill="none" />
-
-                        <!-- Text Paths for Center Coin (Center 425.0, 160.0) -->
-                        <path id="curve-top-center" d="M 378.3 139.5 A 52 52 0 0 1 471.7 139.5" fill="none" />
-                        <path id="curve-bot-center" d="M 368.3 171.5 A 58 58 0 0 0 481.7 171.5" fill="none" />
-
-                        <!-- Text Paths for Right Coin (Center 624.3, 240.5) -->
-                        <path id="curve-top-right" d="M 577.6 220.0 A 52 52 0 0 1 671.0 220.0" fill="none" />
-                        <path id="curve-bot-right" d="M 572.6 252.0 A 54 54 0 0 0 676.0 252.0" fill="none" />
+                        <!-- Text Paths centered at (0,0) for curved text inside radius R=68 -->
+                        <path id="curve-top" d="M -62 -30 A 70 70 0 0 1 62 -30" fill="none" />
+                        <path id="curve-bot" d="M -64 32 A 72 72 0 0 0 64 32" fill="none" />
                     </defs>
 
                     <!-- ================= LEFT GEAR (INGENUITY) ================= -->
-                    <g class="gear-interactive" data-coin="ingenuity">
-                        <g class="gear-ccw" style="transform-origin: 225.7px 240.5px;">
+                    <g transform="translate(164.7, 269.7)" class="gear-interactive" data-coin="ingenuity">
+                        <g class="gear-spin-ccw" style="transform: rotate(7.5deg);">
                             <!-- Gear outer teeth -->
-                            <path d="M 325.70 240.50 L 325.61 244.69 L 347.16 251.98 L 345.99 260.85 L 323.29 262.31 L 322.29 266.38 L 321.12 270.40 L 340.05 283.03 L 336.63 291.29 L 314.32 286.83 L 312.30 290.50 L 310.13 294.08 L 325.15 311.17 L 319.70 318.27 L 299.31 308.19 L 296.41 311.21 L 293.39 314.11 L 303.47 334.50 L 296.37 339.95 L 279.28 324.93 L 275.70 327.10 L 272.03 329.12 L 276.49 351.43 L 268.23 354.85 L 255.60 335.92 L 251.58 337.09 L 247.51 338.09 L 246.05 360.79 L 237.18 361.96 L 229.89 340.41 L 225.70 340.50 L 221.51 340.41 L 214.22 361.96 L 205.35 360.79 L 203.89 338.09 L 199.82 337.09 L 195.80 335.92 L 183.17 354.85 L 174.91 351.43 L 179.37 329.12 L 175.70 327.10 L 172.12 324.93 L 155.03 339.95 L 147.93 334.50 L 158.01 314.11 L 154.99 311.21 L 152.09 308.19 L 131.70 318.27 L 126.25 311.17 L 141.27 294.08 L 139.10 290.50 L 137.08 286.83 L 114.77 291.29 L 111.35 283.03 L 130.28 270.40 L 129.11 266.38 L 128.11 262.31 L 105.41 260.85 L 104.24 251.98 L 125.79 244.69 L 125.70 240.50 L 125.79 236.31 L 104.24 229.02 L 105.41 220.15 L 128.11 218.69 L 129.11 214.62 L 130.28 210.60 L 111.35 197.97 L 114.77 189.71 L 137.08 194.17 L 139.10 190.50 L 141.27 186.92 L 126.25 169.83 L 131.70 162.73 L 152.09 172.81 L 154.99 169.79 L 158.01 166.89 L 147.93 146.50 L 155.03 141.05 L 172.12 156.07 L 175.70 153.90 L 179.37 151.88 L 174.91 129.57 L 183.17 126.15 L 195.80 145.08 L 199.82 143.91 L 203.89 142.91 L 205.35 120.21 L 214.22 119.04 L 221.51 140.59 L 225.70 140.50 L 229.89 140.59 L 237.18 119.04 L 246.05 120.21 L 247.51 142.91 L 251.58 143.91 L 255.60 145.08 L 268.23 126.15 L 276.49 129.57 L 272.03 151.88 L 275.70 153.90 L 279.28 156.07 L 296.37 141.05 L 303.47 146.50 L 293.39 166.89 L 296.41 169.79 L 299.31 172.81 L 319.70 162.73 L 325.15 169.83 L 310.13 186.92 L 312.30 190.50 L 314.32 194.17 L 336.63 189.71 L 340.05 197.97 L 321.12 210.60 L 322.29 214.62 L 323.29 218.69 L 345.99 220.15 L 347.16 229.02 L 325.61 236.31 Z"
-                                  fill="url(#gearMetalGrad)" stroke="#4a7687" stroke-width="2" filter="url(#gearShadow)" />
+                            <path d="M 125.00 0.00 L 124.89 5.23 L 151.33 14.30 L 149.87 25.35 L 121.99 27.27 L 120.74 32.35 L 119.28 37.38 L 142.47 52.98 L 138.20 63.27 L 110.78 57.91 L 108.25 62.50 L 105.54 66.98 L 123.90 88.05 L 117.12 96.89 L 92.01 84.61 L 88.39 88.39 L 84.61 92.01 L 96.89 117.12 L 88.05 123.90 L 66.98 105.54 L 62.50 108.25 L 57.91 110.78 L 63.27 138.20 L 52.98 142.47 L 37.38 119.28 L 32.35 120.74 L 27.27 121.99 L 25.35 149.87 L 14.30 151.33 L 5.23 124.89 L 0.00 125.00 L -5.23 124.89 L -14.30 151.33 L -25.35 149.87 L -27.27 121.99 L -32.35 120.74 L -37.38 119.28 L -52.98 142.47 L -63.27 138.20 L -57.91 110.78 L -62.50 108.25 L -66.98 105.54 L -88.05 123.90 L -96.89 117.12 L -84.61 92.01 L -88.39 88.39 L -92.01 84.61 L -117.12 96.89 L -123.90 88.05 L -105.54 66.98 L -108.25 62.50 L -110.78 57.91 L -138.20 63.27 L -142.47 52.98 L -119.28 37.38 L -120.74 32.35 L -121.99 27.27 L -149.87 25.35 L -151.33 14.30 L -124.89 5.23 L -125.00 0.00 L -124.89 -5.23 L -151.33 -14.30 L -149.87 -25.35 L -121.99 -27.27 L -120.74 -32.35 L -119.28 -37.38 L -142.47 -52.98 L -138.20 -63.27 L -110.78 -57.91 L -108.25 -62.50 L -105.54 -66.98 L -123.90 -88.05 L -117.12 -96.89 L -92.01 -84.61 L -88.39 -88.39 L -92.01 -84.61 L -96.89 -117.12 L -88.05 -123.90 L -66.98 -105.54 L -62.50 -108.25 L -57.91 -110.78 L -63.27 -138.20 L -52.98 -142.47 L -37.38 -119.28 L -32.35 -120.74 L -27.27 -121.99 L -25.35 -149.87 L -14.30 -151.33 L -5.23 -124.89 L -0.00 -125.00 L 5.23 -124.89 L 14.30 -151.33 L 25.35 -149.87 L 27.27 -121.99 L 32.35 -120.74 L 37.38 -119.28 L 52.98 -142.47 L 63.27 -138.20 L 57.91 -110.78 L 62.50 -108.25 L 66.98 -105.54 L 88.05 -123.90 L 96.89 -117.12 L 84.61 -92.01 L 88.39 -88.39 L 92.01 -84.61 L 117.12 -96.89 L 123.90 -88.05 L 105.54 -66.98 L 108.25 -62.50 L 110.78 -57.91 L 138.20 -63.27 L 142.47 -52.98 L 119.28 -37.38 L 120.74 -32.35 L 121.99 -27.27 L 149.87 -25.35 L 151.33 -14.30 L 124.89 -5.23 Z"
+                                  fill="url(#gearMetalGrad)" stroke="#4a7687" stroke-width="2.5" filter="url(#gearShadow)" />
                             <!-- Bezel inner ring -->
-                            <circle cx="225.7" cy="240.5" r="98" fill="url(#bezelGrad)" stroke="#3f6675" stroke-width="1.5" />
+                            <circle cx="0" cy="0" r="122" fill="url(#bezelGrad)" stroke="#3f6675" stroke-width="2" />
                             <!-- Sunken Coin Face -->
-                            <circle cx="225.7" cy="240.5" r="76" fill="url(#slateCoinGrad)" stroke="#4a5a66" stroke-width="2" />
-                            <circle cx="225.7" cy="240.5" r="75" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="3" />
+                            <circle cx="0" cy="0" r="96" fill="url(#slateCoinGrad)" stroke="#4a5a66" stroke-width="2.5" />
+                            <circle cx="0" cy="0" r="94.5" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="3.5" />
 
                             <!-- Top Name Text (Quinn) -->
                             <text class="gear-text-name">
-                                <textPath href="#curve-top-left" startOffset="50%" text-anchor="middle" class="coin-name-display">Quinn</textPath>
+                                <textPath href="#curve-top" startOffset="50%" text-anchor="middle" class="coin-name-display">Quinn</textPath>
                             </text>
                             <!-- Bottom Trait Text (Ingenuity) -->
                             <text class="gear-text-trait">
-                                <textPath href="#curve-bot-left" startOffset="50%" text-anchor="middle">Ingenuity</textPath>
+                                <textPath href="#curve-bot" startOffset="50%" text-anchor="middle">Ingenuity</textPath>
                             </text>
                         </g>
                     </g>
 
                     <!-- ================= CENTER GEAR (PERSEVERANCE) ================= -->
-                    <g class="gear-interactive" data-coin="perseverance">
-                        <g class="gear-cw" style="transform-origin: 425.0px 160.0px;">
+                    <g transform="translate(425.0, 175.0)" class="gear-interactive" data-coin="perseverance">
+                        <g class="gear-spin-cw">
                             <!-- Gear outer teeth -->
-                            <path d="M 525.00 160.00 L 524.91 164.19 L 546.46 171.48 L 545.29 180.35 L 522.59 181.81 L 521.59 185.88 L 520.42 189.90 L 539.35 202.53 L 535.93 210.79 L 513.62 206.33 L 511.60 210.00 L 509.43 213.58 L 524.45 230.67 L 519.00 237.77 L 498.61 227.69 L 495.71 230.71 L 492.69 233.61 L 502.77 254.00 L 495.67 259.45 L 478.58 244.43 L 475.00 246.60 L 471.33 248.62 L 475.79 270.93 L 467.53 274.35 L 454.90 255.42 L 450.88 256.59 L 446.81 257.59 L 445.35 280.29 L 436.48 281.46 L 429.19 259.91 L 425.00 260.00 L 420.81 259.91 L 413.52 281.46 L 404.65 280.29 L 403.19 257.59 L 399.12 256.59 L 395.10 255.42 L 382.47 274.35 L 374.21 270.93 L 378.67 248.62 L 375.00 246.60 L 371.42 244.43 L 354.33 259.45 L 347.23 254.00 L 357.31 233.61 L 354.29 230.71 L 351.39 227.69 L 331.00 237.77 L 325.55 230.67 L 340.57 213.58 L 338.40 210.00 L 336.38 206.33 L 314.07 210.79 L 310.65 202.53 L 329.58 189.90 L 328.41 185.88 L 327.41 181.81 L 304.71 180.35 L 303.54 171.48 L 325.09 164.19 L 325.00 160.00 L 325.09 155.81 L 303.54 148.52 L 304.71 139.65 L 327.41 138.19 L 328.41 134.12 L 329.58 130.10 L 310.65 117.47 L 314.07 109.21 L 336.38 113.67 L 338.40 110.00 L 340.57 106.42 L 325.55 89.33 L 331.00 82.23 L 351.39 92.31 L 354.29 89.29 L 357.31 86.39 L 347.23 66.00 L 354.33 60.55 L 371.42 75.57 L 375.00 73.40 L 378.67 71.38 L 374.21 49.07 L 382.47 45.65 L 395.10 64.58 L 399.12 63.41 L 403.19 62.41 L 404.65 39.71 L 413.52 38.54 L 420.81 60.09 L 425.00 60.00 L 429.19 60.09 L 436.48 38.54 L 445.35 39.71 L 446.81 62.41 L 450.88 63.41 L 454.90 64.58 L 467.53 45.65 L 475.79 49.07 L 471.33 71.38 L 475.00 73.40 L 478.58 75.57 L 495.67 60.55 L 502.77 66.00 L 492.69 86.39 L 495.71 89.29 L 498.61 92.31 L 519.00 82.23 L 524.45 89.33 L 509.43 106.42 L 511.60 110.00 L 513.62 113.67 L 535.93 109.21 L 539.35 117.47 L 520.42 130.10 L 521.59 134.12 L 522.59 138.19 L 545.29 139.65 L 546.46 148.52 L 524.91 155.81 Z"
-                                  fill="url(#gearMetalGrad)" stroke="#4a7687" stroke-width="2" filter="url(#gearShadow)" />
-                            <!-- Bezel inner ring -->
-                            <circle cx="425.0" cy="160.0" r="98" fill="url(#bezelGrad)" stroke="#3f6675" stroke-width="1.5" />
-                            <!-- Sunken Coin Face -->
-                            <circle cx="425.0" cy="160.0" r="76" fill="url(#orangeCoinGrad)" stroke="#b54d00" stroke-width="2" />
-                            <circle cx="425.0" cy="160.0" r="75" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="3" />
+                            <path d="M 125.00 0.00 L 124.89 5.23 L 151.33 14.30 L 149.87 25.35 L 121.99 27.27 L 120.74 32.35 L 119.28 37.38 L 142.47 52.98 L 138.20 63.27 L 110.78 57.91 L 108.25 62.50 L 105.54 66.98 L 123.90 88.05 L 117.12 96.89 L 92.01 84.61 L 88.39 88.39 L 84.61 92.01 L 96.89 117.12 L 88.05 123.90 L 66.98 105.54 L 62.50 108.25 L 57.91 110.78 L 63.27 138.20 L 52.98 142.47 L 37.38 119.28 L 32.35 120.74 L 27.27 121.99 L 25.35 149.87 L 14.30 151.33 L 5.23 124.89 L 0.00 125.00 L -5.23 124.89 L -14.30 151.33 L -25.35 149.87 L -27.27 121.99 L -32.35 120.74 L -37.38 119.28 L -52.98 142.47 L -63.27 138.20 L -57.91 110.78 L -62.50 108.25 L -66.98 105.54 L -88.05 123.90 L -96.89 117.12 L -84.61 92.01 L -88.39 -88.39 L -92.01 -84.61 L -117.12 -96.89 L -123.90 -88.05 L -105.54 -66.98 L -108.25 -62.50 L -110.78 -57.91 L -138.20 -63.27 L -142.47 -52.98 L -119.28 -37.38 L -120.74 -32.35 L -121.99 -27.27 L -149.87 -25.35 L -151.33 -14.30 L -124.89 -5.23 L -125.00 0.00 L -124.89 -5.23 L -151.33 -14.30 L -149.87 -25.35 L -121.99 -27.27 L -120.74 -32.35 L -119.28 -37.38 L -142.47 -52.98 L -138.20 -63.27 L -110.78 -57.91 L -108.25 -62.50 L -105.54 -66.98 L -123.90 -88.05 L -117.12 -96.89 L -92.01 -84.61 L -88.39 -88.39 L -92.01 -84.61 L -96.89 -117.12 L -88.05 -123.90 L -66.98 -105.54 L -62.50 -108.25 L -57.91 -110.78 L -63.27 -138.20 L -52.98 -142.47 L -37.38 -119.28 L -32.35 -120.74 L -27.27 -121.99 L -25.35 -149.87 L -14.30 -151.33 L -5.23 -124.89 L -0.00 -125.00 L 5.23 -124.89 L 14.30 -151.33 L 25.35 -149.87 L 27.27 -121.99 L 32.35 -120.74 L 37.38 -119.28 L 52.98 -142.47 L 63.27 -138.20 L 57.91 -110.78 L 62.50 -108.25 L 66.98 -105.54 L 88.05 -123.90 L 96.89 -117.12 L 84.61 -92.01 L 88.39 -88.39 L 92.01 -84.61 L 117.12 -96.89 L 123.90 -88.05 L 105.54 -66.98 L 108.25 -62.50 L 110.78 -57.91 L 138.20 -63.27 L 142.47 -52.98 L 119.28 -37.38 L 120.74 -32.35 L 121.99 -27.27 L 149.87 -25.35 L 151.33 -14.30 L 124.89 -5.23 Z"
+                          fill="url(#gearMetalGrad)" stroke="#4a7687" stroke-width="2.5" filter="url(#gearShadow)" />
+                    <!-- Bezel inner ring -->
+                    <circle cx="0" cy="0" r="122" fill="url(#bezelGrad)" stroke="#3f6675" stroke-width="2" />
+                    <!-- Sunken Coin Face -->
+                    <circle cx="0" cy="0" r="96" fill="url(#orangeCoinGrad)" stroke="#b54d00" stroke-width="2.5" />
+                    <circle cx="0" cy="0" r="94.5" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="3.5" />
 
-                            <!-- Top Name Text (Quinn) -->
-                            <text class="gear-text-name gear-text-orange">
-                                <textPath href="#curve-top-center" startOffset="50%" text-anchor="middle" class="coin-name-display">Quinn</textPath>
-                            </text>
-                            <!-- Bottom Trait Text (Perseverance) -->
-                            <text class="gear-text-trait gear-text-orange">
-                                <textPath href="#curve-bot-center" startOffset="50%" text-anchor="middle">Perseverance</textPath>
-                            </text>
-                        </g>
-                    </g>
+                    <!-- Top Name Text (Quinn) -->
+                    <text class="gear-text-name gear-text-orange">
+                        <textPath href="#curve-top" startOffset="50%" text-anchor="middle" class="coin-name-display">Quinn</textPath>
+                    </text>
+                    <!-- Bottom Trait Text (Perseverance) -->
+                    <text class="gear-text-trait gear-text-orange">
+                        <textPath href="#curve-bot" startOffset="50%" text-anchor="middle">Perseverance</textPath>
+                    </text>
+                </g>
+            </g>
 
-                    <!-- ================= RIGHT GEAR (CURIOSITY) ================= -->
-                    <g class="gear-interactive" data-coin="curiosity">
-                        <g class="gear-ccw" style="transform-origin: 624.3px 240.5px;">
-                            <!-- Gear outer teeth -->
-                            <path d="M 724.30 240.50 L 724.21 244.69 L 745.76 251.98 L 744.59 260.85 L 721.89 262.31 L 720.89 266.38 L 719.72 270.40 L 738.65 283.03 L 735.23 291.29 L 712.92 286.83 L 710.90 290.50 L 708.73 294.08 L 723.75 311.17 L 718.30 318.27 L 697.91 308.19 L 695.01 311.21 L 691.99 314.11 L 702.07 334.50 L 694.97 339.95 L 677.88 324.93 L 674.30 327.10 L 670.63 329.12 L 675.09 351.43 L 666.83 354.85 L 654.20 335.92 L 650.18 337.09 L 646.11 338.09 L 644.65 360.79 L 635.78 361.96 L 628.49 340.41 L 624.30 340.50 L 620.11 340.41 L 612.82 361.96 L 603.95 360.79 L 602.49 338.09 L 598.42 337.09 L 594.40 335.92 L 581.77 354.85 L 573.51 351.43 L 577.97 329.12 L 574.30 327.10 L 570.72 324.93 L 553.63 339.95 L 546.53 334.50 L 556.61 314.11 L 553.59 311.21 L 550.69 308.19 L 530.30 318.27 L 524.85 311.17 L 539.87 294.08 L 537.70 290.50 L 535.68 286.83 L 513.37 291.29 L 509.95 283.03 L 528.88 270.40 L 527.71 266.38 L 526.71 262.31 L 504.01 260.85 L 502.84 251.98 L 524.39 244.69 L 524.30 240.50 L 524.39 236.31 L 502.84 229.02 L 504.01 220.15 L 526.71 218.69 L 527.71 214.62 L 528.88 210.60 L 509.95 197.97 L 513.37 189.71 L 535.68 194.17 L 537.70 190.50 L 539.87 186.92 L 524.85 169.83 L 530.30 162.73 L 550.69 172.81 L 553.59 169.79 L 556.61 166.89 L 546.53 146.50 L 553.63 141.05 L 570.72 156.07 L 574.30 153.90 L 577.97 151.88 L 573.51 129.57 L 581.77 126.15 L 594.40 145.08 L 598.42 143.91 L 602.49 142.91 L 603.95 120.21 L 612.82 119.04 L 620.11 140.59 L 624.30 140.50 L 628.49 140.59 L 635.78 119.04 L 644.65 120.21 L 646.11 142.91 L 650.18 143.91 L 654.20 145.08 L 666.83 126.15 L 675.09 129.57 L 670.63 151.88 L 674.30 153.90 L 677.88 156.07 L 694.97 141.05 L 702.07 146.50 L 691.99 166.89 L 695.01 169.79 L 697.91 172.81 L 718.30 162.73 L 723.75 169.83 L 708.73 186.92 L 710.90 190.50 L 712.92 194.17 L 735.23 189.71 L 738.65 197.97 L 719.72 210.60 L 720.89 214.62 L 721.89 218.69 L 744.59 220.15 L 745.76 229.02 L 724.21 236.31 Z"
-                                  fill="url(#gearMetalGrad)" stroke="#4a7687" stroke-width="2" filter="url(#gearShadow)" />
-                            <!-- Bezel inner ring -->
-                            <circle cx="624.3" cy="240.5" r="98" fill="url(#bezelGrad)" stroke="#3f6675" stroke-width="1.5" />
-                            <!-- Sunken Coin Face -->
-                            <circle cx="624.3" cy="240.5" r="76" fill="url(#whiteCoinGrad)" stroke="#a1b0b9" stroke-width="2" />
-                            <circle cx="624.3" cy="240.5" r="75" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="3" />
+            <!-- ================= RIGHT GEAR (CURIOSITY) ================= -->
+            <g transform="translate(685.3, 269.7)" class="gear-interactive" data-coin="curiosity">
+                <g class="gear-spin-ccw" style="transform: rotate(7.5deg);">
+                    <!-- Gear outer teeth -->
+                    <path d="M 125.00 0.00 L 124.89 5.23 L 151.33 14.30 L 149.87 25.35 L 121.99 27.27 L 120.74 32.35 L 119.28 37.38 L 142.47 52.98 L 138.20 63.27 L 110.78 57.91 L 108.25 62.50 L 105.54 66.98 L 123.90 88.05 L 117.12 96.89 L 92.01 84.61 L 88.39 88.39 L 84.61 92.01 L 96.89 117.12 L 88.05 123.90 L 66.98 105.54 L 62.50 108.25 L 57.91 110.78 L 63.27 138.20 L 52.98 142.47 L 37.38 119.28 L 32.35 120.74 L 27.27 121.99 L 25.35 149.87 L 14.30 151.33 L 5.23 124.89 L 0.00 125.00 L -5.23 124.89 L -14.30 151.33 L -25.35 149.87 L -27.27 121.99 L -32.35 120.74 L -37.38 119.28 L -52.98 142.47 L -63.27 138.20 L -57.91 110.78 L -62.50 108.25 L -66.98 105.54 L -88.05 123.90 L -96.89 117.12 L -84.61 92.01 L -88.39 88.39 L -92.01 84.61 L -117.12 96.89 L -123.90 88.05 L -105.54 66.98 L -108.25 62.50 L -110.78 57.91 L -138.20 63.27 L -142.47 -52.98 L -119.28 -37.38 L -120.74 -32.35 L -121.99 -27.27 L -149.87 -25.35 L -151.33 -14.30 L -124.89 -5.23 L -125.00 0.00 L -124.89 -5.23 L -151.33 -14.30 L -149.87 -25.35 L -121.99 -27.27 L -120.74 -32.35 L -119.28 -37.38 L -142.47 -52.98 L -138.20 -63.27 L -110.78 -57.91 L -108.25 -62.50 L -105.54 -66.98 L -123.90 -88.05 L -117.12 -96.89 L -92.01 -84.61 L -88.39 -88.39 L -92.01 -84.61 L -96.89 -117.12 L -88.05 -123.90 L -66.98 -105.54 L -62.50 -108.25 L -57.91 -110.78 L -63.27 -138.20 L -52.98 -142.47 L -37.38 -119.28 L -32.35 -120.74 L -27.27 -121.99 L -25.35 -149.87 L -14.30 -151.33 L -5.23 -124.89 L -0.00 -125.00 L 5.23 -124.89 L 14.30 -151.33 L 25.35 -149.87 L 27.27 -121.99 L 32.35 -120.74 L 37.38 -119.28 L 52.98 -142.47 L 63.27 -138.20 L 57.91 -110.78 L 62.50 -108.25 L 66.98 -105.54 L 88.05 -123.90 L 96.89 -117.12 L 84.61 -92.01 L 88.39 -88.39 L 92.01 -84.61 L 117.12 -96.89 L 123.90 -88.05 L 105.54 -66.98 L 108.25 -62.50 L 110.78 -57.91 L 138.20 -63.27 L 142.47 -52.98 L 119.28 -37.38 L 120.74 -32.35 L 121.99 -27.27 L 149.87 -25.35 L 151.33 -14.30 L 124.89 -5.23 Z"
+                          fill="url(#gearMetalGrad)" stroke="#4a7687" stroke-width="2.5" filter="url(#gearShadow)" />
+                    <!-- Bezel inner ring -->
+                    <circle cx="0" cy="0" r="122" fill="url(#bezelGrad)" stroke="#3f6675" stroke-width="2" />
+                    <!-- Sunken Coin Face -->
+                    <circle cx="0" cy="0" r="96" fill="url(#whiteCoinGrad)" stroke="#a1b0b9" stroke-width="2.5" />
+                    <circle cx="0" cy="0" r="94.5" fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="3.5" />
 
-                            <!-- Top Name Text (Quinn) -->
-                            <text class="gear-text-name">
-                                <textPath href="#curve-top-right" startOffset="50%" text-anchor="middle" class="coin-name-display">Quinn</textPath>
-                            </text>
-                            <!-- Bottom Trait Text (Curiosity) -->
-                            <text class="gear-text-trait">
-                                <textPath href="#curve-bot-right" startOffset="50%" text-anchor="middle">Curiosity</textPath>
-                            </text>
-                        </g>
-                    </g>
-                </svg>
+                    <!-- Top Name Text (Quinn) -->
+                    <text class="gear-text-name">
+                        <textPath href="#curve-top" startOffset="50%" text-anchor="middle" class="coin-name-display">Quinn</textPath>
+                    </text>
+                    <!-- Bottom Trait Text (Curiosity) -->
+                    <text class="gear-text-trait">
+                        <textPath href="#curve-bot" startOffset="50%" text-anchor="middle">Curiosity</textPath>
+                    </text>
+                </g>
+            </g>
+        </svg>
             </div>
         </section>
     </main>
